@@ -1,0 +1,257 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { Button, Stack, Plus, Download, ArrowRight, Trash, Gear, Bell } from '@radenadri/void-ui'
+
+# Button
+
+Interactive button component with multiple variants and sizes. Features glow effects on hover and smooth transitions.
+
+## Preview
+
+<ComponentPreview
+  code={`import { Button } from '@radenadri/void-ui'
+
+export default function ButtonDemo() {
+  return (
+    <div className="flex flex-wrap gap-3">
+      <Button>Primary</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="outline">Outline</Button>
+      <Button variant="ghost">Ghost</Button>
+    </div>
+  )
+}`}
+>
+  <div className="flex flex-wrap gap-3">
+    <Button>Primary</Button>
+    <Button variant="secondary">Secondary</Button>
+    <Button variant="outline">Outline</Button>
+    <Button variant="ghost">Ghost</Button>
+  </div>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { Button } from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### All Variants
+
+<ComponentPreview
+  code={`<Stack spacing="md">
+  <Stack direction="row" spacing="sm">
+    <Button variant="primary">Primary</Button>
+    <Button variant="secondary">Secondary</Button>
+    <Button variant="default">Default</Button>
+  </Stack>
+  <Stack direction="row" spacing="sm">
+    <Button variant="success">Success</Button>
+    <Button variant="warning">Warning</Button>
+    <Button variant="danger">Danger</Button>
+  </Stack>
+  <Stack direction="row" spacing="sm">
+    <Button variant="outline">Outline</Button>
+    <Button variant="outline-secondary">Outline Secondary</Button>
+    <Button variant="ghost">Ghost</Button>
+  </Stack>
+</Stack>`}
+>
+  <Stack spacing="md">
+    <Stack direction="row" spacing="sm">
+      <Button variant="primary">Primary</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="default">Default</Button>
+    </Stack>
+    <Stack direction="row" spacing="sm">
+      <Button variant="success">Success</Button>
+      <Button variant="warning">Warning</Button>
+      <Button variant="danger">Danger</Button>
+    </Stack>
+    <Stack direction="row" spacing="sm">
+      <Button variant="outline">Outline</Button>
+      <Button variant="outline-secondary">Outline Secondary</Button>
+      <Button variant="ghost">Ghost</Button>
+    </Stack>
+  </Stack>
+</ComponentPreview>
+
+### Sizes
+
+<ComponentPreview
+  code={`<Stack direction="row" spacing="sm" align="center">
+  <Button size="xs">Extra Small</Button>
+  <Button size="sm">Small</Button>
+  <Button size="md">Medium</Button>
+  <Button size="lg">Large</Button>
+</Stack>`}
+>
+  <Stack direction="row" spacing="sm" align="center">
+    <Button size="xs">Extra Small</Button>
+    <Button size="sm">Small</Button>
+    <Button size="md">Medium</Button>
+    <Button size="lg">Large</Button>
+  </Stack>
+</ComponentPreview>
+
+### With Icons
+
+Use Phosphor Icons (included with Void UI) for consistent iconography.
+
+<ComponentPreview
+  code={`import { Button, Plus, Download, ArrowRight } from '@radenadri/void-ui'
+
+<Stack direction="row" spacing="sm">
+  <Button>
+    <Plus size={16} weight="bold" />
+    Add Item
+  </Button>
+  <Button variant="default">
+    <Download size={16} />
+    Download
+  </Button>
+  <Button variant="outline-secondary">
+    Continue
+    <ArrowRight size={16} />
+  </Button>
+</Stack>`}
+>
+  <Stack direction="row" spacing="sm">
+    <Button>
+      <Plus size={16} weight="bold" />
+      Add Item
+    </Button>
+    <Button variant="default">
+      <Download size={16} />
+      Download
+    </Button>
+    <Button variant="outline-secondary">
+      Continue
+      <ArrowRight size={16} />
+    </Button>
+  </Stack>
+</ComponentPreview>
+
+### Icon Only
+
+Use `icon`, `icon-sm`, or `icon-lg` size for icon-only buttons.
+
+<ComponentPreview
+  code={`import { Button, Gear, Bell, Trash } from '@radenadri/void-ui'
+
+<Stack direction="row" spacing="sm" align="center">
+  <Button size="icon-sm" variant="ghost">
+    <Bell size={16} />
+  </Button>
+  <Button size="icon" variant="default">
+    <Gear size={18} />
+  </Button>
+  <Button size="icon-lg" variant="outline-danger">
+    <Trash size={20} />
+  </Button>
+</Stack>`}
+>
+  <Stack direction="row" spacing="sm" align="center">
+    <Button size="icon-sm" variant="ghost">
+      <Bell size={16} />
+    </Button>
+    <Button size="icon" variant="default">
+      <Gear size={18} />
+    </Button>
+    <Button size="icon-lg" variant="outline-danger">
+      <Trash size={20} />
+    </Button>
+  </Stack>
+</ComponentPreview>
+
+### Disabled State
+
+<ComponentPreview
+  code={`<Stack direction="row" spacing="sm">
+  <Button disabled>Primary Disabled</Button>
+  <Button variant="default" disabled>Default Disabled</Button>
+  <Button variant="outline-secondary" disabled>Outline Disabled</Button>
+</Stack>`}
+>
+  <Stack direction="row" spacing="sm">
+    <Button disabled>Primary Disabled</Button>
+    <Button variant="default" disabled>Default Disabled</Button>
+    <Button variant="outline-secondary" disabled>Outline Disabled</Button>
+  </Stack>
+</ComponentPreview>
+
+### Danger Actions
+
+Use danger variants for destructive actions.
+
+<ComponentPreview
+  code={`<Stack direction="row" spacing="sm">
+  <Button variant="danger">
+    <Trash size={16} />
+    Delete
+  </Button>
+  <Button variant="outline-danger">
+    Cancel Subscription
+  </Button>
+</Stack>`}
+>
+  <Stack direction="row" spacing="sm">
+    <Button variant="danger">
+      <Trash size={16} />
+      Delete
+    </Button>
+    <Button variant="outline-danger">
+      Cancel Subscription
+    </Button>
+  </Stack>
+</ComponentPreview>
+
+## API Reference
+
+<PropsTable
+  props={[
+    {
+      name: 'variant',
+      type: "'primary' | 'secondary' | 'default' | 'success' | 'warning' | 'danger' | 'ghost' | 'outline' | 'outline-secondary' | 'outline-danger'",
+      default: "'primary'",
+      description: 'The visual style of the button.',
+    },
+    {
+      name: 'size',
+      type: "'xs' | 'sm' | 'md' | 'lg' | 'icon' | 'icon-sm' | 'icon-lg'",
+      default: "'md'",
+      description: 'The size of the button.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      default: 'false',
+      description: 'When true, prevents interaction with the button.',
+    },
+    {
+      name: 'children',
+      type: 'ReactNode',
+      required: true,
+      description: 'The content of the button.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Additional CSS classes to apply.',
+    },
+    {
+      name: 'onClick',
+      type: '() => void',
+      description: 'Callback fired when the button is clicked.',
+    },
+  ]}
+/>
+
+## Accessibility
+
+- Buttons are focusable and can be activated with `Enter` or `Space`
+- Disabled buttons are not focusable
+- Use descriptive text or `aria-label` for icon-only buttons
+- Focus ring is visible for keyboard navigation

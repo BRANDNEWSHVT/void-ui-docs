@@ -1,0 +1,319 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose, Button, Input, Stack, Label, Text } from '@radenadri/void-ui'
+
+# Dialog
+
+A modal dialog that interrupts the user with important content. Features smooth animations and backdrop blur.
+
+## Preview
+
+<ComponentPreview
+  code={`import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, Button } from '@radenadri/void-ui'
+
+export default function DialogDemo() {
+  return (
+    <Dialog>
+      <DialogTrigger>
+        <Button>Open Dialog</Button>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Welcome to Void UI</DialogTitle>
+          <DialogDescription>
+            A modern React component library built on Base UI and Tailwind CSS.
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <DialogClose>
+            <Button variant="ghost">Cancel</Button>
+          </DialogClose>
+          <Button>Get Started</Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  )
+}`}
+>
+  <Dialog>
+    <DialogTrigger>
+      <Button>Open Dialog</Button>
+    </DialogTrigger>
+    <DialogContent>
+      <DialogHeader>
+        <DialogTitle>Welcome to Void UI</DialogTitle>
+        <DialogDescription>
+          A modern React component library built on Base UI and Tailwind CSS.
+        </DialogDescription>
+      </DialogHeader>
+      <DialogFooter>
+        <DialogClose>
+          <Button variant="ghost">Cancel</Button>
+        </DialogClose>
+        <Button>Get Started</Button>
+      </DialogFooter>
+    </DialogContent>
+  </Dialog>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { 
+  Dialog, 
+  DialogTrigger, 
+  DialogContent, 
+  DialogHeader, 
+  DialogTitle, 
+  DialogDescription, 
+  DialogFooter,
+  DialogClose
+} from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### With Form
+
+<ComponentPreview
+  code={`<Dialog>
+  <DialogTrigger>
+    <Button variant="outline-secondary">Edit Profile</Button>
+  </DialogTrigger>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>Edit Profile</DialogTitle>
+      <DialogDescription>
+        Make changes to your profile here. Click save when you're done.
+      </DialogDescription>
+    </DialogHeader>
+    <Stack spacing="md" className="py-4">
+      <div className="space-y-1.5">
+        <Label>Name</Label>
+        <Input placeholder="Enter your name" defaultValue="John Doe" />
+      </div>
+      <div className="space-y-1.5">
+        <Label>Email</Label>
+        <Input type="email" placeholder="Enter your email" defaultValue="john@example.com" />
+      </div>
+    </Stack>
+    <DialogFooter>
+      <DialogClose>
+        <Button variant="ghost">Cancel</Button>
+      </DialogClose>
+      <Button>Save Changes</Button>
+    </DialogFooter>
+  </DialogContent>
+</Dialog>`}
+>
+  <Dialog>
+    <DialogTrigger>
+      <Button variant="outline-secondary">Edit Profile</Button>
+    </DialogTrigger>
+    <DialogContent>
+      <DialogHeader>
+        <DialogTitle>Edit Profile</DialogTitle>
+        <DialogDescription>
+          Make changes to your profile here. Click save when you're done.
+        </DialogDescription>
+      </DialogHeader>
+      <Stack spacing="md" className="py-4">
+        <div className="space-y-1.5">
+          <Label>Name</Label>
+          <Input placeholder="Enter your name" defaultValue="John Doe" />
+        </div>
+        <div className="space-y-1.5">
+          <Label>Email</Label>
+          <Input type="email" placeholder="Enter your email" defaultValue="john@example.com" />
+        </div>
+      </Stack>
+      <DialogFooter>
+        <DialogClose>
+          <Button variant="ghost">Cancel</Button>
+        </DialogClose>
+        <Button>Save Changes</Button>
+      </DialogFooter>
+    </DialogContent>
+  </Dialog>
+</ComponentPreview>
+
+### Without Close Button
+
+Use `showClose={false}` to hide the X button in the corner.
+
+<ComponentPreview
+  code={`<Dialog>
+  <DialogTrigger>
+    <Button variant="default">View Terms</Button>
+  </DialogTrigger>
+  <DialogContent showClose={false}>
+    <DialogHeader>
+      <DialogTitle>Terms of Service</DialogTitle>
+    </DialogHeader>
+    <div className="py-4 text-sm text-(--void-muted) max-h-48 overflow-y-auto">
+      <p className="mb-3">
+        By using Void UI, you agree to these terms. The library is provided 
+        "as is" without warranty of any kind.
+      </p>
+      <p>
+        You may use, modify, and distribute this library in accordance with 
+        the MIT license.
+      </p>
+    </div>
+    <DialogFooter>
+      <DialogClose>
+        <Button>I Agree</Button>
+      </DialogClose>
+    </DialogFooter>
+  </DialogContent>
+</Dialog>`}
+>
+  <Dialog>
+    <DialogTrigger>
+      <Button variant="default">View Terms</Button>
+    </DialogTrigger>
+    <DialogContent showClose={false}>
+      <DialogHeader>
+        <DialogTitle>Terms of Service</DialogTitle>
+      </DialogHeader>
+      <div className="py-4 text-sm text-(--void-muted) max-h-48 overflow-y-auto">
+        <p className="mb-3">
+          By using Void UI, you agree to these terms. The library is provided 
+          "as is" without warranty of any kind.
+        </p>
+        <p>
+          You may use, modify, and distribute this library in accordance with 
+          the MIT license.
+        </p>
+      </div>
+      <DialogFooter>
+        <DialogClose>
+          <Button>I Agree</Button>
+        </DialogClose>
+      </DialogFooter>
+    </DialogContent>
+  </Dialog>
+</ComponentPreview>
+
+### Confirmation Dialog
+
+<ComponentPreview
+  code={`<Dialog>
+  <DialogTrigger>
+    <Button variant="danger">Delete Account</Button>
+  </DialogTrigger>
+  <DialogContent className="max-w-sm">
+    <DialogHeader>
+      <DialogTitle>Delete Account?</DialogTitle>
+      <DialogDescription>
+        This action cannot be undone. All your data will be permanently deleted.
+      </DialogDescription>
+    </DialogHeader>
+    <DialogFooter>
+      <DialogClose>
+        <Button variant="ghost">Cancel</Button>
+      </DialogClose>
+      <Button variant="danger">Delete</Button>
+    </DialogFooter>
+  </DialogContent>
+</Dialog>`}
+>
+  <Dialog>
+    <DialogTrigger>
+      <Button variant="danger">Delete Account</Button>
+    </DialogTrigger>
+    <DialogContent className="max-w-sm">
+      <DialogHeader>
+        <DialogTitle>Delete Account?</DialogTitle>
+        <DialogDescription>
+          This action cannot be undone. All your data will be permanently deleted.
+        </DialogDescription>
+      </DialogHeader>
+      <DialogFooter>
+        <DialogClose>
+          <Button variant="ghost">Cancel</Button>
+        </DialogClose>
+        <Button variant="danger">Delete</Button>
+      </DialogFooter>
+    </DialogContent>
+  </Dialog>
+</ComponentPreview>
+
+## API Reference
+
+### Dialog
+
+The root component that manages dialog state.
+
+<PropsTable
+  props={[
+    {
+      name: 'open',
+      type: 'boolean',
+      description: 'Controlled open state.',
+    },
+    {
+      name: 'defaultOpen',
+      type: 'boolean',
+      default: 'false',
+      description: 'Default open state (uncontrolled).',
+    },
+    {
+      name: 'onOpenChange',
+      type: '(open: boolean) => void',
+      description: 'Callback fired when the open state changes.',
+    },
+  ]}
+/>
+
+### DialogTrigger
+
+The element that opens the dialog when clicked.
+
+### DialogContent
+
+The modal container with backdrop and animations.
+
+<PropsTable
+  props={[
+    {
+      name: 'showClose',
+      type: 'boolean',
+      default: 'true',
+      description: 'Show the X close button in the corner.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Additional CSS classes (e.g., max-w-sm for smaller dialogs).',
+    },
+  ]}
+/>
+
+### DialogHeader
+
+Container for title and description.
+
+### DialogTitle
+
+The dialog heading.
+
+### DialogDescription
+
+Secondary text describing the dialog purpose.
+
+### DialogFooter
+
+Container for action buttons, aligned to the right.
+
+### DialogClose
+
+Wraps elements that should close the dialog when clicked.
+
+## Accessibility
+
+- Focus is trapped within the dialog when open
+- `Escape` key closes the dialog
+- Clicking the backdrop closes the dialog
+- Focus returns to the trigger when closed
+- Proper ARIA attributes for screen readers

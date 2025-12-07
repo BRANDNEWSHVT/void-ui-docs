@@ -1,0 +1,247 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { Pagination, PaginationList, PaginationItem, PaginationPrevious, PaginationNext, PaginationEllipsis } from '@radenadri/void-ui'
+
+# Pagination
+
+A composable pagination component for navigating between pages.
+
+## Preview
+
+<ComponentPreview
+  code={`import { 
+  Pagination, 
+  PaginationList, 
+  PaginationItem, 
+  PaginationPrevious, 
+  PaginationNext 
+} from '@radenadri/void-ui'
+
+export default function PaginationDemo() {
+  return (
+    <Pagination>
+      <PaginationList>
+        <PaginationPrevious />
+        <PaginationItem>1</PaginationItem>
+        <PaginationItem active>2</PaginationItem>
+        <PaginationItem>3</PaginationItem>
+        <PaginationNext />
+      </PaginationList>
+    </Pagination>
+  )
+}`}
+>
+  <Pagination>
+    <PaginationList>
+      <PaginationPrevious />
+      <PaginationItem>1</PaginationItem>
+      <PaginationItem active>2</PaginationItem>
+      <PaginationItem>3</PaginationItem>
+      <PaginationNext />
+    </PaginationList>
+  </Pagination>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { 
+  Pagination, 
+  PaginationList, 
+  PaginationItem, 
+  PaginationPrevious, 
+  PaginationNext,
+  PaginationEllipsis
+} from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### With Ellipsis
+
+<ComponentPreview
+  code={`<Pagination>
+  <PaginationList>
+    <PaginationPrevious />
+    <PaginationItem>1</PaginationItem>
+    <PaginationEllipsis />
+    <PaginationItem>4</PaginationItem>
+    <PaginationItem active>5</PaginationItem>
+    <PaginationItem>6</PaginationItem>
+    <PaginationEllipsis />
+    <PaginationItem>10</PaginationItem>
+    <PaginationNext />
+  </PaginationList>
+</Pagination>`}
+>
+  <Pagination>
+    <PaginationList>
+      <PaginationPrevious />
+      <PaginationItem>1</PaginationItem>
+      <PaginationEllipsis />
+      <PaginationItem>4</PaginationItem>
+      <PaginationItem active>5</PaginationItem>
+      <PaginationItem>6</PaginationItem>
+      <PaginationEllipsis />
+      <PaginationItem>10</PaginationItem>
+      <PaginationNext />
+    </PaginationList>
+  </Pagination>
+</ComponentPreview>
+
+### Icon Only Navigation
+
+<ComponentPreview
+  code={`<Pagination>
+  <PaginationList>
+    <PaginationPrevious iconOnly />
+    <PaginationItem>1</PaginationItem>
+    <PaginationItem active>2</PaginationItem>
+    <PaginationItem>3</PaginationItem>
+    <PaginationItem>4</PaginationItem>
+    <PaginationItem>5</PaginationItem>
+    <PaginationNext iconOnly />
+  </PaginationList>
+</Pagination>`}
+>
+  <Pagination>
+    <PaginationList>
+      <PaginationPrevious iconOnly />
+      <PaginationItem>1</PaginationItem>
+      <PaginationItem active>2</PaginationItem>
+      <PaginationItem>3</PaginationItem>
+      <PaginationItem>4</PaginationItem>
+      <PaginationItem>5</PaginationItem>
+      <PaginationNext iconOnly />
+    </PaginationList>
+  </Pagination>
+</ComponentPreview>
+
+### Disabled States
+
+<ComponentPreview
+  code={`<Pagination>
+  <PaginationList>
+    <PaginationPrevious disabled />
+    <PaginationItem active>1</PaginationItem>
+    <PaginationItem>2</PaginationItem>
+    <PaginationItem>3</PaginationItem>
+    <PaginationNext />
+  </PaginationList>
+</Pagination>`}
+>
+  <Pagination>
+    <PaginationList>
+      <PaginationPrevious disabled />
+      <PaginationItem active>1</PaginationItem>
+      <PaginationItem>2</PaginationItem>
+      <PaginationItem>3</PaginationItem>
+      <PaginationNext />
+    </PaginationList>
+  </Pagination>
+</ComponentPreview>
+
+### Controlled Example
+
+<CodeBlock
+  code={`import { useState } from 'react'
+
+function ControlledPagination() {
+  const [page, setPage] = useState(1)
+  const totalPages = 5
+
+  return (
+    <Pagination>
+      <PaginationList>
+        <PaginationPrevious 
+          disabled={page === 1}
+          onClick={() => setPage(p => p - 1)}
+        />
+        {Array.from({ length: totalPages }, (_, i) => (
+          <PaginationItem 
+            key={i + 1}
+            active={page === i + 1}
+            onClick={() => setPage(i + 1)}
+          >
+            {i + 1}
+          </PaginationItem>
+        ))}
+        <PaginationNext 
+          disabled={page === totalPages}
+          onClick={() => setPage(p => p + 1)}
+        />
+      </PaginationList>
+    </Pagination>
+  )
+}`}
+  language="tsx"
+/>
+
+## API Reference
+
+### Pagination
+
+Root `<nav>` element with proper aria-label.
+
+### PaginationList
+
+Container `<ul>` for pagination items.
+
+### PaginationItem
+
+<PropsTable
+  props={[
+    {
+      name: 'active',
+      type: 'boolean',
+      default: 'false',
+      description: 'Highlight as current page.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      default: 'false',
+      description: 'Disable the button.',
+    },
+    {
+      name: 'onClick',
+      type: '() => void',
+      description: 'Click handler.',
+    },
+  ]}
+/>
+
+### PaginationPrevious / PaginationNext
+
+<PropsTable
+  props={[
+    {
+      name: 'iconOnly',
+      type: 'boolean',
+      default: 'false',
+      description: 'Show only the icon without text.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      default: 'false',
+      description: 'Disable the button.',
+    },
+    {
+      name: 'onClick',
+      type: '() => void',
+      description: 'Click handler.',
+    },
+  ]}
+/>
+
+### PaginationEllipsis
+
+Visual indicator for skipped pages.
+
+## Accessibility
+
+- Uses semantic `<nav>` with `aria-label="Pagination"`
+- Current page marked with `aria-current="page"`
+- Previous/Next buttons have proper `aria-label`
+- Keyboard navigation supported

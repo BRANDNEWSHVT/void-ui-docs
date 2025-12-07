@@ -1,0 +1,152 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { Spinner, Stack, Button } from '@radenadri/void-ui'
+
+# Spinner
+
+A loading indicator for async operations.
+
+## Preview
+
+<ComponentPreview
+  code={`import { Spinner } from '@radenadri/void-ui'
+
+export default function SpinnerDemo() {
+  return <Spinner />
+}`}
+>
+  <Spinner />
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { Spinner } from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### Sizes
+
+<ComponentPreview
+  code={`<Stack direction="row" spacing="lg" align="center">
+  <Spinner size="xs" />
+  <Spinner size="sm" />
+  <Spinner size="md" />
+  <Spinner size="lg" />
+  <Spinner size="xl" />
+</Stack>`}
+>
+  <Stack direction="row" spacing="lg" align="center">
+    <Spinner size="xs" />
+    <Spinner size="sm" />
+    <Spinner size="md" />
+    <Spinner size="lg" />
+    <Spinner size="xl" />
+  </Stack>
+</ComponentPreview>
+
+### Variants
+
+<ComponentPreview
+  code={`<Stack direction="row" spacing="lg" align="center">
+  <Spinner variant="default" />
+  <Spinner variant="primary" />
+  <Spinner variant="success" />
+  <Spinner variant="warning" />
+  <Spinner variant="danger" />
+  <Spinner variant="info" />
+</Stack>`}
+>
+  <Stack direction="row" spacing="lg" align="center">
+    <Spinner variant="default" />
+    <Spinner variant="primary" />
+    <Spinner variant="success" />
+    <Spinner variant="warning" />
+    <Spinner variant="danger" />
+    <Spinner variant="info" />
+  </Stack>
+</ComponentPreview>
+
+### With Text
+
+<ComponentPreview
+  code={`<Stack direction="row" spacing="sm" align="center">
+  <Spinner size="sm" />
+  <span>Loading...</span>
+</Stack>`}
+>
+  <Stack direction="row" spacing="sm" align="center">
+    <Spinner size="sm" />
+    <span className="text-(--void-muted) text-sm">Loading...</span>
+  </Stack>
+</ComponentPreview>
+
+### In Button
+
+<ComponentPreview
+  code={`<Stack direction="row" spacing="md">
+  <Button disabled>
+    <Spinner size="sm" /> Saving...
+  </Button>
+  <Button variant="secondary" disabled>
+    <Spinner size="sm" variant="default" /> Processing...
+  </Button>
+</Stack>`}
+>
+  <Stack direction="row" spacing="md">
+    <Button disabled>
+      <Spinner size="sm" /> Saving...
+    </Button>
+    <Button variant="secondary" disabled>
+      <Spinner size="sm" variant="default" /> Processing...
+    </Button>
+  </Stack>
+</ComponentPreview>
+
+### Centered Loading
+
+<ComponentPreview
+  code={`<div className="flex items-center justify-center h-32 w-full rounded-lg border border-(--void-border)">
+  <Stack align="center" spacing="sm">
+    <Spinner size="lg" variant="primary" />
+    <span className="text-sm text-(--void-muted)">Loading content...</span>
+  </Stack>
+</div>`}
+>
+  <div className="flex items-center justify-center h-32 w-full rounded-lg border border-(--void-border)">
+    <Stack align="center" spacing="sm">
+      <Spinner size="lg" variant="primary" />
+      <span className="text-sm text-(--void-muted)">Loading content...</span>
+    </Stack>
+  </div>
+</ComponentPreview>
+
+## API Reference
+
+<PropsTable
+  props={[
+    {
+      name: 'size',
+      type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'",
+      default: "'md'",
+      description: 'The size of the spinner.',
+    },
+    {
+      name: 'variant',
+      type: "'default' | 'primary' | 'success' | 'warning' | 'danger' | 'info'",
+      default: "'default'",
+      description: 'The color variant.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Additional CSS classes.',
+    },
+  ]}
+/>
+
+## Accessibility
+
+- Has `aria-label="Loading"` for screen readers
+- Uses CSS animation for smooth rotation

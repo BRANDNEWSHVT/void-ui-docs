@@ -1,0 +1,196 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { Input, FieldRoot, FieldLabel, FieldDescription, FieldError, Stack } from '@radenadri/void-ui'
+import { MagnifyingGlass, EnvelopeSimple, Lock, Eye } from '@phosphor-icons/react'
+
+# Input
+
+A styled text input component. Use with Field components for labels and validation.
+
+## Preview
+
+<ComponentPreview
+  code={`import { Input } from '@radenadri/void-ui'
+
+export default function InputDemo() {
+  return <Input placeholder="Enter your email..." />
+}`}
+>
+  <div className="w-full max-w-sm">
+    <Input placeholder="Enter your email..." />
+  </div>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { Input } from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### With Field Components
+
+For labels and validation, use with `FieldRoot`, `FieldLabel`, etc.
+
+<ComponentPreview
+  code={`import { Input, FieldRoot, FieldLabel, FieldDescription } from '@radenadri/void-ui'
+
+<FieldRoot>
+  <FieldLabel>Email</FieldLabel>
+  <Input type="email" placeholder="you@example.com" />
+  <FieldDescription>We'll never share your email.</FieldDescription>
+</FieldRoot>`}
+>
+  <FieldRoot className="w-full max-w-sm">
+    <FieldLabel>Email</FieldLabel>
+    <Input type="email" placeholder="you@example.com" />
+    <FieldDescription>We'll never share your email.</FieldDescription>
+  </FieldRoot>
+</ComponentPreview>
+
+### With Error
+
+<ComponentPreview
+  code={`<FieldRoot>
+  <FieldLabel>Password</FieldLabel>
+  <Input type="password" placeholder="Enter password" />
+  <FieldError>Password must be at least 8 characters</FieldError>
+</FieldRoot>`}
+>
+  <FieldRoot className="w-full max-w-sm">
+    <FieldLabel>Password</FieldLabel>
+    <Input type="password" placeholder="Enter password" />
+    <FieldError>Password must be at least 8 characters</FieldError>
+  </FieldRoot>
+</ComponentPreview>
+
+### Input Types
+
+<ComponentPreview
+  code={`<Stack spacing="md">
+  <Input type="text" placeholder="Text input..." />
+  <Input type="email" placeholder="email@example.com" />
+  <Input type="password" placeholder="Password..." />
+  <Input type="number" placeholder="0" />
+  <Input type="search" placeholder="Search..." />
+</Stack>`}
+>
+  <Stack spacing="md" className="w-full max-w-sm">
+    <Input type="text" placeholder="Text input..." />
+    <Input type="email" placeholder="email@example.com" />
+    <Input type="password" placeholder="Password..." />
+    <Input type="number" placeholder="0" />
+    <Input type="search" placeholder="Search..." />
+  </Stack>
+</ComponentPreview>
+
+### With Icons
+
+Wrap Input in a relative container and position icons absolutely.
+
+<ComponentPreview
+  code={`<div className="relative">
+  <MagnifyingGlass 
+    className="absolute left-3 top-1/2 -translate-y-1/2 text-(--void-muted)" 
+    size={18} 
+  />
+  <Input className="pl-10" placeholder="Search..." />
+</div>`}
+>
+  <div className="w-full max-w-sm relative">
+    <MagnifyingGlass 
+      className="absolute left-3 top-1/2 -translate-y-1/2 text-(--void-muted)" 
+      size={18} 
+    />
+    <Input className="pl-10" placeholder="Search..." />
+  </div>
+</ComponentPreview>
+
+### Disabled State
+
+<ComponentPreview
+  code={`<Input placeholder="Cannot edit..." disabled />`}
+>
+  <div className="w-full max-w-sm">
+    <Input placeholder="Cannot edit..." disabled />
+  </div>
+</ComponentPreview>
+
+### Form Example
+
+<ComponentPreview
+  code={`<Stack spacing="lg" className="w-full max-w-sm">
+  <FieldRoot>
+    <FieldLabel required>Email</FieldLabel>
+    <Input type="email" placeholder="you@example.com" />
+  </FieldRoot>
+  <FieldRoot>
+    <FieldLabel required>Password</FieldLabel>
+    <Input type="password" placeholder="Create a password" />
+    <FieldDescription>At least 8 characters</FieldDescription>
+  </FieldRoot>
+</Stack>`}
+>
+  <Stack spacing="lg" className="w-full max-w-sm">
+    <FieldRoot>
+      <FieldLabel required>Email</FieldLabel>
+      <Input type="email" placeholder="you@example.com" />
+    </FieldRoot>
+    <FieldRoot>
+      <FieldLabel required>Password</FieldLabel>
+      <Input type="password" placeholder="Create a password" />
+      <FieldDescription>At least 8 characters</FieldDescription>
+    </FieldRoot>
+  </Stack>
+</ComponentPreview>
+
+## API Reference
+
+<PropsTable
+  props={[
+    {
+      name: 'type',
+      type: 'string',
+      default: "'text'",
+      description: 'The type of input (text, email, password, number, search, etc.).',
+    },
+    {
+      name: 'placeholder',
+      type: 'string',
+      description: 'Placeholder text when input is empty.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      default: 'false',
+      description: 'When true, prevents interaction with the input.',
+    },
+    {
+      name: 'defaultValue',
+      type: 'string',
+      description: 'Default value for uncontrolled input.',
+    },
+    {
+      name: 'value',
+      type: 'string',
+      description: 'Controlled value.',
+    },
+    {
+      name: 'onChange',
+      type: '(e: ChangeEvent) => void',
+      description: 'Callback when value changes.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Additional CSS classes (e.g., pl-10 for icon padding).',
+    },
+  ]}
+/>
+
+## Accessibility
+
+- Use with FieldRoot and FieldLabel for proper label association
+- Error messages are announced to screen readers via FieldError
+- Supports standard keyboard navigation

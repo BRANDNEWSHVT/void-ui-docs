@@ -1,0 +1,183 @@
+@import 'tailwindcss';
+@import '@radenadri/void-ui/styles.css';
+@source "../node_modules/@radenadri/void-ui/dist";
+
+/* Geist Font - Modern, clean typography from Vercel */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@theme {
+  /* Font families */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('https://cdn.jsdelivr.net/npm/geist@1.0.0/dist/fonts/geist-sans/Geist-Regular.woff2')
+    format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('https://cdn.jsdelivr.net/npm/geist@1.0.0/dist/fonts/geist-sans/Geist-Medium.woff2')
+    format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('https://cdn.jsdelivr.net/npm/geist@1.0.0/dist/fonts/geist-sans/Geist-SemiBold.woff2')
+    format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('https://cdn.jsdelivr.net/npm/geist@1.0.0/dist/fonts/geist-sans/Geist-Bold.woff2')
+    format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('https://cdn.jsdelivr.net/npm/geist@1.0.0/dist/fonts/geist-mono/GeistMono-Regular.woff2')
+    format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('https://cdn.jsdelivr.net/npm/geist@1.0.0/dist/fonts/geist-mono/GeistMono-Medium.woff2')
+    format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Primary font: Geist - modern, geometric, highly readable */
+  font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  letter-spacing: -0.011em;
+
+  color-scheme: dark;
+  color: var(--void-text);
+  background-color: var(--void-bg);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'rlig' 1, 'calt' 1;
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+}
+
+/* Selection colors */
+::selection {
+  background-color: var(--void-accent);
+  color: white;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+/* Scrollbar hidden */
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Pulse animation for beacon */
+@keyframes pulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Image reveal animation */
+.reveal-img {
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+  transition: clip-path 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.reveal-img.active {
+  clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+}
+
+/* Outline text effect */
+.outline-text {
+  -webkit-text-stroke: 1px rgba(240, 240, 240, 0.3);
+  color: transparent;
+  transition: all 0.5s ease;
+}
+
+.outline-text:hover {
+  -webkit-text-stroke: 1px var(--void-accent);
+  color: var(--void-accent);
+}
+
+/* Monospace font for code */
+code,
+kbd,
+pre,
+.font-mono {
+  font-family: 'Geist Mono', 'JetBrains Mono', 'SF Mono', 'Fira Code',
+    'Consolas', monospace;
+  font-feature-settings: 'liga' 1, 'calt' 1;
+}
+
+/* Headings - tighter letter spacing */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}

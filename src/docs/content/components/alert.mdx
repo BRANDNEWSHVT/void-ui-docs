@@ -1,0 +1,221 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { Alert, AlertTitle, AlertDescription, AlertClose, Stack } from '@radenadri/void-ui'
+import { useState } from 'react'
+
+export function DismissibleAlert() {
+  const [visible, setVisible] = useState(true)
+
+  if (!visible) {
+    return (
+      <button
+        onClick={() => setVisible(true)}
+        className="text-sm text-(--void-primary) hover:underline"
+      >
+        Show alert again
+      </button>
+    )
+  }
+
+  return (
+    <Alert variant="success" className="w-full max-w-md">
+      <AlertTitle>Success!</AlertTitle>
+      <AlertDescription>Your changes have been saved.</AlertDescription>
+      <AlertClose onClose={() => setVisible(false)} />
+    </Alert>
+  )
+}
+
+# Alert
+
+Displays a callout for user attention with contextual feedback.
+
+## Preview
+
+<ComponentPreview
+  code={`import { Alert, AlertTitle, AlertDescription } from '@radenadri/void-ui'
+
+export default function AlertDemo() {
+  return (
+    <Alert>
+      <AlertTitle>Heads up!</AlertTitle>
+      <AlertDescription>
+        You can add components to your app using the CLI.
+      </AlertDescription>
+    </Alert>
+  )
+}`}
+>
+  <Alert className="w-full max-w-md">
+    <AlertTitle>Heads up!</AlertTitle>
+    <AlertDescription>
+      You can add components to your app using the CLI.
+    </AlertDescription>
+  </Alert>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { Alert, AlertTitle, AlertDescription } from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### Variants
+
+<ComponentPreview
+  code={`<Stack spacing="md">
+  <Alert variant="default">
+    <AlertTitle>Default</AlertTitle>
+    <AlertDescription>This is a default alert.</AlertDescription>
+  </Alert>
+  <Alert variant="danger">
+    <AlertTitle>Error</AlertTitle>
+    <AlertDescription>Something went wrong.</AlertDescription>
+  </Alert>
+  <Alert variant="success">
+    <AlertTitle>Success</AlertTitle>
+    <AlertDescription>Operation completed successfully.</AlertDescription>
+  </Alert>
+  <Alert variant="warning">
+    <AlertTitle>Warning</AlertTitle>
+    <AlertDescription>Please review before continuing.</AlertDescription>
+  </Alert>
+</Stack>`}
+>
+  <Stack spacing="md" className="w-full max-w-md">
+    <Alert variant="default">
+      <AlertTitle>Default</AlertTitle>
+      <AlertDescription>This is a default alert.</AlertDescription>
+    </Alert>
+    <Alert variant="danger">
+      <AlertTitle>Error</AlertTitle>
+      <AlertDescription>Something went wrong.</AlertDescription>
+    </Alert>
+    <Alert variant="success">
+      <AlertTitle>Success</AlertTitle>
+      <AlertDescription>Operation completed successfully.</AlertDescription>
+    </Alert>
+    <Alert variant="warning">
+      <AlertTitle>Warning</AlertTitle>
+      <AlertDescription>Please review before continuing.</AlertDescription>
+    </Alert>
+  </Stack>
+</ComponentPreview>
+
+### Dismissible
+
+Use `AlertClose` to add a close button to the alert.
+
+<ComponentPreview
+  code={`import { useState } from 'react'
+import { Alert, AlertTitle, AlertDescription, AlertClose } from '@radenadri/void-ui'
+
+export function DismissibleAlert() {
+  const [visible, setVisible] = useState(true)
+  
+  if (!visible) return null
+  
+  return (
+    <Alert variant="success">
+      <AlertTitle>Success!</AlertTitle>
+      <AlertDescription>Your changes have been saved.</AlertDescription>
+      <AlertClose onClose={() => setVisible(false)} />
+    </Alert>
+  )
+}`}
+>
+  <DismissibleAlert />
+</ComponentPreview>
+
+### Without Icon
+
+Set `icon={false}` to hide the default icon.
+
+<ComponentPreview
+  code={`<Alert variant="primary" icon={false}>
+  <AlertTitle>No Icon</AlertTitle>
+  <AlertDescription>This alert has no icon.</AlertDescription>
+</Alert>`}
+>
+  <Alert variant="primary" icon={false} className="w-full max-w-md">
+    <AlertTitle>No Icon</AlertTitle>
+    <AlertDescription>This alert has no icon.</AlertDescription>
+  </Alert>
+</ComponentPreview>
+
+## API Reference
+
+### Alert
+
+<PropsTable
+  props={[
+    {
+      name: 'variant',
+      type: "'default' | 'primary' | 'success' | 'warning' | 'danger' | 'info'",
+      default: "'default'",
+      description: 'The visual style of the alert.',
+    },
+    {
+      name: 'icon',
+      type: 'boolean',
+      default: 'true',
+      description: 'Whether to show the default icon.',
+    },
+    {
+      name: 'children',
+      type: 'ReactNode',
+      required: true,
+      description: 'The alert content.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Additional CSS classes.',
+    },
+  ]}
+/>
+
+### AlertTitle
+
+<PropsTable
+  props={[
+    {
+      name: 'children',
+      type: 'ReactNode',
+      required: true,
+      description: 'The title text.',
+    },
+  ]}
+/>
+
+### AlertDescription
+
+<PropsTable
+  props={[
+    {
+      name: 'children',
+      type: 'ReactNode',
+      required: true,
+      description: 'The description text.',
+    },
+  ]}
+/>
+
+### AlertClose
+
+<PropsTable
+  props={[
+    {
+      name: 'onClose',
+      type: '() => void',
+      description: 'Callback function when the close button is clicked.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Additional CSS classes.',
+    },
+  ]}
+/>

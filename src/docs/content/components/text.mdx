@@ -1,0 +1,87 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { Text, Stack } from '@radenadri/void-ui'
+
+# Text
+
+Typography component for body text.
+
+## Preview
+
+<ComponentPreview
+  code={`import { Text } from '@radenadri/void-ui'
+
+export default function TextDemo() {
+  return <Text>This is a paragraph of text.</Text>
+}`}
+>
+  <Text>This is a paragraph of text.</Text>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { Text } from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### Sizes
+
+<ComponentPreview
+  code={`<Stack spacing="sm">
+  <Text size="sm">Small text</Text>
+  <Text size="md">Medium text</Text>
+  <Text size="lg">Large text</Text>
+</Stack>`}
+>
+  <Stack spacing="sm">
+    <Text size="sm">Small text</Text>
+    <Text size="md">Medium text</Text>
+    <Text size="lg">Large text</Text>
+  </Stack>
+</ComponentPreview>
+
+### Muted Text
+
+<ComponentPreview
+  code={`<Text muted>This is muted text for secondary information.</Text>`}
+>
+  <Text muted>This is muted text for secondary information.</Text>
+</ComponentPreview>
+
+## API Reference
+
+<PropsTable
+  props={[
+    {
+      name: 'size',
+      type: "'sm' | 'md' | 'lg'",
+      default: "'md'",
+      description: 'The size of the text.',
+    },
+    {
+      name: 'muted',
+      type: 'boolean',
+      default: 'false',
+      description: 'Use muted color.',
+    },
+    {
+      name: 'as',
+      type: "'p' | 'span' | 'div'",
+      default: "'p'",
+      description: 'The HTML element to render.',
+    },
+    {
+      name: 'children',
+      type: 'ReactNode',
+      required: true,
+      description: 'The text content.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Additional CSS classes.',
+    },
+  ]}
+/>

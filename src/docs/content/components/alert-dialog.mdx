@@ -1,0 +1,227 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { AlertDialog, AlertDialogTrigger, AlertDialogContent, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogCancel, AlertDialogAction, Button } from '@radenadri/void-ui'
+
+# Alert Dialog
+
+A modal dialog that interrupts the user with important content and expects a response. Use for destructive actions that require explicit confirmation.
+
+## Preview
+
+<ComponentPreview
+  code={`import { 
+  AlertDialog, 
+  AlertDialogTrigger, 
+  AlertDialogContent, 
+  AlertDialogTitle, 
+  AlertDialogDescription, 
+  AlertDialogFooter, 
+  AlertDialogCancel, 
+  AlertDialogAction,
+  Button 
+} from '@radenadri/void-ui'
+
+export default function AlertDialogDemo() {
+  return (
+    <AlertDialog>
+      <AlertDialogTrigger>
+        <Button variant="danger">Delete Account</Button>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogTitle>Delete account?</AlertDialogTitle>
+        <AlertDialogDescription>
+          This action cannot be undone. All your data will be permanently removed from our servers.
+        </AlertDialogDescription>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction>Delete</AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  )
+}`}
+>
+  <AlertDialog>
+    <AlertDialogTrigger>
+      <Button variant="danger">Delete Account</Button>
+    </AlertDialogTrigger>
+    <AlertDialogContent>
+      <AlertDialogTitle>Delete account?</AlertDialogTitle>
+      <AlertDialogDescription>
+        This action cannot be undone. All your data will be permanently removed from our servers.
+      </AlertDialogDescription>
+      <AlertDialogFooter>
+        <AlertDialogCancel>Cancel</AlertDialogCancel>
+        <AlertDialogAction>Delete</AlertDialogAction>
+      </AlertDialogFooter>
+    </AlertDialogContent>
+  </AlertDialog>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { 
+  AlertDialog, 
+  AlertDialogTrigger, 
+  AlertDialogContent, 
+  AlertDialogTitle, 
+  AlertDialogDescription, 
+  AlertDialogFooter, 
+  AlertDialogCancel, 
+  AlertDialogAction 
+} from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### Destructive Action
+
+The most common use case is confirming destructive actions like deleting data.
+
+<ComponentPreview
+  code={`<AlertDialog>
+  <AlertDialogTrigger>
+    <Button variant="outline-danger">Remove Item</Button>
+  </AlertDialogTrigger>
+  <AlertDialogContent>
+    <AlertDialogTitle>Remove this item?</AlertDialogTitle>
+    <AlertDialogDescription>
+      This item will be moved to trash and permanently deleted after 30 days.
+    </AlertDialogDescription>
+    <AlertDialogFooter>
+      <AlertDialogCancel>Keep Item</AlertDialogCancel>
+      <AlertDialogAction>Remove</AlertDialogAction>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>`}
+>
+  <AlertDialog>
+    <AlertDialogTrigger>
+      <Button variant="outline-danger">Remove Item</Button>
+    </AlertDialogTrigger>
+    <AlertDialogContent>
+      <AlertDialogTitle>Remove this item?</AlertDialogTitle>
+      <AlertDialogDescription>
+        This item will be moved to trash and permanently deleted after 30 days.
+      </AlertDialogDescription>
+      <AlertDialogFooter>
+        <AlertDialogCancel>Keep Item</AlertDialogCancel>
+        <AlertDialogAction>Remove</AlertDialogAction>
+      </AlertDialogFooter>
+    </AlertDialogContent>
+  </AlertDialog>
+</ComponentPreview>
+
+### With Custom Trigger
+
+Use any element as a trigger by wrapping it with `AlertDialogTrigger`.
+
+<ComponentPreview
+  code={`<AlertDialog>
+  <AlertDialogTrigger>
+    <Button variant="ghost" size="sm">Sign Out</Button>
+  </AlertDialogTrigger>
+  <AlertDialogContent>
+    <AlertDialogTitle>Sign out?</AlertDialogTitle>
+    <AlertDialogDescription>
+      You will need to sign in again to access your account.
+    </AlertDialogDescription>
+    <AlertDialogFooter>
+      <AlertDialogCancel>Stay signed in</AlertDialogCancel>
+      <AlertDialogAction>Sign out</AlertDialogAction>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>`}
+>
+  <AlertDialog>
+    <AlertDialogTrigger>
+      <Button variant="ghost" size="sm">Sign Out</Button>
+    </AlertDialogTrigger>
+    <AlertDialogContent>
+      <AlertDialogTitle>Sign out?</AlertDialogTitle>
+      <AlertDialogDescription>
+        You will need to sign in again to access your account.
+      </AlertDialogDescription>
+      <AlertDialogFooter>
+        <AlertDialogCancel>Stay signed in</AlertDialogCancel>
+        <AlertDialogAction>Sign out</AlertDialogAction>
+      </AlertDialogFooter>
+    </AlertDialogContent>
+  </AlertDialog>
+</ComponentPreview>
+
+## API Reference
+
+### AlertDialog
+
+<PropsTable
+  props={[
+    {
+      name: 'open',
+      type: 'boolean',
+      description: 'Controlled open state.',
+    },
+    {
+      name: 'onOpenChange',
+      type: '(open: boolean) => void',
+      description: 'Callback when open state changes.',
+    },
+    {
+      name: 'defaultOpen',
+      type: 'boolean',
+      default: 'false',
+      description: 'Initial open state for uncontrolled usage.',
+    },
+  ]}
+/>
+
+### AlertDialogTrigger
+
+Renders as a button by default. Wrap any element to use as trigger.
+
+### AlertDialogContent
+
+<PropsTable
+  props={[
+    {
+      name: 'children',
+      type: 'ReactNode',
+      required: true,
+      description: 'Dialog content.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Additional CSS classes.',
+    },
+  ]}
+/>
+
+### AlertDialogTitle
+
+The accessible title for the dialog. Required for screen readers.
+
+### AlertDialogDescription
+
+The accessible description for the dialog.
+
+### AlertDialogFooter
+
+Container for action buttons. Displays buttons in a row with proper spacing.
+
+### AlertDialogCancel
+
+Secondary button that closes the dialog without action.
+
+### AlertDialogAction
+
+Primary button for confirming the action. Styled with `danger` variant by default.
+
+## Accessibility
+
+- **Focus trap** - Focus is contained within the dialog while open
+- **Escape key** - Closes the dialog
+- **Click outside** - Does not close (requires explicit action)
+- **Screen readers** - Title and description are announced
+- **Focus return** - Focus returns to trigger when closed

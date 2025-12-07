@@ -1,0 +1,140 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { Separator, Stack, Text, Button } from '@radenadri/void-ui'
+
+# Separator
+
+A visual divider to separate content sections.
+
+## Preview
+
+<ComponentPreview
+  code={`import { Separator } from '@radenadri/void-ui'
+
+export default function SeparatorDemo() {
+  return (
+    <div className="space-y-4">
+      <p>Content above</p>
+      <Separator />
+      <p>Content below</p>
+    </div>
+  )
+}`}
+>
+  <div className="w-full max-w-md space-y-4">
+    <Text>Content above</Text>
+    <Separator />
+    <Text>Content below</Text>
+  </div>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { Separator } from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### Horizontal (Default)
+
+<ComponentPreview
+  code={`<Stack spacing="md">
+  <Text>Section 1</Text>
+  <Separator />
+  <Text>Section 2</Text>
+  <Separator />
+  <Text>Section 3</Text>
+</Stack>`}
+>
+  <Stack spacing="md" className="w-full max-w-md">
+    <Text>Section 1</Text>
+    <Separator />
+    <Text>Section 2</Text>
+    <Separator />
+    <Text>Section 3</Text>
+  </Stack>
+</ComponentPreview>
+
+### Vertical
+
+Use `orientation="vertical"` within a flex row container.
+
+<ComponentPreview
+  code={`<div className="flex items-center gap-4 h-6">
+  <span>Home</span>
+  <Separator orientation="vertical" />
+  <span>Products</span>
+  <Separator orientation="vertical" />
+  <span>About</span>
+</div>`}
+>
+  <div className="flex items-center gap-4 h-6 text-(--void-text)">
+    <span>Home</span>
+    <Separator orientation="vertical" />
+    <span>Products</span>
+    <Separator orientation="vertical" />
+    <span>About</span>
+  </div>
+</ComponentPreview>
+
+### In a Card
+
+<ComponentPreview
+  code={`<div className="rounded-lg border border-(--void-border) p-4 w-full max-w-sm">
+  <Text className="font-medium">Account Settings</Text>
+  <Separator className="my-3" />
+  <Stack spacing="sm">
+    <Text className="text-sm text-(--void-muted)">Manage your account preferences</Text>
+    <Button size="sm" variant="secondary">Edit Profile</Button>
+  </Stack>
+</div>`}
+>
+  <div className="rounded-lg border border-(--void-border) p-4 w-full max-w-sm">
+    <Text className="font-medium">Account Settings</Text>
+    <Separator className="my-3" />
+    <Stack spacing="sm">
+      <Text className="text-sm text-(--void-muted)">Manage your account preferences</Text>
+      <Button size="sm" variant="secondary">Edit Profile</Button>
+    </Stack>
+  </div>
+</ComponentPreview>
+
+### With Custom Spacing
+
+<ComponentPreview
+  code={`<Stack spacing="lg">
+  <Text>More space above</Text>
+  <Separator className="my-2" />
+  <Text>Less space below</Text>
+</Stack>`}
+>
+  <Stack spacing="lg" className="w-full max-w-md">
+    <Text>More space above</Text>
+    <Separator className="my-2" />
+    <Text>Less space below</Text>
+  </Stack>
+</ComponentPreview>
+
+## API Reference
+
+<PropsTable
+  props={[
+    {
+      name: 'orientation',
+      type: "'horizontal' | 'vertical'",
+      default: "'horizontal'",
+      description: 'The orientation of the separator.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Additional CSS classes (e.g., my-4 for vertical margin).',
+    },
+  ]}
+/>
+
+## Accessibility
+
+- Uses `role="separator"` for screen readers
+- `aria-orientation` is set based on the orientation prop

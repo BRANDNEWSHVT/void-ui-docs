@@ -1,0 +1,232 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { IconBox, Stack } from '@radenadri/void-ui'
+import { Lightning, Bell, Gear, CheckCircle, Warning, XCircle, Info, Heart, Star, User } from '@phosphor-icons/react'
+
+# Icon Box
+
+A container for displaying icons with consistent styling and semantic colors. Works great with Phosphor Icons.
+
+## Preview
+
+<ComponentPreview
+  code={`import { IconBox } from '@radenadri/void-ui'
+import { Lightning } from '@phosphor-icons/react'
+
+export default function IconBoxDemo() {
+  return (
+    <Stack direction="row" spacing="md">
+      <IconBox variant="primary">
+        <Lightning weight="fill" />
+      </IconBox>
+      <IconBox variant="success-subtle">
+        <CheckCircle weight="fill" />
+      </IconBox>
+      <IconBox variant="danger-subtle">
+        <XCircle weight="fill" />
+      </IconBox>
+    </Stack>
+  )
+}`}
+>
+  <Stack direction="row" spacing="md">
+    <IconBox variant="primary">
+      <Lightning weight="fill" />
+    </IconBox>
+    <IconBox variant="success-subtle">
+      <CheckCircle weight="fill" />
+    </IconBox>
+    <IconBox variant="danger-subtle">
+      <XCircle weight="fill" />
+    </IconBox>
+  </Stack>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { IconBox } from '@radenadri/void-ui'
+import { Lightning } from '@phosphor-icons/react'`}
+  language="tsx"
+/>
+
+## Usage
+
+### Sizes
+
+<ComponentPreview
+  code={`<Stack direction="row" spacing="md" align="center">
+  <IconBox size="sm">
+    <Bell />
+  </IconBox>
+  <IconBox size="md">
+    <Bell />
+  </IconBox>
+  <IconBox size="lg">
+    <Bell />
+  </IconBox>
+</Stack>`}
+>
+  <Stack direction="row" spacing="md" align="center">
+    <IconBox size="sm">
+      <Bell />
+    </IconBox>
+    <IconBox size="md">
+      <Bell />
+    </IconBox>
+    <IconBox size="lg">
+      <Bell />
+    </IconBox>
+  </Stack>
+</ComponentPreview>
+
+### All Variants
+
+<ComponentPreview
+  code={`<Stack spacing="md">
+  <Stack direction="row" spacing="md">
+    <IconBox variant="default">
+      <Gear />
+    </IconBox>
+    <IconBox variant="primary">
+      <Lightning weight="fill" />
+    </IconBox>
+    <IconBox variant="primary-subtle">
+      <Lightning />
+    </IconBox>
+  </Stack>
+  <Stack direction="row" spacing="md">
+    <IconBox variant="success">
+      <CheckCircle weight="fill" />
+    </IconBox>
+    <IconBox variant="success-subtle">
+      <CheckCircle />
+    </IconBox>
+    <IconBox variant="warning">
+      <Warning weight="fill" />
+    </IconBox>
+    <IconBox variant="warning-subtle">
+      <Warning />
+    </IconBox>
+  </Stack>
+  <Stack direction="row" spacing="md">
+    <IconBox variant="danger">
+      <XCircle weight="fill" />
+    </IconBox>
+    <IconBox variant="danger-subtle">
+      <XCircle />
+    </IconBox>
+    <IconBox variant="info">
+      <Info weight="fill" />
+    </IconBox>
+    <IconBox variant="info-subtle">
+      <Info />
+    </IconBox>
+  </Stack>
+</Stack>`}
+>
+  <Stack spacing="md">
+    <Stack direction="row" spacing="md">
+      <IconBox variant="default">
+        <Gear />
+      </IconBox>
+      <IconBox variant="primary">
+        <Lightning weight="fill" />
+      </IconBox>
+      <IconBox variant="primary-subtle">
+        <Lightning />
+      </IconBox>
+    </Stack>
+    <Stack direction="row" spacing="md">
+      <IconBox variant="success">
+        <CheckCircle weight="fill" />
+      </IconBox>
+      <IconBox variant="success-subtle">
+        <CheckCircle />
+      </IconBox>
+      <IconBox variant="warning">
+        <Warning weight="fill" />
+      </IconBox>
+      <IconBox variant="warning-subtle">
+        <Warning />
+      </IconBox>
+    </Stack>
+    <Stack direction="row" spacing="md">
+      <IconBox variant="danger">
+        <XCircle weight="fill" />
+      </IconBox>
+      <IconBox variant="danger-subtle">
+        <XCircle />
+      </IconBox>
+      <IconBox variant="info">
+        <Info weight="fill" />
+      </IconBox>
+      <IconBox variant="info-subtle">
+        <Info />
+      </IconBox>
+    </Stack>
+  </Stack>
+</ComponentPreview>
+
+### Circle Shape
+
+<ComponentPreview
+  code={`<Stack direction="row" spacing="md">
+  <IconBox circle variant="primary-subtle">
+    <User />
+  </IconBox>
+  <IconBox circle variant="success-subtle">
+    <Heart weight="fill" />
+  </IconBox>
+  <IconBox circle variant="warning-subtle">
+    <Star weight="fill" />
+  </IconBox>
+</Stack>`}
+>
+  <Stack direction="row" spacing="md">
+    <IconBox circle variant="primary-subtle">
+      <User />
+    </IconBox>
+    <IconBox circle variant="success-subtle">
+      <Heart weight="fill" />
+    </IconBox>
+    <IconBox circle variant="warning-subtle">
+      <Star weight="fill" />
+    </IconBox>
+  </Stack>
+</ComponentPreview>
+
+## API Reference
+
+<PropsTable
+  props={[
+    {
+      name: 'variant',
+      type: "'default' | 'primary' | 'primary-subtle' | 'success' | 'success-subtle' | 'warning' | 'warning-subtle' | 'danger' | 'danger-subtle' | 'info' | 'info-subtle'",
+      default: "'default'",
+      description: 'The visual style. Use -subtle variants for softer backgrounds.',
+    },
+    {
+      name: 'size',
+      type: "'sm' | 'md' | 'lg'",
+      default: "'md'",
+      description: 'The size of the icon box.',
+    },
+    {
+      name: 'circle',
+      type: 'boolean',
+      default: 'false',
+      description: 'Use circular shape instead of rounded corners.',
+    },
+    {
+      name: 'children',
+      type: 'ReactNode',
+      required: true,
+      description: 'The icon element (e.g., Phosphor Icon).',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Additional CSS classes.',
+    },
+  ]}
+/>

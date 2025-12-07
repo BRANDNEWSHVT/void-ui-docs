@@ -1,0 +1,273 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { Popover, PopoverTrigger, PopoverContent, PopoverClose, PopoverTitle, PopoverDescription, Button, Stack, Input, FieldRoot, FieldLabel } from '@radenadri/void-ui'
+import { Gear, Info } from '@phosphor-icons/react'
+
+# Popover
+
+Displays rich content in a floating panel anchored to a trigger element.
+
+## Preview
+
+<ComponentPreview
+  code={`import { Popover, PopoverTrigger, PopoverContent, PopoverTitle, PopoverDescription, Button } from '@radenadri/void-ui'
+
+export default function PopoverDemo() {
+  return (
+    <Popover>
+      <PopoverTrigger>
+        <Button variant="secondary">Open Popover</Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-72">
+        <PopoverTitle>Notifications</PopoverTitle>
+        <PopoverDescription className="mt-1">
+          You have 3 unread messages in your inbox.
+        </PopoverDescription>
+      </PopoverContent>
+    </Popover>
+  )
+}`}
+>
+  <Popover>
+    <PopoverTrigger>
+      <Button variant="secondary">Open Popover</Button>
+    </PopoverTrigger>
+    <PopoverContent className="w-72">
+      <PopoverTitle>Notifications</PopoverTitle>
+      <PopoverDescription className="mt-1">
+        You have 3 unread messages in your inbox.
+      </PopoverDescription>
+    </PopoverContent>
+  </Popover>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { 
+  Popover, 
+  PopoverTrigger, 
+  PopoverContent,
+  PopoverClose,
+  PopoverTitle,
+  PopoverDescription
+} from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### With Close Button
+
+<ComponentPreview
+  code={`<Popover>
+  <PopoverTrigger>
+    <Button variant="secondary"><Info size={16} /> Info</Button>
+  </PopoverTrigger>
+  <PopoverContent className="w-72 relative">
+    <PopoverClose />
+    <PopoverTitle>About this feature</PopoverTitle>
+    <PopoverDescription className="mt-1">
+      This feature allows you to customize your experience.
+    </PopoverDescription>
+  </PopoverContent>
+</Popover>`}
+>
+  <Popover>
+    <PopoverTrigger>
+      <Button variant="secondary"><Info size={16} /> Info</Button>
+    </PopoverTrigger>
+    <PopoverContent className="w-72 relative">
+      <PopoverClose />
+      <PopoverTitle>About this feature</PopoverTitle>
+      <PopoverDescription className="mt-1">
+        This feature allows you to customize your experience.
+      </PopoverDescription>
+    </PopoverContent>
+  </Popover>
+</ComponentPreview>
+
+### With Form
+
+<ComponentPreview
+  code={`<Popover>
+  <PopoverTrigger>
+    <Button variant="secondary"><Gear size={16} /> Settings</Button>
+  </PopoverTrigger>
+  <PopoverContent className="w-80">
+    <PopoverTitle>Edit Profile</PopoverTitle>
+    <Stack spacing="md" className="mt-3">
+      <FieldRoot>
+        <FieldLabel>Name</FieldLabel>
+        <Input placeholder="Enter name" />
+      </FieldRoot>
+      <FieldRoot>
+        <FieldLabel>Email</FieldLabel>
+        <Input type="email" placeholder="Enter email" />
+      </FieldRoot>
+      <Button size="sm">Save changes</Button>
+    </Stack>
+  </PopoverContent>
+</Popover>`}
+>
+  <Popover>
+    <PopoverTrigger>
+      <Button variant="secondary"><Gear size={16} /> Settings</Button>
+    </PopoverTrigger>
+    <PopoverContent className="w-80">
+      <PopoverTitle>Edit Profile</PopoverTitle>
+      <Stack spacing="md" className="mt-3">
+        <FieldRoot>
+          <FieldLabel>Name</FieldLabel>
+          <Input placeholder="Enter name" />
+        </FieldRoot>
+        <FieldRoot>
+          <FieldLabel>Email</FieldLabel>
+          <Input type="email" placeholder="Enter email" />
+        </FieldRoot>
+        <Button size="sm">Save changes</Button>
+      </Stack>
+    </PopoverContent>
+  </Popover>
+</ComponentPreview>
+
+### Without Arrow
+
+<ComponentPreview
+  code={`<Popover>
+  <PopoverTrigger>
+    <Button variant="ghost">No Arrow</Button>
+  </PopoverTrigger>
+  <PopoverContent showArrow={false} className="w-64">
+    <PopoverDescription>
+      This popover has no arrow indicator.
+    </PopoverDescription>
+  </PopoverContent>
+</Popover>`}
+>
+  <Popover>
+    <PopoverTrigger>
+      <Button variant="ghost">No Arrow</Button>
+    </PopoverTrigger>
+    <PopoverContent showArrow={false} className="w-64">
+      <PopoverDescription>
+        This popover has no arrow indicator.
+      </PopoverDescription>
+    </PopoverContent>
+  </Popover>
+</ComponentPreview>
+
+### Positioning
+
+<ComponentPreview
+  code={`<Stack direction="row" spacing="md">
+  <Popover>
+    <PopoverTrigger>
+      <Button variant="secondary" size="sm">Top</Button>
+    </PopoverTrigger>
+    <PopoverContent side="top" className="w-48">
+      <PopoverDescription>Positioned on top</PopoverDescription>
+    </PopoverContent>
+  </Popover>
+  <Popover>
+    <PopoverTrigger>
+      <Button variant="secondary" size="sm">Right</Button>
+    </PopoverTrigger>
+    <PopoverContent side="right" className="w-48">
+      <PopoverDescription>Positioned on right</PopoverDescription>
+    </PopoverContent>
+  </Popover>
+  <Popover>
+    <PopoverTrigger>
+      <Button variant="secondary" size="sm">Left</Button>
+    </PopoverTrigger>
+    <PopoverContent side="left" className="w-48">
+      <PopoverDescription>Positioned on left</PopoverDescription>
+    </PopoverContent>
+  </Popover>
+</Stack>`}
+>
+  <Stack direction="row" spacing="md">
+    <Popover>
+      <PopoverTrigger>
+        <Button variant="secondary" size="sm">Top</Button>
+      </PopoverTrigger>
+      <PopoverContent side="top" className="w-48">
+        <PopoverDescription>Positioned on top</PopoverDescription>
+      </PopoverContent>
+    </Popover>
+    <Popover>
+      <PopoverTrigger>
+        <Button variant="secondary" size="sm">Right</Button>
+      </PopoverTrigger>
+      <PopoverContent side="right" className="w-48">
+        <PopoverDescription>Positioned on right</PopoverDescription>
+      </PopoverContent>
+    </Popover>
+    <Popover>
+      <PopoverTrigger>
+        <Button variant="secondary" size="sm">Left</Button>
+      </PopoverTrigger>
+      <PopoverContent side="left" className="w-48">
+        <PopoverDescription>Positioned on left</PopoverDescription>
+      </PopoverContent>
+    </Popover>
+  </Stack>
+</ComponentPreview>
+
+## API Reference
+
+### Popover
+
+<PropsTable
+  props={[
+    {
+      name: 'open',
+      type: 'boolean',
+      description: 'Controlled open state.',
+    },
+    {
+      name: 'defaultOpen',
+      type: 'boolean',
+      default: 'false',
+      description: 'Initial open state (uncontrolled).',
+    },
+    {
+      name: 'onOpenChange',
+      type: '(open: boolean) => void',
+      description: 'Callback when open state changes.',
+    },
+  ]}
+/>
+
+### PopoverContent
+
+<PropsTable
+  props={[
+    {
+      name: 'side',
+      type: "'top' | 'bottom' | 'left' | 'right'",
+      default: "'bottom'",
+      description: 'Preferred side to render.',
+    },
+    {
+      name: 'align',
+      type: "'start' | 'center' | 'end'",
+      default: "'center'",
+      description: 'Alignment relative to trigger.',
+    },
+    {
+      name: 'showArrow',
+      type: 'boolean',
+      default: 'true',
+      description: 'Show the arrow indicator.',
+    },
+  ]}
+/>
+
+### PopoverClose
+
+Close button with X icon. Position with `relative` on PopoverContent.
+
+### PopoverTitle / PopoverDescription
+
+Semantic text components for popover content.

@@ -1,0 +1,164 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { Heading, Stack, Text } from '@radenadri/void-ui'
+
+# Heading
+
+A semantic heading component with automatic HTML element selection based on size. Features tight letter-spacing for a modern look.
+
+## Preview
+
+<ComponentPreview
+  code={`import { Heading } from '@radenadri/void-ui'
+
+export default function HeadingDemo() {
+  return (
+    <Stack spacing="sm">
+      <Heading size="2xl">Build something amazing</Heading>
+      <Text className="text-(--void-muted)">
+        A modern React component library for developers.
+      </Text>
+    </Stack>
+  )
+}`}
+>
+  <Stack spacing="sm">
+    <Heading size="2xl">Build something amazing</Heading>
+    <Text className="text-(--void-muted)">
+      A modern React component library for developers.
+    </Text>
+  </Stack>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { Heading } from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### All Sizes
+
+<ComponentPreview
+  code={`<Stack spacing="md">
+  <Heading size="3xl">3XL Heading</Heading>
+  <Heading size="2xl">2XL Heading</Heading>
+  <Heading size="xl">XL Heading</Heading>
+  <Heading size="lg">Large Heading</Heading>
+  <Heading size="md">Medium Heading</Heading>
+  <Heading size="sm">Small Heading</Heading>
+  <Heading size="xs">Extra Small Heading</Heading>
+</Stack>`}
+>
+  <Stack spacing="md">
+    <Heading size="3xl">3XL Heading</Heading>
+    <Heading size="2xl">2XL Heading</Heading>
+    <Heading size="xl">XL Heading</Heading>
+    <Heading size="lg">Large Heading</Heading>
+    <Heading size="md">Medium Heading</Heading>
+    <Heading size="sm">Small Heading</Heading>
+    <Heading size="xs">Extra Small Heading</Heading>
+  </Stack>
+</ComponentPreview>
+
+### Font Weights
+
+<ComponentPreview
+  code={`<Stack spacing="sm">
+  <Heading size="lg" weight="normal">Normal Weight</Heading>
+  <Heading size="lg" weight="medium">Medium Weight</Heading>
+  <Heading size="lg" weight="semibold">Semibold Weight</Heading>
+  <Heading size="lg" weight="bold">Bold Weight</Heading>
+</Stack>`}
+>
+  <Stack spacing="sm">
+    <Heading size="lg" weight="normal">Normal Weight</Heading>
+    <Heading size="lg" weight="medium">Medium Weight</Heading>
+    <Heading size="lg" weight="semibold">Semibold Weight</Heading>
+    <Heading size="lg" weight="bold">Bold Weight</Heading>
+  </Stack>
+</ComponentPreview>
+
+### Custom HTML Element
+
+By default, the heading level is determined by size. Use `as` to override.
+
+<ComponentPreview
+  code={`<Stack spacing="sm">
+  <Heading as="h1" size="lg">This is an H1</Heading>
+  <Heading as="h2" size="lg">This is an H2</Heading>
+  <Heading as="h3" size="lg">This is an H3</Heading>
+</Stack>`}
+>
+  <Stack spacing="sm">
+    <Heading as="h1" size="lg">This is an H1</Heading>
+    <Heading as="h2" size="lg">This is an H2</Heading>
+    <Heading as="h3" size="lg">This is an H3</Heading>
+  </Stack>
+</ComponentPreview>
+
+### Page Header Example
+
+<ComponentPreview
+  code={`<Stack spacing="xs">
+  <Heading size="3xl">Dashboard</Heading>
+  <Text className="text-(--void-muted)">
+    Welcome back! Here's what's happening with your projects.
+  </Text>
+</Stack>`}
+>
+  <Stack spacing="xs">
+    <Heading size="3xl">Dashboard</Heading>
+    <Text className="text-(--void-muted)">
+      Welcome back! Here's what's happening with your projects.
+    </Text>
+  </Stack>
+</ComponentPreview>
+
+## API Reference
+
+<PropsTable
+  props={[
+    {
+      name: 'size',
+      type: "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl'",
+      default: "'lg'",
+      description: 'The size of the heading. Automatically determines the HTML element.',
+    },
+    {
+      name: 'weight',
+      type: "'normal' | 'medium' | 'semibold' | 'bold'",
+      default: "'semibold'",
+      description: 'The font weight.',
+    },
+    {
+      name: 'as',
+      type: "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'",
+      description: 'Override the HTML element. By default, determined by size.',
+    },
+    {
+      name: 'children',
+      type: 'ReactNode',
+      required: true,
+      description: 'The heading content.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Additional CSS classes.',
+    },
+  ]}
+/>
+
+## Size to Element Mapping
+
+| Size | Default Element |
+|------|-----------------|
+| `3xl` | `<h1>` |
+| `2xl` | `<h1>` |
+| `xl` | `<h1>` |
+| `lg` | `<h2>` |
+| `md` | `<h3>` |
+| `sm` | `<h4>` |
+| `xs` | `<h5>` |

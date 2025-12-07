@@ -1,0 +1,40 @@
+import { Link } from 'react-router-dom';
+import { Button, Badge, Heading, Text, Stack } from '@radenadri/void-ui';
+
+export function LandingPage() {
+  return (
+    <div className="h-dvh bg-(--void-bg)">
+      {/* Hero Section */}
+      <header className="relative h-full overflow-hidden border-b border-(--void-border)">
+        <div className="absolute inset-0 bg-gradient-to-br from-(--void-accent)/5 via-transparent to-(--void-accent-alt)/5" />
+        <div className="relative h-full grid place-items-center mx-auto max-w-6xl px-6 py-24">
+          <Stack spacing="lg" align="center" className="text-center">
+            <Badge variant="primary-subtle" pill>
+              v0.1.0
+            </Badge>
+            <Heading size="xl" className="max-w-3xl">
+              Void UI
+            </Heading>
+            <Text className="max-w-2xl ">
+              Just another React component library built on Base UI and Tailwind
+              CSS. Designed for developers, creatives, and forward-thinking
+              interfaces. Supports both light and dark modes.
+            </Text>
+            <Stack direction="row" spacing="md" className="mt-4">
+              <Link to="/docs">
+                <Button variant="primary">Get Started</Button>
+              </Link>
+              <a
+                href="https://github.com/BRANDNEWSHVT/void-ui"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="secondary">View on GitHub</Button>
+              </a>
+            </Stack>
+          </Stack>
+        </div>
+      </header>
+    </div>
+  );
+}

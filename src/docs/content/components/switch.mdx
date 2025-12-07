@@ -1,0 +1,180 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { Switch, Stack, FieldRoot, FieldLabel, FieldDescription } from '@radenadri/void-ui'
+
+# Switch
+
+A toggle control for switching between two states.
+
+## Preview
+
+<ComponentPreview
+  code={`import { Switch } from '@radenadri/void-ui'
+
+export default function SwitchDemo() {
+  return <Switch label="Airplane Mode" />
+}`}
+>
+  <Switch label="Airplane Mode" />
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { Switch } from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### Basic Switch
+
+<ComponentPreview
+  code={`<Switch label="Enable feature" />`}
+>
+  <Switch label="Enable feature" />
+</ComponentPreview>
+
+### With Description
+
+<ComponentPreview
+  code={`<Switch 
+  label="Marketing emails" 
+  description="Receive emails about new products and features"
+/>`}
+>
+  <Switch 
+    label="Marketing emails" 
+    description="Receive emails about new products and features"
+  />
+</ComponentPreview>
+
+### Default Checked
+
+<ComponentPreview
+  code={`<Switch label="Dark mode" defaultChecked />`}
+>
+  <Switch label="Dark mode" defaultChecked />
+</ComponentPreview>
+
+### Without Label
+
+<ComponentPreview
+  code={`<Switch />`}
+>
+  <Switch />
+</ComponentPreview>
+
+### Settings List
+
+<ComponentPreview
+  code={`<div className="space-y-4 w-full max-w-sm">
+  <Switch 
+    label="Email notifications" 
+    description="Get notified when someone mentions you"
+    defaultChecked 
+  />
+  <Switch 
+    label="Push notifications" 
+    description="Receive push notifications on your device"
+  />
+  <Switch 
+    label="SMS notifications" 
+    description="Get text messages for important updates"
+  />
+</div>`}
+>
+  <div className="space-y-4 w-full max-w-sm">
+    <Switch 
+      label="Email notifications" 
+      description="Get notified when someone mentions you"
+      defaultChecked 
+    />
+    <Switch 
+      label="Push notifications" 
+      description="Receive push notifications on your device"
+    />
+    <Switch 
+      label="SMS notifications" 
+      description="Get text messages for important updates"
+    />
+  </div>
+</ComponentPreview>
+
+### Disabled State
+
+<ComponentPreview
+  code={`<Stack spacing="md">
+  <Switch label="Disabled off" disabled />
+  <Switch label="Disabled on" disabled defaultChecked />
+</Stack>`}
+>
+  <Stack spacing="md">
+    <Switch label="Disabled off" disabled />
+    <Switch label="Disabled on" disabled defaultChecked />
+  </Stack>
+</ComponentPreview>
+
+### Controlled
+
+<CodeBlock
+  code={`import { useState } from 'react'
+
+function ControlledSwitch() {
+  const [checked, setChecked] = useState(false)
+
+  return (
+    <Switch 
+      label="Notifications" 
+      checked={checked} 
+      onCheckedChange={setChecked} 
+    />
+  )
+}`}
+  language="tsx"
+/>
+
+## API Reference
+
+<PropsTable
+  props={[
+    {
+      name: 'label',
+      type: 'string',
+      description: 'Label text displayed next to the switch.',
+    },
+    {
+      name: 'description',
+      type: 'string',
+      description: 'Description text below the label.',
+    },
+    {
+      name: 'checked',
+      type: 'boolean',
+      description: 'Controlled checked state.',
+    },
+    {
+      name: 'defaultChecked',
+      type: 'boolean',
+      default: 'false',
+      description: 'Initial checked state (uncontrolled).',
+    },
+    {
+      name: 'onCheckedChange',
+      type: '(checked: boolean) => void',
+      description: 'Callback fired when the checked state changes.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      default: 'false',
+      description: 'When true, prevents interaction with the switch.',
+    },
+  ]}
+/>
+
+## Accessibility
+
+- Switch has proper `role="switch"` attribute
+- `aria-checked` reflects the current state
+- Supports keyboard navigation with `Space` to toggle
+- Label is properly associated with the switch

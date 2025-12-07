@@ -1,0 +1,226 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { RadioGroup, RadioItem, Radio, Stack, FieldRoot, FieldLabel, FieldDescription } from '@radenadri/void-ui'
+
+# Radio
+
+A set of checkable buttons where only one can be checked at a time.
+
+## Preview
+
+<ComponentPreview
+  code={`import { RadioGroup, RadioItem } from '@radenadri/void-ui'
+
+export default function RadioDemo() {
+  return (
+    <RadioGroup defaultValue="comfortable">
+      <RadioItem value="compact" label="Compact" />
+      <RadioItem value="comfortable" label="Comfortable" />
+      <RadioItem value="spacious" label="Spacious" />
+    </RadioGroup>
+  )
+}`}
+>
+  <RadioGroup defaultValue="comfortable">
+    <RadioItem value="compact" label="Compact" />
+    <RadioItem value="comfortable" label="Comfortable" />
+    <RadioItem value="spacious" label="Spacious" />
+  </RadioGroup>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { RadioGroup, RadioItem, Radio } from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### With Descriptions
+
+<ComponentPreview
+  code={`<RadioGroup defaultValue="startup">
+  <RadioItem 
+    value="startup" 
+    label="Startup" 
+    description="Best for small teams and projects"
+  />
+  <RadioItem 
+    value="business" 
+    label="Business" 
+    description="For growing companies with more needs"
+  />
+  <RadioItem 
+    value="enterprise" 
+    label="Enterprise" 
+    description="Advanced features and dedicated support"
+  />
+</RadioGroup>`}
+>
+  <RadioGroup defaultValue="startup">
+    <RadioItem 
+      value="startup" 
+      label="Startup" 
+      description="Best for small teams and projects"
+    />
+    <RadioItem 
+      value="business" 
+      label="Business" 
+      description="For growing companies with more needs"
+    />
+    <RadioItem 
+      value="enterprise" 
+      label="Enterprise" 
+      description="Advanced features and dedicated support"
+    />
+  </RadioGroup>
+</ComponentPreview>
+
+### With Field Components
+
+<ComponentPreview
+  code={`<FieldRoot>
+  <FieldLabel>Notification preference</FieldLabel>
+  <FieldDescription>How would you like to receive updates?</FieldDescription>
+  <RadioGroup defaultValue="email" className="mt-2">
+    <RadioItem value="email" label="Email" />
+    <RadioItem value="sms" label="SMS" />
+    <RadioItem value="push" label="Push notification" />
+  </RadioGroup>
+</FieldRoot>`}
+>
+  <FieldRoot className="w-full max-w-sm">
+    <FieldLabel>Notification preference</FieldLabel>
+    <FieldDescription>How would you like to receive updates?</FieldDescription>
+    <RadioGroup defaultValue="email" className="mt-2">
+      <RadioItem value="email" label="Email" />
+      <RadioItem value="sms" label="SMS" />
+      <RadioItem value="push" label="Push notification" />
+    </RadioGroup>
+  </FieldRoot>
+</ComponentPreview>
+
+### Horizontal Layout
+
+<ComponentPreview
+  code={`<RadioGroup defaultValue="sm" className="flex-row gap-4">
+  <RadioItem value="sm" label="Small" />
+  <RadioItem value="md" label="Medium" />
+  <RadioItem value="lg" label="Large" />
+</RadioGroup>`}
+>
+  <RadioGroup defaultValue="sm" className="flex-row gap-4">
+    <RadioItem value="sm" label="Small" />
+    <RadioItem value="md" label="Medium" />
+    <RadioItem value="lg" label="Large" />
+  </RadioGroup>
+</ComponentPreview>
+
+### Disabled Items
+
+<ComponentPreview
+  code={`<RadioGroup defaultValue="active">
+  <RadioItem value="active" label="Active" />
+  <RadioItem value="inactive" label="Inactive" disabled />
+  <RadioItem value="pending" label="Pending" disabled />
+</RadioGroup>`}
+>
+  <RadioGroup defaultValue="active">
+    <RadioItem value="active" label="Active" />
+    <RadioItem value="inactive" label="Inactive" disabled />
+    <RadioItem value="pending" label="Pending" disabled />
+  </RadioGroup>
+</ComponentPreview>
+
+### Controlled
+
+<CodeBlock
+  code={`import { useState } from 'react'
+
+function ControlledRadio() {
+  const [value, setValue] = useState('option1')
+
+  return (
+    <RadioGroup value={value} onValueChange={setValue}>
+      <RadioItem value="option1" label="Option 1" />
+      <RadioItem value="option2" label="Option 2" />
+    </RadioGroup>
+  )
+}`}
+  language="tsx"
+/>
+
+## API Reference
+
+### RadioGroup
+
+<PropsTable
+  props={[
+    {
+      name: 'value',
+      type: 'string',
+      description: 'Controlled value.',
+    },
+    {
+      name: 'defaultValue',
+      type: 'string',
+      description: 'Default value (uncontrolled).',
+    },
+    {
+      name: 'onValueChange',
+      type: '(value: string) => void',
+      description: 'Callback when value changes.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      default: 'false',
+      description: 'Disable all radio items.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Use flex-row for horizontal layout.',
+    },
+  ]}
+/>
+
+### RadioItem
+
+<PropsTable
+  props={[
+    {
+      name: 'value',
+      type: 'string',
+      required: true,
+      description: 'The value of the radio item.',
+    },
+    {
+      name: 'label',
+      type: 'string',
+      description: 'Label text displayed next to the radio.',
+    },
+    {
+      name: 'description',
+      type: 'string',
+      description: 'Description text below the label.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      default: 'false',
+      description: 'Disable this item.',
+    },
+  ]}
+/>
+
+### Radio
+
+Standalone radio button without label. Use RadioItem for labeled radios.
+
+## Accessibility
+
+- Uses native radio group semantics
+- Supports keyboard navigation with arrow keys
+- Focus ring is visible when focused
+- Disabled state is communicated to assistive technologies

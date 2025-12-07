@@ -1,0 +1,186 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { Kbd, KbdGroup, Stack, Text } from '@radenadri/void-ui'
+
+# Kbd
+
+Displays keyboard keys and shortcuts with a realistic key-cap style.
+
+## Preview
+
+<ComponentPreview
+  code={`import { Kbd } from '@radenadri/void-ui'
+
+export default function KbdDemo() {
+  return (
+    <Text>
+      Press <Kbd>⌘</Kbd> <Kbd>K</Kbd> to open command palette
+    </Text>
+  )
+}`}
+>
+  <Text>
+    Press <Kbd>⌘</Kbd> <Kbd>K</Kbd> to open command palette
+  </Text>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { Kbd, KbdGroup } from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### Common Shortcuts
+
+<ComponentPreview
+  code={`<Stack spacing="sm">
+  <Text>Copy: <Kbd>⌘</Kbd> <Kbd>C</Kbd></Text>
+  <Text>Paste: <Kbd>⌘</Kbd> <Kbd>V</Kbd></Text>
+  <Text>Save: <Kbd>⌘</Kbd> <Kbd>S</Kbd></Text>
+  <Text>Undo: <Kbd>⌘</Kbd> <Kbd>Z</Kbd></Text>
+</Stack>`}
+>
+  <Stack spacing="sm">
+    <Text>Copy: <Kbd>⌘</Kbd> <Kbd>C</Kbd></Text>
+    <Text>Paste: <Kbd>⌘</Kbd> <Kbd>V</Kbd></Text>
+    <Text>Save: <Kbd>⌘</Kbd> <Kbd>S</Kbd></Text>
+    <Text>Undo: <Kbd>⌘</Kbd> <Kbd>Z</Kbd></Text>
+  </Stack>
+</ComponentPreview>
+
+### Sizes
+
+<ComponentPreview
+  code={`<Stack direction="row" spacing="md" align="center">
+  <KbdGroup>
+    <Kbd size="sm">⌘</Kbd>
+    <Kbd size="sm">K</Kbd>
+  </KbdGroup>
+  <KbdGroup>
+    <Kbd size="md">⌘</Kbd>
+    <Kbd size="md">K</Kbd>
+  </KbdGroup>
+  <KbdGroup>
+    <Kbd size="lg">⌘</Kbd>
+    <Kbd size="lg">K</Kbd>
+  </KbdGroup>
+</Stack>`}
+>
+  <Stack direction="row" spacing="md" align="center">
+    <KbdGroup>
+      <Kbd size="sm">⌘</Kbd>
+      <Kbd size="sm">K</Kbd>
+    </KbdGroup>
+    <KbdGroup>
+      <Kbd size="md">⌘</Kbd>
+      <Kbd size="md">K</Kbd>
+    </KbdGroup>
+    <KbdGroup>
+      <Kbd size="lg">⌘</Kbd>
+      <Kbd size="lg">K</Kbd>
+    </KbdGroup>
+  </Stack>
+</ComponentPreview>
+
+### Variants
+
+<ComponentPreview
+  code={`<Stack direction="row" spacing="md">
+  <Kbd variant="default">Enter</Kbd>
+  <Kbd variant="subtle">Esc</Kbd>
+</Stack>`}
+>
+  <Stack direction="row" spacing="md">
+    <Kbd variant="default">Enter</Kbd>
+    <Kbd variant="subtle">Esc</Kbd>
+  </Stack>
+</ComponentPreview>
+
+### Special Keys
+
+<ComponentPreview
+  code={`<Stack direction="row" spacing="sm" className="flex-wrap">
+  <Kbd>⌘</Kbd>
+  <Kbd>⌥</Kbd>
+  <Kbd>⇧</Kbd>
+  <Kbd>⌃</Kbd>
+  <Kbd>↵</Kbd>
+  <Kbd>⌫</Kbd>
+  <Kbd>⇥</Kbd>
+  <Kbd>↑</Kbd>
+  <Kbd>↓</Kbd>
+  <Kbd>←</Kbd>
+  <Kbd>→</Kbd>
+  <Kbd>Esc</Kbd>
+  <Kbd>Space</Kbd>
+</Stack>`}
+>
+  <Stack direction="row" spacing="sm" className="flex-wrap">
+    <Kbd>⌘</Kbd>
+    <Kbd>⌥</Kbd>
+    <Kbd>⇧</Kbd>
+    <Kbd>⌃</Kbd>
+    <Kbd>↵</Kbd>
+    <Kbd>⌫</Kbd>
+    <Kbd>⇥</Kbd>
+    <Kbd>↑</Kbd>
+    <Kbd>↓</Kbd>
+    <Kbd>←</Kbd>
+    <Kbd>→</Kbd>
+    <Kbd>Esc</Kbd>
+    <Kbd>Space</Kbd>
+  </Stack>
+</ComponentPreview>
+
+### In Context
+
+<ComponentPreview
+  code={`<div className="flex items-center justify-between p-3 rounded-lg bg-(--void-surface) border border-(--void-border)">
+  <Text>Search</Text>
+  <KbdGroup>
+    <Kbd size="sm">⌘</Kbd>
+    <Kbd size="sm">K</Kbd>
+  </KbdGroup>
+</div>`}
+>
+  <div className="flex items-center justify-between p-3 rounded-lg bg-(--void-surface) border border-(--void-border) w-full max-w-xs">
+    <Text>Search</Text>
+    <KbdGroup>
+      <Kbd size="sm">⌘</Kbd>
+      <Kbd size="sm">K</Kbd>
+    </KbdGroup>
+  </div>
+</ComponentPreview>
+
+## API Reference
+
+### Kbd
+
+<PropsTable
+  props={[
+    {
+      name: 'variant',
+      type: "'default' | 'subtle'",
+      default: "'default'",
+      description: 'The visual style. Subtle has no border or shadow.',
+    },
+    {
+      name: 'size',
+      type: "'sm' | 'md' | 'lg'",
+      default: "'md'",
+      description: 'The size of the key.',
+    },
+    {
+      name: 'children',
+      type: 'ReactNode',
+      required: true,
+      description: 'The key text or symbol.',
+    },
+  ]}
+/>
+
+### KbdGroup
+
+A wrapper to group multiple Kbd components with proper spacing.

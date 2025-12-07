@@ -1,0 +1,189 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { Fieldset, FieldsetLegend, FieldsetDescription, FieldRoot, FieldLabel, Input, Stack, Checkbox, Radio } from '@radenadri/void-ui'
+
+# Fieldset
+
+A semantic grouping for related form fields with a legend. Built on Base UI Fieldset for accessibility.
+
+## Preview
+
+<ComponentPreview
+  code={`import { Fieldset, FieldsetLegend, FieldRoot, FieldLabel, Input } from '@radenadri/void-ui'
+
+export default function FieldsetDemo() {
+  return (
+    <Fieldset>
+      <FieldsetLegend>Personal Information</FieldsetLegend>
+      <FieldRoot>
+        <FieldLabel>First Name</FieldLabel>
+        <Input placeholder="John" />
+      </FieldRoot>
+      <FieldRoot>
+        <FieldLabel>Last Name</FieldLabel>
+        <Input placeholder="Doe" />
+      </FieldRoot>
+    </Fieldset>
+  )
+}`}
+>
+  <Fieldset className="w-full max-w-md">
+    <FieldsetLegend>Personal Information</FieldsetLegend>
+    <FieldRoot>
+      <FieldLabel>First Name</FieldLabel>
+      <Input placeholder="John" />
+    </FieldRoot>
+    <FieldRoot>
+      <FieldLabel>Last Name</FieldLabel>
+      <Input placeholder="Doe" />
+    </FieldRoot>
+  </Fieldset>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { 
+  Fieldset, 
+  FieldsetLegend,
+  FieldsetDescription
+} from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### With Description
+
+<ComponentPreview
+  code={`<Fieldset>
+  <FieldsetLegend>Billing Address</FieldsetLegend>
+  <FieldsetDescription>
+    Enter the address associated with your payment method.
+  </FieldsetDescription>
+  <FieldRoot>
+    <FieldLabel>Street Address</FieldLabel>
+    <Input placeholder="123 Main St" />
+  </FieldRoot>
+  <Stack direction="row" spacing="md">
+    <FieldRoot className="flex-1">
+      <FieldLabel>City</FieldLabel>
+      <Input placeholder="New York" />
+    </FieldRoot>
+    <FieldRoot className="w-24">
+      <FieldLabel>ZIP</FieldLabel>
+      <Input placeholder="10001" />
+    </FieldRoot>
+  </Stack>
+</Fieldset>`}
+>
+  <Fieldset className="w-full max-w-md">
+    <FieldsetLegend>Billing Address</FieldsetLegend>
+    <FieldsetDescription>
+      Enter the address associated with your payment method.
+    </FieldsetDescription>
+    <FieldRoot>
+      <FieldLabel>Street Address</FieldLabel>
+      <Input placeholder="123 Main St" />
+    </FieldRoot>
+    <Stack direction="row" spacing="md">
+      <FieldRoot className="flex-1">
+        <FieldLabel>City</FieldLabel>
+        <Input placeholder="New York" />
+      </FieldRoot>
+      <FieldRoot className="w-24">
+        <FieldLabel>ZIP</FieldLabel>
+        <Input placeholder="10001" />
+      </FieldRoot>
+    </Stack>
+  </Fieldset>
+</ComponentPreview>
+
+### Multiple Fieldsets
+
+<ComponentPreview
+  code={`<Stack spacing="xl">
+  <Fieldset>
+    <FieldsetLegend>Account</FieldsetLegend>
+    <FieldRoot>
+      <FieldLabel>Email</FieldLabel>
+      <Input type="email" placeholder="you@example.com" />
+    </FieldRoot>
+    <FieldRoot>
+      <FieldLabel>Password</FieldLabel>
+      <Input type="password" placeholder="Create a password" />
+    </FieldRoot>
+  </Fieldset>
+  <Fieldset>
+    <FieldsetLegend>Profile</FieldsetLegend>
+    <FieldRoot>
+      <FieldLabel>Display Name</FieldLabel>
+      <Input placeholder="How others will see you" />
+    </FieldRoot>
+    <FieldRoot>
+      <FieldLabel>Bio</FieldLabel>
+      <Input placeholder="Tell us about yourself" />
+    </FieldRoot>
+  </Fieldset>
+</Stack>`}
+>
+  <Stack spacing="xl" className="w-full max-w-md">
+    <Fieldset>
+      <FieldsetLegend>Account</FieldsetLegend>
+      <FieldRoot>
+        <FieldLabel>Email</FieldLabel>
+        <Input type="email" placeholder="you@example.com" />
+      </FieldRoot>
+      <FieldRoot>
+        <FieldLabel>Password</FieldLabel>
+        <Input type="password" placeholder="Create a password" />
+      </FieldRoot>
+    </Fieldset>
+    <Fieldset>
+      <FieldsetLegend>Profile</FieldsetLegend>
+      <FieldRoot>
+        <FieldLabel>Display Name</FieldLabel>
+        <Input placeholder="How others will see you" />
+      </FieldRoot>
+      <FieldRoot>
+        <FieldLabel>Bio</FieldLabel>
+        <Input placeholder="Tell us about yourself" />
+      </FieldRoot>
+    </Fieldset>
+  </Stack>
+</ComponentPreview>
+
+## API Reference
+
+### Fieldset
+
+Container that groups related form fields.
+
+<PropsTable
+  props={[
+    {
+      name: 'children',
+      type: 'ReactNode',
+      required: true,
+      description: 'Legend and field components.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Additional CSS classes.',
+    },
+  ]}
+/>
+
+### FieldsetLegend
+
+The title/heading for the fieldset group.
+
+### FieldsetDescription
+
+Optional description text below the legend.
+
+## Accessibility
+
+- Uses native `<fieldset>` and `<legend>` elements
+- Screen readers announce the legend when entering the group
+- Provides semantic grouping for related fields

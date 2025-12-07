@@ -1,0 +1,252 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { Card, CardHeader, CardTitle, CardDescription, CardBody, CardFooter, Button, Stack } from '@radenadri/void-ui'
+
+# Card
+
+A container component for grouping related content.
+
+## Preview
+
+<ComponentPreview
+  code={`import { Card, CardHeader, CardTitle, CardDescription, CardBody, CardFooter, Button } from '@radenadri/void-ui'
+
+export default function CardDemo() {
+  return (
+    <Card className="w-full max-w-sm">
+      <CardHeader>
+        <CardTitle>Card Title</CardTitle>
+        <CardDescription>Card description goes here.</CardDescription>
+      </CardHeader>
+      <CardBody>
+        <p>This is the card body content.</p>
+      </CardBody>
+      <CardFooter>
+        <Button variant="primary">Action</Button>
+      </CardFooter>
+    </Card>
+  )
+}`}
+>
+  <Card className="w-full max-w-sm">
+    <CardHeader>
+      <CardTitle>Card Title</CardTitle>
+      <CardDescription>Card description goes here.</CardDescription>
+    </CardHeader>
+    <CardBody>
+      <p className="text-(--void-muted)">This is the card body content.</p>
+    </CardBody>
+    <CardFooter>
+      <Button variant="primary">Action</Button>
+    </CardFooter>
+  </Card>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { 
+  Card, 
+  CardHeader, 
+  CardTitle, 
+  CardDescription, 
+  CardBody, 
+  CardFooter 
+} from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### Basic Card
+
+<ComponentPreview
+  code={`<Card className="w-full max-w-sm">
+  <CardBody>
+    <p>Simple card with just body content.</p>
+  </CardBody>
+</Card>`}
+>
+  <Card className="w-full max-w-sm">
+    <CardBody>
+      <p className="text-(--void-muted)">Simple card with just body content.</p>
+    </CardBody>
+  </Card>
+</ComponentPreview>
+
+### With Header
+
+<ComponentPreview
+  code={`<Card className="w-full max-w-sm">
+  <CardHeader>
+    <CardTitle>Notifications</CardTitle>
+    <CardDescription>You have 3 unread messages.</CardDescription>
+  </CardHeader>
+  <CardBody>
+    <p>Card content here...</p>
+  </CardBody>
+</Card>`}
+>
+  <Card className="w-full max-w-sm">
+    <CardHeader>
+      <CardTitle>Notifications</CardTitle>
+      <CardDescription>You have 3 unread messages.</CardDescription>
+    </CardHeader>
+    <CardBody>
+      <p className="text-(--void-muted)">Card content here...</p>
+    </CardBody>
+  </Card>
+</ComponentPreview>
+
+### With Footer Actions
+
+<ComponentPreview
+  code={`<Card className="w-full max-w-sm">
+  <CardHeader>
+    <CardTitle>Delete Account</CardTitle>
+    <CardDescription>This action cannot be undone.</CardDescription>
+  </CardHeader>
+  <CardBody>
+    <p>Are you sure you want to delete your account?</p>
+  </CardBody>
+  <CardFooter className="flex gap-2">
+    <Button variant="ghost">Cancel</Button>
+    <Button variant="danger">Delete</Button>
+  </CardFooter>
+</Card>`}
+>
+  <Card className="w-full max-w-sm">
+    <CardHeader>
+      <CardTitle>Delete Account</CardTitle>
+      <CardDescription>This action cannot be undone.</CardDescription>
+    </CardHeader>
+    <CardBody>
+      <p className="text-(--void-muted)">Are you sure you want to delete your account?</p>
+    </CardBody>
+    <CardFooter className="flex gap-2">
+      <Button variant="ghost">Cancel</Button>
+      <Button variant="danger">Delete</Button>
+    </CardFooter>
+  </Card>
+</ComponentPreview>
+
+## API Reference
+
+### Card
+
+The root container component.
+
+<PropsTable
+  props={[
+    {
+      name: 'children',
+      type: 'ReactNode',
+      required: true,
+      description: 'The content of the card.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Additional CSS classes to apply.',
+    },
+  ]}
+/>
+
+### CardHeader
+
+Container for the card title and description.
+
+<PropsTable
+  props={[
+    {
+      name: 'children',
+      type: 'ReactNode',
+      required: true,
+      description: 'The header content (typically CardTitle and CardDescription).',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Additional CSS classes to apply.',
+    },
+  ]}
+/>
+
+### CardTitle
+
+The title of the card.
+
+<PropsTable
+  props={[
+    {
+      name: 'children',
+      type: 'ReactNode',
+      required: true,
+      description: 'The title text.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Additional CSS classes to apply.',
+    },
+  ]}
+/>
+
+### CardDescription
+
+A brief description below the title.
+
+<PropsTable
+  props={[
+    {
+      name: 'children',
+      type: 'ReactNode',
+      required: true,
+      description: 'The description text.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Additional CSS classes to apply.',
+    },
+  ]}
+/>
+
+### CardBody
+
+The main content area of the card.
+
+<PropsTable
+  props={[
+    {
+      name: 'children',
+      type: 'ReactNode',
+      required: true,
+      description: 'The body content.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Additional CSS classes to apply.',
+    },
+  ]}
+/>
+
+### CardFooter
+
+Container for card actions, typically buttons.
+
+<PropsTable
+  props={[
+    {
+      name: 'children',
+      type: 'ReactNode',
+      required: true,
+      description: 'The footer content (typically buttons).',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Additional CSS classes to apply.',
+    },
+  ]}
+/>

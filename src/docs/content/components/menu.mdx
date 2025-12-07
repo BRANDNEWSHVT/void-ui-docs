@@ -1,0 +1,245 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { Menu, MenuTrigger, MenuContent, MenuItem, MenuSeparator, MenuGroup, MenuGroupLabel, Button } from '@radenadri/void-ui'
+import { FilePlus, FolderOpen, FloppyDisk, Trash, Copy, Clipboard, Gear, SignOut, User, CaretDown } from '@phosphor-icons/react'
+
+# Menu
+
+A dropdown menu for navigation and actions. Features keyboard navigation and shortcut display.
+
+## Preview
+
+<ComponentPreview
+  code={`import { Menu, MenuTrigger, MenuContent, MenuItem, Button } from '@radenadri/void-ui'
+
+export default function MenuDemo() {
+  return (
+    <Menu>
+      <MenuTrigger>
+        <Button variant="secondary">
+          Options <CaretDown size={14} />
+        </Button>
+      </MenuTrigger>
+      <MenuContent>
+        <MenuItem>New File</MenuItem>
+        <MenuItem>Open</MenuItem>
+        <MenuItem>Save</MenuItem>
+      </MenuContent>
+    </Menu>
+  )
+}`}
+>
+  <Menu>
+    <MenuTrigger>
+      <Button variant="secondary">
+        Options <CaretDown size={14} />
+      </Button>
+    </MenuTrigger>
+    <MenuContent>
+      <MenuItem>New File</MenuItem>
+      <MenuItem>Open</MenuItem>
+      <MenuItem>Save</MenuItem>
+    </MenuContent>
+  </Menu>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { 
+  Menu, 
+  MenuTrigger, 
+  MenuContent, 
+  MenuItem, 
+  MenuSeparator,
+  MenuGroup,
+  MenuGroupLabel
+} from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### With Icons
+
+<ComponentPreview
+  code={`<Menu>
+  <MenuTrigger>
+    <Button variant="secondary">File</Button>
+  </MenuTrigger>
+  <MenuContent>
+    <MenuItem><FilePlus size={16} /> New File</MenuItem>
+    <MenuItem><FolderOpen size={16} /> Open</MenuItem>
+    <MenuItem><FloppyDisk size={16} /> Save</MenuItem>
+  </MenuContent>
+</Menu>`}
+>
+  <Menu>
+    <MenuTrigger>
+      <Button variant="secondary">File</Button>
+    </MenuTrigger>
+    <MenuContent>
+      <MenuItem><FilePlus size={16} /> New File</MenuItem>
+      <MenuItem><FolderOpen size={16} /> Open</MenuItem>
+      <MenuItem><FloppyDisk size={16} /> Save</MenuItem>
+    </MenuContent>
+  </Menu>
+</ComponentPreview>
+
+### With Keyboard Shortcuts
+
+<ComponentPreview
+  code={`<Menu>
+  <MenuTrigger>
+    <Button variant="secondary">Edit</Button>
+  </MenuTrigger>
+  <MenuContent>
+    <MenuItem shortcut="⌘C"><Copy size={16} /> Copy</MenuItem>
+    <MenuItem shortcut="⌘V"><Clipboard size={16} /> Paste</MenuItem>
+    <MenuSeparator />
+    <MenuItem shortcut="⌫" className="text-(--void-danger)"><Trash size={16} /> Delete</MenuItem>
+  </MenuContent>
+</Menu>`}
+>
+  <Menu>
+    <MenuTrigger>
+      <Button variant="secondary">Edit</Button>
+    </MenuTrigger>
+    <MenuContent>
+      <MenuItem shortcut="⌘C"><Copy size={16} /> Copy</MenuItem>
+      <MenuItem shortcut="⌘V"><Clipboard size={16} /> Paste</MenuItem>
+      <MenuSeparator />
+      <MenuItem shortcut="⌫" className="text-(--void-danger)"><Trash size={16} /> Delete</MenuItem>
+    </MenuContent>
+  </Menu>
+</ComponentPreview>
+
+### With Groups
+
+<ComponentPreview
+  code={`<Menu>
+  <MenuTrigger>
+    <Button variant="secondary">Account</Button>
+  </MenuTrigger>
+  <MenuContent>
+    <MenuGroup>
+      <MenuGroupLabel>Account</MenuGroupLabel>
+      <MenuItem><User size={16} /> Profile</MenuItem>
+      <MenuItem><Gear size={16} /> Settings</MenuItem>
+    </MenuGroup>
+    <MenuSeparator />
+    <MenuItem><SignOut size={16} /> Sign out</MenuItem>
+  </MenuContent>
+</Menu>`}
+>
+  <Menu>
+    <MenuTrigger>
+      <Button variant="secondary">Account</Button>
+    </MenuTrigger>
+    <MenuContent>
+      <MenuGroup>
+        <MenuGroupLabel>Account</MenuGroupLabel>
+        <MenuItem><User size={16} /> Profile</MenuItem>
+        <MenuItem><Gear size={16} /> Settings</MenuItem>
+      </MenuGroup>
+      <MenuSeparator />
+      <MenuItem><SignOut size={16} /> Sign out</MenuItem>
+    </MenuContent>
+  </Menu>
+</ComponentPreview>
+
+### Disabled Items
+
+<ComponentPreview
+  code={`<Menu>
+  <MenuTrigger>
+    <Button variant="secondary">Actions</Button>
+  </MenuTrigger>
+  <MenuContent>
+    <MenuItem>Edit</MenuItem>
+    <MenuItem>Duplicate</MenuItem>
+    <MenuItem disabled>Archive</MenuItem>
+    <MenuSeparator />
+    <MenuItem disabled>Delete</MenuItem>
+  </MenuContent>
+</Menu>`}
+>
+  <Menu>
+    <MenuTrigger>
+      <Button variant="secondary">Actions</Button>
+    </MenuTrigger>
+    <MenuContent>
+      <MenuItem>Edit</MenuItem>
+      <MenuItem>Duplicate</MenuItem>
+      <MenuItem disabled>Archive</MenuItem>
+      <MenuSeparator />
+      <MenuItem disabled>Delete</MenuItem>
+    </MenuContent>
+  </Menu>
+</ComponentPreview>
+
+## API Reference
+
+### Menu
+
+Root component that manages menu state.
+
+### MenuTrigger
+
+Wraps the element that opens the menu. Does not add any styling.
+
+### MenuContent
+
+<PropsTable
+  props={[
+    {
+      name: 'side',
+      type: "'top' | 'bottom' | 'left' | 'right'",
+      default: "'bottom'",
+      description: 'Preferred side of the trigger to render.',
+    },
+    {
+      name: 'align',
+      type: "'start' | 'center' | 'end'",
+      default: "'start'",
+      description: 'Alignment relative to the trigger.',
+    },
+  ]}
+/>
+
+### MenuItem
+
+<PropsTable
+  props={[
+    {
+      name: 'shortcut',
+      type: 'string',
+      description: 'Keyboard shortcut to display on the right.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      default: 'false',
+      description: 'Disable the item.',
+    },
+    {
+      name: 'onClick',
+      type: '() => void',
+      description: 'Callback when clicked.',
+    },
+  ]}
+/>
+
+### MenuSeparator
+
+A visual separator between items.
+
+### MenuGroup / MenuGroupLabel
+
+Group related items with an optional label.
+
+## Accessibility
+
+- Arrow keys navigate between items
+- `Enter` or `Space` selects an item
+- `Escape` closes the menu
+- Focus is trapped within the menu when open

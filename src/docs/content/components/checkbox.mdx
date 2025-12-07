@@ -1,0 +1,196 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { Checkbox, CheckboxGroup, Stack, FieldRoot, FieldLabel, FieldDescription } from '@radenadri/void-ui'
+
+# Checkbox
+
+A control that allows users to select one or more options. Features smooth transitions and indeterminate state support.
+
+## Preview
+
+<ComponentPreview
+  code={`import { Checkbox } from '@radenadri/void-ui'
+
+export default function CheckboxDemo() {
+  return <Checkbox label="I agree to the terms and conditions" />
+}`}
+>
+  <Checkbox label="I agree to the terms and conditions" />
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { Checkbox, CheckboxGroup } from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### Basic Checkbox
+
+<ComponentPreview
+  code={`<Checkbox label="Enable notifications" />`}
+>
+  <Checkbox label="Enable notifications" />
+</ComponentPreview>
+
+### Default Checked
+
+<ComponentPreview
+  code={`<Checkbox label="Subscribe to newsletter" defaultChecked />`}
+>
+  <Checkbox label="Subscribe to newsletter" defaultChecked />
+</ComponentPreview>
+
+### Without Label
+
+Use with FieldRoot for custom label positioning.
+
+<ComponentPreview
+  code={`<Stack direction="row" spacing="md">
+  <Checkbox />
+  <Checkbox defaultChecked />
+</Stack>`}
+>
+  <Stack direction="row" spacing="md">
+    <Checkbox />
+    <Checkbox defaultChecked />
+  </Stack>
+</ComponentPreview>
+
+### Checkbox Group
+
+<ComponentPreview
+  code={`<CheckboxGroup>
+  <Checkbox label="React" />
+  <Checkbox label="Vue" defaultChecked />
+  <Checkbox label="Angular" />
+  <Checkbox label="Svelte" defaultChecked />
+</CheckboxGroup>`}
+>
+  <CheckboxGroup>
+    <Checkbox label="React" />
+    <Checkbox label="Vue" defaultChecked />
+    <Checkbox label="Angular" />
+    <Checkbox label="Svelte" defaultChecked />
+  </CheckboxGroup>
+</ComponentPreview>
+
+### With Field Components
+
+<ComponentPreview
+  code={`<FieldRoot>
+  <FieldLabel>Preferences</FieldLabel>
+  <FieldDescription>Select your notification preferences.</FieldDescription>
+  <CheckboxGroup className="mt-2">
+    <Checkbox label="Email notifications" defaultChecked />
+    <Checkbox label="Push notifications" />
+    <Checkbox label="SMS notifications" />
+  </CheckboxGroup>
+</FieldRoot>`}
+>
+  <FieldRoot className="w-full max-w-sm">
+    <FieldLabel>Preferences</FieldLabel>
+    <FieldDescription>Select your notification preferences.</FieldDescription>
+    <CheckboxGroup className="mt-2">
+      <Checkbox label="Email notifications" defaultChecked />
+      <Checkbox label="Push notifications" />
+      <Checkbox label="SMS notifications" />
+    </CheckboxGroup>
+  </FieldRoot>
+</ComponentPreview>
+
+### Disabled State
+
+<ComponentPreview
+  code={`<Stack spacing="sm">
+  <Checkbox label="Disabled unchecked" disabled />
+  <Checkbox label="Disabled checked" disabled defaultChecked />
+</Stack>`}
+>
+  <Stack spacing="sm">
+    <Checkbox label="Disabled unchecked" disabled />
+    <Checkbox label="Disabled checked" disabled defaultChecked />
+  </Stack>
+</ComponentPreview>
+
+### Indeterminate State
+
+Use `indeterminate` for parent checkboxes that have some children checked.
+
+<ComponentPreview
+  code={`<Stack spacing="sm">
+  <Checkbox label="Select all" indeterminate />
+  <div className="pl-6">
+    <CheckboxGroup>
+      <Checkbox label="Option A" defaultChecked />
+      <Checkbox label="Option B" />
+      <Checkbox label="Option C" defaultChecked />
+    </CheckboxGroup>
+  </div>
+</Stack>`}
+>
+  <Stack spacing="sm">
+    <Checkbox label="Select all" indeterminate />
+    <div className="pl-6">
+      <CheckboxGroup>
+        <Checkbox label="Option A" defaultChecked />
+        <Checkbox label="Option B" />
+        <Checkbox label="Option C" defaultChecked />
+      </CheckboxGroup>
+    </div>
+  </Stack>
+</ComponentPreview>
+
+## API Reference
+
+### Checkbox
+
+<PropsTable
+  props={[
+    {
+      name: 'label',
+      type: 'string',
+      description: 'Label text displayed next to the checkbox.',
+    },
+    {
+      name: 'checked',
+      type: 'boolean',
+      description: 'Controlled checked state.',
+    },
+    {
+      name: 'defaultChecked',
+      type: 'boolean',
+      default: 'false',
+      description: 'Initial checked state (uncontrolled).',
+    },
+    {
+      name: 'indeterminate',
+      type: 'boolean',
+      default: 'false',
+      description: 'Show indeterminate state (minus icon).',
+    },
+    {
+      name: 'onCheckedChange',
+      type: '(checked: boolean) => void',
+      description: 'Callback fired when the checked state changes.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      default: 'false',
+      description: 'When true, prevents interaction.',
+    },
+  ]}
+/>
+
+### CheckboxGroup
+
+A container for grouping related checkboxes with proper spacing.
+
+## Accessibility
+
+- Checkbox is properly labeled using the `label` prop or associated FieldLabel
+- Supports keyboard navigation with `Space` to toggle
+- Focus ring is visible when focused
+- Disabled and indeterminate states are communicated to assistive technologies

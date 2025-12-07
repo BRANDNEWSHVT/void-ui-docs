@@ -1,0 +1,179 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { FieldRoot, FieldLabel, FieldDescription, FieldError, Input, Stack, Checkbox, Switch } from '@radenadri/void-ui'
+
+# Field
+
+A composable wrapper for form fields with label, description, and error handling. Built on Base UI Field for accessibility.
+
+## Preview
+
+<ComponentPreview
+  code={`import { FieldRoot, FieldLabel, FieldDescription, Input } from '@radenadri/void-ui'
+
+export default function FieldDemo() {
+  return (
+    <FieldRoot>
+      <FieldLabel>Email</FieldLabel>
+      <Input type="email" placeholder="you@example.com" />
+      <FieldDescription>We'll never share your email.</FieldDescription>
+    </FieldRoot>
+  )
+}`}
+>
+  <FieldRoot className="w-full max-w-sm">
+    <FieldLabel>Email</FieldLabel>
+    <Input type="email" placeholder="you@example.com" />
+    <FieldDescription>We'll never share your email.</FieldDescription>
+  </FieldRoot>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { 
+  FieldRoot, 
+  FieldLabel, 
+  FieldDescription, 
+  FieldError 
+} from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### Required Field
+
+Use the `required` prop on FieldLabel to show a red asterisk.
+
+<ComponentPreview
+  code={`<FieldRoot>
+  <FieldLabel required>Username</FieldLabel>
+  <Input placeholder="Enter username" />
+</FieldRoot>`}
+>
+  <FieldRoot className="w-full max-w-sm">
+    <FieldLabel required>Username</FieldLabel>
+    <Input placeholder="Enter username" />
+  </FieldRoot>
+</ComponentPreview>
+
+### With Error
+
+<ComponentPreview
+  code={`<FieldRoot>
+  <FieldLabel>Password</FieldLabel>
+  <Input type="password" placeholder="Enter password" />
+  <FieldError>Password must be at least 8 characters</FieldError>
+</FieldRoot>`}
+>
+  <FieldRoot className="w-full max-w-sm">
+    <FieldLabel>Password</FieldLabel>
+    <Input type="password" placeholder="Enter password" />
+    <FieldError>Password must be at least 8 characters</FieldError>
+  </FieldRoot>
+</ComponentPreview>
+
+### With Checkbox
+
+<ComponentPreview
+  code={`<FieldRoot className="flex-row items-center gap-3">
+  <Checkbox id="terms" />
+  <FieldLabel htmlFor="terms" className="cursor-pointer">
+    I agree to the terms and conditions
+  </FieldLabel>
+</FieldRoot>`}
+>
+  <FieldRoot className="flex-row items-center gap-3">
+    <Checkbox id="terms" />
+    <FieldLabel htmlFor="terms" className="cursor-pointer">
+      I agree to the terms and conditions
+    </FieldLabel>
+  </FieldRoot>
+</ComponentPreview>
+
+### Form Example
+
+<ComponentPreview
+  code={`<Stack spacing="lg" className="w-full max-w-sm">
+  <FieldRoot>
+    <FieldLabel required>Full Name</FieldLabel>
+    <Input placeholder="John Doe" />
+  </FieldRoot>
+  <FieldRoot>
+    <FieldLabel required>Email</FieldLabel>
+    <Input type="email" placeholder="john@example.com" />
+    <FieldDescription>We'll send a confirmation email.</FieldDescription>
+  </FieldRoot>
+  <FieldRoot>
+    <FieldLabel>Company</FieldLabel>
+    <Input placeholder="Acme Inc. (optional)" />
+  </FieldRoot>
+</Stack>`}
+>
+  <Stack spacing="lg" className="w-full max-w-sm">
+    <FieldRoot>
+      <FieldLabel required>Full Name</FieldLabel>
+      <Input placeholder="John Doe" />
+    </FieldRoot>
+    <FieldRoot>
+      <FieldLabel required>Email</FieldLabel>
+      <Input type="email" placeholder="john@example.com" />
+      <FieldDescription>We'll send a confirmation email.</FieldDescription>
+    </FieldRoot>
+    <FieldRoot>
+      <FieldLabel>Company</FieldLabel>
+      <Input placeholder="Acme Inc. (optional)" />
+    </FieldRoot>
+  </Stack>
+</ComponentPreview>
+
+## API Reference
+
+### FieldRoot
+
+Container that provides field context for accessibility.
+
+<PropsTable
+  props={[
+    {
+      name: 'children',
+      type: 'ReactNode',
+      required: true,
+      description: 'Field components (label, input, description, error).',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Additional CSS classes.',
+    },
+  ]}
+/>
+
+### FieldLabel
+
+The label for the field. Automatically linked to the input for accessibility.
+
+<PropsTable
+  props={[
+    {
+      name: 'required',
+      type: 'boolean',
+      default: 'false',
+      description: 'Show a red asterisk to indicate required field.',
+    },
+    {
+      name: 'children',
+      type: 'ReactNode',
+      required: true,
+      description: 'Label text.',
+    },
+  ]}
+/>
+
+### FieldDescription
+
+Helper text displayed below the input.
+
+### FieldError
+
+Error message displayed when validation fails. Styled in red.

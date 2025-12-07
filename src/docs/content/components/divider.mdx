@@ -1,0 +1,94 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { Divider, Stack, Text } from '@radenadri/void-ui'
+
+# Divider
+
+A visual separator with optional text label.
+
+## Preview
+
+<ComponentPreview
+  code={`import { Divider } from '@radenadri/void-ui'
+
+export default function DividerDemo() {
+  return <Divider />
+}`}
+>
+  <div className="w-full max-w-md">
+    <Divider />
+  </div>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { Divider } from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### Basic
+
+<ComponentPreview
+  code={`<Stack spacing="md">
+  <Text>Content above</Text>
+  <Divider />
+  <Text>Content below</Text>
+</Stack>`}
+>
+  <Stack spacing="md" className="w-full max-w-md">
+    <Text>Content above</Text>
+    <Divider />
+    <Text>Content below</Text>
+  </Stack>
+</ComponentPreview>
+
+### With Label
+
+<ComponentPreview
+  code={`<Divider label="OR" />`}
+>
+  <div className="w-full max-w-md">
+    <Divider label="OR" />
+  </div>
+</ComponentPreview>
+
+### Label Positions
+
+<ComponentPreview
+  code={`<Stack spacing="lg">
+  <Divider label="Left" labelPosition="left" />
+  <Divider label="Center" labelPosition="center" />
+  <Divider label="Right" labelPosition="right" />
+</Stack>`}
+>
+  <Stack spacing="lg" className="w-full max-w-md">
+    <Divider label="Left" labelPosition="left" />
+    <Divider label="Center" labelPosition="center" />
+    <Divider label="Right" labelPosition="right" />
+  </Stack>
+</ComponentPreview>
+
+## API Reference
+
+<PropsTable
+  props={[
+    {
+      name: 'label',
+      type: 'string',
+      description: 'Text label to display.',
+    },
+    {
+      name: 'labelPosition',
+      type: "'left' | 'center' | 'right'",
+      default: "'center'",
+      description: 'Position of the label.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Additional CSS classes.',
+    },
+  ]}
+/>

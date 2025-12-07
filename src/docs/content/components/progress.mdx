@@ -1,0 +1,163 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { Progress, ProgressLabel, Stack, Text } from '@radenadri/void-ui'
+
+# Progress
+
+Displays an indicator showing the completion progress of a task.
+
+## Preview
+
+<ComponentPreview
+  code={`import { Progress } from '@radenadri/void-ui'
+
+export default function ProgressDemo() {
+  return <Progress value={60} />
+}`}
+>
+  <div className="w-full max-w-md">
+    <Progress value={60} />
+  </div>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { Progress, ProgressLabel } from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### Sizes
+
+<ComponentPreview
+  code={`<Stack spacing="lg">
+  <Progress value={60} size="sm" />
+  <Progress value={60} size="md" />
+  <Progress value={60} size="lg" />
+</Stack>`}
+>
+  <Stack spacing="lg" className="w-full max-w-md">
+    <Progress value={60} size="sm" />
+    <Progress value={60} size="md" />
+    <Progress value={60} size="lg" />
+  </Stack>
+</ComponentPreview>
+
+### Variants
+
+<ComponentPreview
+  code={`<Stack spacing="md">
+  <Progress value={60} variant="default" />
+  <Progress value={60} variant="success" />
+  <Progress value={60} variant="warning" />
+  <Progress value={60} variant="danger" />
+  <Progress value={60} variant="info" />
+</Stack>`}
+>
+  <Stack spacing="md" className="w-full max-w-md">
+    <Progress value={60} variant="default" />
+    <Progress value={60} variant="success" />
+    <Progress value={60} variant="warning" />
+    <Progress value={60} variant="danger" />
+    <Progress value={60} variant="info" />
+  </Stack>
+</ComponentPreview>
+
+### With Value Display
+
+<ComponentPreview
+  code={`<Progress value={75} showValue />`}
+>
+  <div className="w-full max-w-md">
+    <Progress value={75} showValue />
+  </div>
+</ComponentPreview>
+
+### With Label
+
+<ComponentPreview
+  code={`<div className="w-full max-w-md">
+  <ProgressLabel>
+    <Text>Uploading files...</Text>
+    <Text className="text-(--void-muted)">60%</Text>
+  </ProgressLabel>
+  <Progress value={60} />
+</div>`}
+>
+  <div className="w-full max-w-md">
+    <ProgressLabel>
+      <Text>Uploading files...</Text>
+      <Text className="text-(--void-muted)">60%</Text>
+    </ProgressLabel>
+    <Progress value={60} />
+  </div>
+</ComponentPreview>
+
+### Different Values
+
+<ComponentPreview
+  code={`<Stack spacing="md">
+  <Progress value={0} />
+  <Progress value={25} />
+  <Progress value={50} />
+  <Progress value={75} />
+  <Progress value={100} variant="success" />
+</Stack>`}
+>
+  <Stack spacing="md" className="w-full max-w-md">
+    <Progress value={0} />
+    <Progress value={25} />
+    <Progress value={50} />
+    <Progress value={75} />
+    <Progress value={100} variant="success" />
+  </Stack>
+</ComponentPreview>
+
+## API Reference
+
+### Progress
+
+<PropsTable
+  props={[
+    {
+      name: 'value',
+      type: 'number',
+      default: '0',
+      description: 'The progress value (0-100).',
+    },
+    {
+      name: 'variant',
+      type: "'default' | 'success' | 'warning' | 'danger' | 'info'",
+      default: "'default'",
+      description: 'The color variant.',
+    },
+    {
+      name: 'size',
+      type: "'sm' | 'md' | 'lg'",
+      default: "'md'",
+      description: 'The height of the progress bar.',
+    },
+    {
+      name: 'showValue',
+      type: 'boolean',
+      default: 'false',
+      description: 'Show percentage value below the bar.',
+    },
+    {
+      name: 'max',
+      type: 'number',
+      default: '100',
+      description: 'The maximum value.',
+    },
+  ]}
+/>
+
+### ProgressLabel
+
+A flex container for label and value above the progress bar.
+
+## Accessibility
+
+- Uses `role="progressbar"` for screen readers
+- `aria-valuenow`, `aria-valuemin`, `aria-valuemax` are set automatically

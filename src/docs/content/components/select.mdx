@@ -1,0 +1,274 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { Select, SelectTrigger, SelectContent, SelectItem, SelectGroup, SelectGroupLabel, SelectSeparator, Stack, FieldRoot, FieldLabel } from '@radenadri/void-ui'
+
+# Select
+
+A composable dropdown component for selecting from a list of options.
+
+## Preview
+
+<ComponentPreview
+  code={`import { Select, SelectTrigger, SelectContent, SelectItem } from '@radenadri/void-ui'
+
+export default function SelectDemo() {
+  return (
+    <Select defaultValue="apple">
+      <SelectTrigger placeholder="Select a fruit..." />
+      <SelectContent>
+        <SelectItem value="apple">Apple</SelectItem>
+        <SelectItem value="banana">Banana</SelectItem>
+        <SelectItem value="orange">Orange</SelectItem>
+      </SelectContent>
+    </Select>
+  )
+}`}
+>
+  <div className="w-full max-w-xs">
+    <Select defaultValue="apple">
+      <SelectTrigger placeholder="Select a fruit..." />
+      <SelectContent>
+        <SelectItem value="apple">Apple</SelectItem>
+        <SelectItem value="banana">Banana</SelectItem>
+        <SelectItem value="orange">Orange</SelectItem>
+      </SelectContent>
+    </Select>
+  </div>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { 
+  Select, 
+  SelectTrigger, 
+  SelectContent, 
+  SelectItem,
+  SelectGroup,
+  SelectGroupLabel,
+  SelectSeparator
+} from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### Basic Select
+
+<ComponentPreview
+  code={`<Select>
+  <SelectTrigger placeholder="Choose a framework..." />
+  <SelectContent>
+    <SelectItem value="react">React</SelectItem>
+    <SelectItem value="vue">Vue</SelectItem>
+    <SelectItem value="angular">Angular</SelectItem>
+    <SelectItem value="svelte">Svelte</SelectItem>
+  </SelectContent>
+</Select>`}
+>
+  <div className="w-full max-w-xs">
+    <Select>
+      <SelectTrigger placeholder="Choose a framework..." />
+      <SelectContent>
+        <SelectItem value="react">React</SelectItem>
+        <SelectItem value="vue">Vue</SelectItem>
+        <SelectItem value="angular">Angular</SelectItem>
+        <SelectItem value="svelte">Svelte</SelectItem>
+      </SelectContent>
+    </Select>
+  </div>
+</ComponentPreview>
+
+### With Groups
+
+<ComponentPreview
+  code={`<Select>
+  <SelectTrigger placeholder="Select a timezone..." />
+  <SelectContent>
+    <SelectGroup>
+      <SelectGroupLabel>North America</SelectGroupLabel>
+      <SelectItem value="est">Eastern Time (ET)</SelectItem>
+      <SelectItem value="cst">Central Time (CT)</SelectItem>
+      <SelectItem value="pst">Pacific Time (PT)</SelectItem>
+    </SelectGroup>
+    <SelectSeparator />
+    <SelectGroup>
+      <SelectGroupLabel>Europe</SelectGroupLabel>
+      <SelectItem value="gmt">GMT</SelectItem>
+      <SelectItem value="cet">Central European (CET)</SelectItem>
+    </SelectGroup>
+  </SelectContent>
+</Select>`}
+>
+  <div className="w-full max-w-xs">
+    <Select>
+      <SelectTrigger placeholder="Select a timezone..." />
+      <SelectContent>
+        <SelectGroup>
+          <SelectGroupLabel>North America</SelectGroupLabel>
+          <SelectItem value="est">Eastern Time (ET)</SelectItem>
+          <SelectItem value="cst">Central Time (CT)</SelectItem>
+          <SelectItem value="pst">Pacific Time (PT)</SelectItem>
+        </SelectGroup>
+        <SelectSeparator />
+        <SelectGroup>
+          <SelectGroupLabel>Europe</SelectGroupLabel>
+          <SelectItem value="gmt">GMT</SelectItem>
+          <SelectItem value="cet">Central European (CET)</SelectItem>
+        </SelectGroup>
+      </SelectContent>
+    </Select>
+  </div>
+</ComponentPreview>
+
+### With Field
+
+<ComponentPreview
+  code={`<FieldRoot className="w-full max-w-xs">
+  <FieldLabel>Country</FieldLabel>
+  <Select defaultValue="us">
+    <SelectTrigger />
+    <SelectContent>
+      <SelectItem value="us">United States</SelectItem>
+      <SelectItem value="uk">United Kingdom</SelectItem>
+      <SelectItem value="ca">Canada</SelectItem>
+      <SelectItem value="au">Australia</SelectItem>
+    </SelectContent>
+  </Select>
+</FieldRoot>`}
+>
+  <FieldRoot className="w-full max-w-xs">
+    <FieldLabel>Country</FieldLabel>
+    <Select defaultValue="us">
+      <SelectTrigger />
+      <SelectContent>
+        <SelectItem value="us">United States</SelectItem>
+        <SelectItem value="uk">United Kingdom</SelectItem>
+        <SelectItem value="ca">Canada</SelectItem>
+        <SelectItem value="au">Australia</SelectItem>
+      </SelectContent>
+    </Select>
+  </FieldRoot>
+</ComponentPreview>
+
+### Disabled Items
+
+<ComponentPreview
+  code={`<Select>
+  <SelectTrigger placeholder="Select a plan..." />
+  <SelectContent>
+    <SelectItem value="free">Free</SelectItem>
+    <SelectItem value="pro">Pro</SelectItem>
+    <SelectItem value="enterprise" disabled>Enterprise (Coming soon)</SelectItem>
+  </SelectContent>
+</Select>`}
+>
+  <div className="w-full max-w-xs">
+    <Select>
+      <SelectTrigger placeholder="Select a plan..." />
+      <SelectContent>
+        <SelectItem value="free">Free</SelectItem>
+        <SelectItem value="pro">Pro</SelectItem>
+        <SelectItem value="enterprise" disabled>Enterprise (Coming soon)</SelectItem>
+      </SelectContent>
+    </Select>
+  </div>
+</ComponentPreview>
+
+### Controlled
+
+<CodeBlock
+  code={`import { useState } from 'react'
+
+function ControlledSelect() {
+  const [value, setValue] = useState('react')
+
+  return (
+    <Select value={value} onValueChange={setValue}>
+      <SelectTrigger />
+      <SelectContent>
+        <SelectItem value="react">React</SelectItem>
+        <SelectItem value="vue">Vue</SelectItem>
+        <SelectItem value="angular">Angular</SelectItem>
+      </SelectContent>
+    </Select>
+  )
+}`}
+  language="tsx"
+/>
+
+## API Reference
+
+### Select
+
+<PropsTable
+  props={[
+    {
+      name: 'value',
+      type: 'string',
+      description: 'Controlled value.',
+    },
+    {
+      name: 'defaultValue',
+      type: 'string',
+      description: 'Default value (uncontrolled).',
+    },
+    {
+      name: 'onValueChange',
+      type: '(value: string) => void',
+      description: 'Callback when value changes.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      default: 'false',
+      description: 'Disable the select.',
+    },
+  ]}
+/>
+
+### SelectTrigger
+
+<PropsTable
+  props={[
+    {
+      name: 'placeholder',
+      type: 'string',
+      default: "'Select...'",
+      description: 'Placeholder text when no value is selected.',
+    },
+  ]}
+/>
+
+### SelectItem
+
+<PropsTable
+  props={[
+    {
+      name: 'value',
+      type: 'string',
+      required: true,
+      description: 'The value of the item.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      default: 'false',
+      description: 'Disable this item.',
+    },
+  ]}
+/>
+
+### SelectGroup / SelectGroupLabel
+
+Group related items with an optional label.
+
+### SelectSeparator
+
+A visual separator between items or groups.
+
+## Accessibility
+
+- Supports keyboard navigation with arrow keys
+- `Enter` or `Space` selects an item
+- `Escape` closes the dropdown
+- Selected item is marked with a checkmark

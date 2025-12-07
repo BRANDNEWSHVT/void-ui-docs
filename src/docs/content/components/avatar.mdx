@@ -1,0 +1,160 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { Avatar, Stack } from '@radenadri/void-ui'
+
+# Avatar
+
+An image element with a fallback for representing the user. Automatically generates initials from the name.
+
+## Preview
+
+<ComponentPreview
+  code={`import { Avatar } from '@radenadri/void-ui'
+
+export default function AvatarDemo() {
+  return (
+    <Avatar 
+      src="https://i.pravatar.cc/150?u=john" 
+      name="John Doe" 
+    />
+  )
+}`}
+>
+  <Avatar src="https://i.pravatar.cc/150?u=john" name="John Doe" />
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { Avatar } from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### With Name (Auto Initials)
+
+Pass a `name` prop to automatically generate initials for the fallback.
+
+<ComponentPreview
+  code={`<Stack direction="row" spacing="md" align="center">
+  <Avatar name="John Doe" />
+  <Avatar name="Alice Smith" />
+  <Avatar name="Bob" />
+</Stack>`}
+>
+  <Stack direction="row" spacing="md" align="center">
+    <Avatar name="John Doe" />
+    <Avatar name="Alice Smith" />
+    <Avatar name="Bob" />
+  </Stack>
+</ComponentPreview>
+
+### Sizes
+
+<ComponentPreview
+  code={`<Stack direction="row" spacing="md" align="center">
+  <Avatar size="xs" name="Extra Small" />
+  <Avatar size="sm" name="Small" />
+  <Avatar size="md" name="Medium" />
+  <Avatar size="lg" name="Large" />
+  <Avatar size="xl" name="Extra Large" />
+</Stack>`}
+>
+  <Stack direction="row" spacing="md" align="center">
+    <Avatar size="xs" name="Extra Small" />
+    <Avatar size="sm" name="Small" />
+    <Avatar size="md" name="Medium" />
+    <Avatar size="lg" name="Large" />
+    <Avatar size="xl" name="Extra Large" />
+  </Stack>
+</ComponentPreview>
+
+### With Image
+
+When the image loads successfully, it will be displayed. If it fails, the fallback initials are shown.
+
+<ComponentPreview
+  code={`<Stack direction="row" spacing="md">
+  <Avatar src="https://i.pravatar.cc/150?u=alice" name="Alice Johnson" />
+  <Avatar src="https://i.pravatar.cc/150?u=bob" name="Bob Smith" />
+  <Avatar src="https://i.pravatar.cc/150?u=charlie" name="Charlie Brown" />
+</Stack>`}
+>
+  <Stack direction="row" spacing="md">
+    <Avatar src="https://i.pravatar.cc/150?u=alice" name="Alice Johnson" />
+    <Avatar src="https://i.pravatar.cc/150?u=bob" name="Bob Smith" />
+    <Avatar src="https://i.pravatar.cc/150?u=charlie" name="Charlie Brown" />
+  </Stack>
+</ComponentPreview>
+
+### Fallback on Error
+
+When an image fails to load, the initials are displayed automatically.
+
+<ComponentPreview
+  code={`<Stack direction="row" spacing="md">
+  <Avatar src="https://invalid-url.com/image.jpg" name="Jane Doe" />
+  <Avatar src="https://broken-link.com/avatar.png" name="Mike Wilson" />
+</Stack>`}
+>
+  <Stack direction="row" spacing="md">
+    <Avatar src="https://invalid-url.com/image.jpg" name="Jane Doe" />
+    <Avatar src="https://broken-link.com/avatar.png" name="Mike Wilson" />
+  </Stack>
+</ComponentPreview>
+
+### Custom Fallback
+
+Override the auto-generated initials with a custom fallback.
+
+<ComponentPreview
+  code={`<Stack direction="row" spacing="md">
+  <Avatar fallback="A" />
+  <Avatar fallback="VIP" />
+  <Avatar fallback="?" />
+</Stack>`}
+>
+  <Stack direction="row" spacing="md">
+    <Avatar fallback="A" />
+    <Avatar fallback="VIP" />
+    <Avatar fallback="?" />
+  </Stack>
+</ComponentPreview>
+
+## API Reference
+
+<PropsTable
+  props={[
+    {
+      name: 'src',
+      type: 'string',
+      description: 'The image source URL.',
+    },
+    {
+      name: 'name',
+      type: 'string',
+      description: 'Full name to generate initials from.',
+    },
+    {
+      name: 'fallback',
+      type: 'string',
+      description: 'Custom fallback text. Overrides auto-generated initials.',
+    },
+    {
+      name: 'alt',
+      type: 'string',
+      description: 'Alt text for the image. Defaults to name if not provided.',
+    },
+    {
+      name: 'size',
+      type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'",
+      default: "'md'",
+      description: 'The size of the avatar.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Additional CSS classes.',
+    },
+  ]}
+/>

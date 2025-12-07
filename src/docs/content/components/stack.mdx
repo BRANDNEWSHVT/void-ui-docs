@@ -1,0 +1,202 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { Stack, Button, Badge, Text } from '@radenadri/void-ui'
+
+# Stack
+
+A flexbox layout component for arranging children with consistent spacing.
+
+## Preview
+
+<ComponentPreview
+  code={`import { Stack, Button } from '@radenadri/void-ui'
+
+export default function StackDemo() {
+  return (
+    <Stack spacing="md">
+      <Button>Button 1</Button>
+      <Button>Button 2</Button>
+      <Button>Button 3</Button>
+    </Stack>
+  )
+}`}
+>
+  <Stack spacing="md">
+    <Button>Button 1</Button>
+    <Button>Button 2</Button>
+    <Button>Button 3</Button>
+  </Stack>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { Stack } from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### Horizontal Stack
+
+<ComponentPreview
+  code={`<Stack direction="row" spacing="md">
+  <Badge>Tag 1</Badge>
+  <Badge>Tag 2</Badge>
+  <Badge>Tag 3</Badge>
+</Stack>`}
+>
+  <Stack direction="row" spacing="md">
+    <Badge>Tag 1</Badge>
+    <Badge>Tag 2</Badge>
+    <Badge>Tag 3</Badge>
+  </Stack>
+</ComponentPreview>
+
+### Spacing Options
+
+<ComponentPreview
+  code={`<Stack spacing="xs">
+  <Text className="text-sm text-(--void-muted)">xs (gap-1)</Text>
+</Stack>
+<Stack spacing="sm">
+  <Text className="text-sm text-(--void-muted)">sm (gap-2)</Text>
+</Stack>
+<Stack spacing="md">
+  <Text className="text-sm text-(--void-muted)">md (gap-4)</Text>
+</Stack>
+<Stack spacing="lg">
+  <Text className="text-sm text-(--void-muted)">lg (gap-6)</Text>
+</Stack>
+<Stack spacing="xl">
+  <Text className="text-sm text-(--void-muted)">xl (gap-8)</Text>
+</Stack>`}
+>
+  <Stack direction="row" spacing="lg" wrap>
+    <Stack spacing="xs" className="p-3 border border-(--void-border) rounded-lg">
+      <div className="h-4 w-12 bg-(--void-primary) rounded" />
+      <div className="h-4 w-12 bg-(--void-primary) rounded" />
+      <Text className="text-xs text-(--void-muted)">xs</Text>
+    </Stack>
+    <Stack spacing="sm" className="p-3 border border-(--void-border) rounded-lg">
+      <div className="h-4 w-12 bg-(--void-primary) rounded" />
+      <div className="h-4 w-12 bg-(--void-primary) rounded" />
+      <Text className="text-xs text-(--void-muted)">sm</Text>
+    </Stack>
+    <Stack spacing="md" className="p-3 border border-(--void-border) rounded-lg">
+      <div className="h-4 w-12 bg-(--void-primary) rounded" />
+      <div className="h-4 w-12 bg-(--void-primary) rounded" />
+      <Text className="text-xs text-(--void-muted)">md</Text>
+    </Stack>
+    <Stack spacing="lg" className="p-3 border border-(--void-border) rounded-lg">
+      <div className="h-4 w-12 bg-(--void-primary) rounded" />
+      <div className="h-4 w-12 bg-(--void-primary) rounded" />
+      <Text className="text-xs text-(--void-muted)">lg</Text>
+    </Stack>
+  </Stack>
+</ComponentPreview>
+
+### Alignment
+
+<ComponentPreview
+  code={`<Stack direction="row" spacing="md" align="center">
+  <Button size="sm">Small</Button>
+  <Button size="md">Medium</Button>
+  <Button size="lg">Large</Button>
+</Stack>`}
+>
+  <Stack direction="row" spacing="md" align="center">
+    <Button size="sm">Small</Button>
+    <Button size="md">Medium</Button>
+    <Button size="lg">Large</Button>
+  </Stack>
+</ComponentPreview>
+
+### Justify Between
+
+<ComponentPreview
+  code={`<Stack direction="row" justify="between" className="w-full">
+  <Text>Left</Text>
+  <Text>Right</Text>
+</Stack>`}
+>
+  <Stack direction="row" justify="between" className="w-full">
+    <Text>Left</Text>
+    <Text>Right</Text>
+  </Stack>
+</ComponentPreview>
+
+### Centered Content
+
+<ComponentPreview
+  code={`<Stack align="center" justify="center" className="h-32 border border-(--void-border) rounded-lg">
+  <Text>Centered content</Text>
+</Stack>`}
+>
+  <Stack align="center" justify="center" className="h-32 w-full border border-(--void-border) rounded-lg">
+    <Text>Centered content</Text>
+  </Stack>
+</ComponentPreview>
+
+### With Wrap
+
+<ComponentPreview
+  code={`<Stack direction="row" spacing="sm" wrap>
+  <Badge>React</Badge>
+  <Badge>TypeScript</Badge>
+  <Badge>Tailwind</Badge>
+  <Badge>Base UI</Badge>
+  <Badge>Vite</Badge>
+  <Badge>Node.js</Badge>
+</Stack>`}
+>
+  <Stack direction="row" spacing="sm" wrap className="max-w-xs">
+    <Badge>React</Badge>
+    <Badge>TypeScript</Badge>
+    <Badge>Tailwind</Badge>
+    <Badge>Base UI</Badge>
+    <Badge>Vite</Badge>
+    <Badge>Node.js</Badge>
+  </Stack>
+</ComponentPreview>
+
+## API Reference
+
+<PropsTable
+  props={[
+    {
+      name: 'direction',
+      type: "'row' | 'column'",
+      default: "'column'",
+      description: 'The flex direction.',
+    },
+    {
+      name: 'spacing',
+      type: "'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'",
+      default: "'md'",
+      description: 'Gap between children.',
+    },
+    {
+      name: 'align',
+      type: "'start' | 'center' | 'end' | 'stretch' | 'baseline'",
+      default: "'stretch'",
+      description: 'Cross-axis alignment (align-items).',
+    },
+    {
+      name: 'justify',
+      type: "'start' | 'center' | 'end' | 'between' | 'around' | 'evenly'",
+      default: "'start'",
+      description: 'Main-axis alignment (justify-content).',
+    },
+    {
+      name: 'wrap',
+      type: 'boolean',
+      default: 'false',
+      description: 'Allow children to wrap to next line.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Additional CSS classes.',
+    },
+  ]}
+/>

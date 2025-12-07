@@ -1,0 +1,162 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { Chip, Stack } from '@radenadri/void-ui'
+
+# Chip
+
+A compact element for displaying tags, filters, or selections.
+
+## Preview
+
+<ComponentPreview
+  code={`import { Chip } from '@radenadri/void-ui'
+
+export default function ChipDemo() {
+  return (
+    <Stack direction="row" spacing="sm">
+      <Chip>Default</Chip>
+      <Chip variant="primary">Primary</Chip>
+      <Chip variant="success">Success</Chip>
+      <Chip variant="danger">Danger</Chip>
+    </Stack>
+  )
+}`}
+>
+  <Stack direction="row" spacing="sm">
+    <Chip>Default</Chip>
+    <Chip variant="primary">Primary</Chip>
+    <Chip variant="success">Success</Chip>
+    <Chip variant="danger">Danger</Chip>
+  </Stack>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { Chip } from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### All Variants
+
+<ComponentPreview
+  code={`<Stack spacing="sm">
+  <Stack direction="row" spacing="sm">
+    <Chip variant="default">Default</Chip>
+    <Chip variant="primary">Primary</Chip>
+    <Chip variant="secondary">Secondary</Chip>
+  </Stack>
+  <Stack direction="row" spacing="sm">
+    <Chip variant="success">Success</Chip>
+    <Chip variant="warning">Warning</Chip>
+    <Chip variant="danger">Danger</Chip>
+    <Chip variant="info">Info</Chip>
+  </Stack>
+</Stack>`}
+>
+  <Stack spacing="sm">
+    <Stack direction="row" spacing="sm">
+      <Chip variant="default">Default</Chip>
+      <Chip variant="primary">Primary</Chip>
+      <Chip variant="secondary">Secondary</Chip>
+    </Stack>
+    <Stack direction="row" spacing="sm">
+      <Chip variant="success">Success</Chip>
+      <Chip variant="warning">Warning</Chip>
+      <Chip variant="danger">Danger</Chip>
+      <Chip variant="info">Info</Chip>
+    </Stack>
+  </Stack>
+</ComponentPreview>
+
+### Sizes
+
+<ComponentPreview
+  code={`<Stack direction="row" spacing="sm" align="center">
+  <Chip size="sm">Small</Chip>
+  <Chip size="md">Medium</Chip>
+  <Chip size="lg">Large</Chip>
+</Stack>`}
+>
+  <Stack direction="row" spacing="sm" align="center">
+    <Chip size="sm">Small</Chip>
+    <Chip size="md">Medium</Chip>
+    <Chip size="lg">Large</Chip>
+  </Stack>
+</ComponentPreview>
+
+### Pill Shape
+
+<ComponentPreview
+  code={`<Stack direction="row" spacing="sm">
+  <Chip pill>React</Chip>
+  <Chip pill variant="primary">TypeScript</Chip>
+  <Chip pill variant="success">Tailwind</Chip>
+</Stack>`}
+>
+  <Stack direction="row" spacing="sm">
+    <Chip pill>React</Chip>
+    <Chip pill variant="primary">TypeScript</Chip>
+    <Chip pill variant="success">Tailwind</Chip>
+  </Stack>
+</ComponentPreview>
+
+### Removable
+
+Pass `onRemove` to show a remove button.
+
+<ComponentPreview
+  code={`<Stack direction="row" spacing="sm">
+  <Chip onRemove={() => console.log('removed')}>Removable</Chip>
+  <Chip variant="primary" onRemove={() => console.log('removed')}>Primary</Chip>
+  <Chip variant="danger" onRemove={() => console.log('removed')}>Danger</Chip>
+</Stack>`}
+>
+  <Stack direction="row" spacing="sm">
+    <Chip onRemove={() => {}}>Removable</Chip>
+    <Chip variant="primary" onRemove={() => {}}>Primary</Chip>
+    <Chip variant="danger" onRemove={() => {}}>Danger</Chip>
+  </Stack>
+</ComponentPreview>
+
+## API Reference
+
+<PropsTable
+  props={[
+    {
+      name: 'variant',
+      type: "'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info'",
+      default: "'default'",
+      description: 'The visual style.',
+    },
+    {
+      name: 'size',
+      type: "'sm' | 'md' | 'lg'",
+      default: "'md'",
+      description: 'The size of the chip.',
+    },
+    {
+      name: 'pill',
+      type: 'boolean',
+      default: 'false',
+      description: 'Use pill (fully rounded) shape.',
+    },
+    {
+      name: 'onRemove',
+      type: '() => void',
+      description: 'Callback when remove button is clicked. Shows remove button when provided.',
+    },
+    {
+      name: 'children',
+      type: 'ReactNode',
+      required: true,
+      description: 'The chip content.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Additional CSS classes.',
+    },
+  ]}
+/>

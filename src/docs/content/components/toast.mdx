@@ -1,0 +1,140 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { Button, Stack } from '@radenadri/void-ui'
+
+# Toast
+
+A succinct message that is displayed temporarily.
+
+## Preview
+
+<ComponentPreview
+  code={`import { toast } from '@radenadri/void-ui'
+
+export default function ToastDemo() {
+  return (
+    <Button onClick={() => toast('Hello! This is a toast message.')}>
+      Show Toast
+    </Button>
+  )
+}`}
+>
+  <Button onClick={() => alert('Toast would appear here')}>
+    Show Toast
+  </Button>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { toast, Toaster } from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Setup
+
+Add the `Toaster` component to your app root:
+
+<CodeBlock
+  code={`import { Toaster } from '@radenadri/void-ui'
+
+function App() {
+  return (
+    <>
+      {/* Your app content */}
+      <Toaster />
+    </>
+  )
+}`}
+  language="tsx"
+/>
+
+## Usage
+
+### Basic Toast
+
+<CodeBlock
+  code={`toast('This is a toast message')`}
+  language="tsx"
+/>
+
+### Toast Variants
+
+<CodeBlock
+  code={`// Success
+toast.success('Operation completed!')
+
+// Error
+toast.error('Something went wrong')
+
+// Warning
+toast.warning('Please check your input')
+
+// Info
+toast.info('New update available')`}
+  language="tsx"
+/>
+
+### With Description
+
+<CodeBlock
+  code={`toast('Event Created', {
+  description: 'Your event has been scheduled for tomorrow at 3pm.'
+})`}
+  language="tsx"
+/>
+
+### With Action
+
+<CodeBlock
+  code={`toast('File deleted', {
+  action: {
+    label: 'Undo',
+    onClick: () => console.log('Undo clicked')
+  }
+})`}
+  language="tsx"
+/>
+
+## API Reference
+
+### toast()
+
+<PropsTable
+  props={[
+    {
+      name: 'message',
+      type: 'string',
+      required: true,
+      description: 'The toast message.',
+    },
+    {
+      name: 'options.description',
+      type: 'string',
+      description: 'Additional description text.',
+    },
+    {
+      name: 'options.duration',
+      type: 'number',
+      default: '4000',
+      description: 'Duration in milliseconds.',
+    },
+    {
+      name: 'options.action',
+      type: '{ label: string; onClick: () => void }',
+      description: 'Action button configuration.',
+    },
+  ]}
+/>
+
+### Toaster
+
+<PropsTable
+  props={[
+    {
+      name: 'position',
+      type: "'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'",
+      default: "'bottom-right'",
+      description: 'Position of the toasts.',
+    },
+  ]}
+/>

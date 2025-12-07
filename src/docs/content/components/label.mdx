@@ -1,0 +1,147 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { Label, Input, Stack, Checkbox, Switch } from '@radenadri/void-ui'
+
+# Label
+
+A simple label component for form controls. For more complex forms, consider using `FieldRoot` with `FieldLabel`.
+
+## Preview
+
+<ComponentPreview
+  code={`import { Label } from '@radenadri/void-ui'
+
+export default function LabelDemo() {
+  return <Label>Email Address</Label>
+}`}
+>
+  <Label>Email Address</Label>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { Label } from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### With Input
+
+<ComponentPreview
+  code={`<div className="space-y-1.5">
+  <Label htmlFor="username">Username</Label>
+  <Input id="username" placeholder="Enter username" />
+</div>`}
+>
+  <div className="space-y-1.5 w-full max-w-sm">
+    <Label htmlFor="username">Username</Label>
+    <Input id="username" placeholder="Enter username" />
+  </div>
+</ComponentPreview>
+
+### Required Indicator
+
+<ComponentPreview
+  code={`<div className="space-y-1.5">
+  <Label htmlFor="email" required>Email</Label>
+  <Input id="email" type="email" placeholder="you@example.com" />
+</div>`}
+>
+  <div className="space-y-1.5 w-full max-w-sm">
+    <Label htmlFor="email" required>Email</Label>
+    <Input id="email" type="email" placeholder="you@example.com" />
+  </div>
+</ComponentPreview>
+
+### With Checkbox
+
+<ComponentPreview
+  code={`<div className="flex items-center gap-2">
+  <Checkbox id="terms" />
+  <Label htmlFor="terms" className="cursor-pointer">
+    I agree to the terms and conditions
+  </Label>
+</div>`}
+>
+  <div className="flex items-center gap-2">
+    <Checkbox id="terms" />
+    <Label htmlFor="terms" className="cursor-pointer">
+      I agree to the terms and conditions
+    </Label>
+  </div>
+</ComponentPreview>
+
+### With Switch
+
+<ComponentPreview
+  code={`<div className="flex items-center justify-between w-full max-w-xs">
+  <Label htmlFor="notifications">Enable notifications</Label>
+  <Switch id="notifications" />
+</div>`}
+>
+  <div className="flex items-center justify-between w-full max-w-xs">
+    <Label htmlFor="notifications">Enable notifications</Label>
+    <Switch id="notifications" />
+  </div>
+</ComponentPreview>
+
+### Form Example
+
+<ComponentPreview
+  code={`<Stack spacing="lg" className="w-full max-w-sm">
+  <div className="space-y-1.5">
+    <Label htmlFor="name" required>Full Name</Label>
+    <Input id="name" placeholder="John Doe" />
+  </div>
+  <div className="space-y-1.5">
+    <Label htmlFor="company">Company</Label>
+    <Input id="company" placeholder="Acme Inc. (optional)" />
+  </div>
+</Stack>`}
+>
+  <Stack spacing="lg" className="w-full max-w-sm">
+    <div className="space-y-1.5">
+      <Label htmlFor="name" required>Full Name</Label>
+      <Input id="name" placeholder="John Doe" />
+    </div>
+    <div className="space-y-1.5">
+      <Label htmlFor="company">Company</Label>
+      <Input id="company" placeholder="Acme Inc. (optional)" />
+    </div>
+  </Stack>
+</ComponentPreview>
+
+## API Reference
+
+<PropsTable
+  props={[
+    {
+      name: 'htmlFor',
+      type: 'string',
+      description: 'ID of the associated form control.',
+    },
+    {
+      name: 'required',
+      type: 'boolean',
+      default: 'false',
+      description: 'Show a red asterisk to indicate required field.',
+    },
+    {
+      name: 'children',
+      type: 'ReactNode',
+      required: true,
+      description: 'The label text.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Additional CSS classes (e.g., cursor-pointer for clickable labels).',
+    },
+  ]}
+/>
+
+## When to Use
+
+- **Label** - Simple standalone label for basic forms
+- **FieldLabel** - Use with `FieldRoot` for forms with descriptions and validation

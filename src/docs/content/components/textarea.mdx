@@ -1,0 +1,88 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { Textarea, Stack } from '@radenadri/void-ui'
+
+# Textarea
+
+A multi-line text input field.
+
+## Preview
+
+<ComponentPreview
+  code={`import { Textarea } from '@radenadri/void-ui'
+
+export default function TextareaDemo() {
+  return <Textarea placeholder="Type your message here..." />
+}`}
+>
+  <div className="w-full max-w-md">
+    <Textarea placeholder="Type your message here..." />
+  </div>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { Textarea } from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### Basic
+
+<ComponentPreview
+  code={`<Textarea placeholder="Enter description..." />`}
+>
+  <div className="w-full max-w-md">
+    <Textarea placeholder="Enter description..." />
+  </div>
+</ComponentPreview>
+
+### With Rows
+
+<ComponentPreview
+  code={`<Textarea placeholder="Write a long message..." rows={6} />`}
+>
+  <div className="w-full max-w-md">
+    <Textarea placeholder="Write a long message..." rows={6} />
+  </div>
+</ComponentPreview>
+
+### Disabled
+
+<ComponentPreview
+  code={`<Textarea placeholder="Cannot edit..." disabled />`}
+>
+  <div className="w-full max-w-md">
+    <Textarea placeholder="Cannot edit..." disabled />
+  </div>
+</ComponentPreview>
+
+## API Reference
+
+<PropsTable
+  props={[
+    {
+      name: 'placeholder',
+      type: 'string',
+      description: 'Placeholder text.',
+    },
+    {
+      name: 'rows',
+      type: 'number',
+      default: '3',
+      description: 'Number of visible text lines.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      default: 'false',
+      description: 'Disable the textarea.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Additional CSS classes.',
+    },
+  ]}
+/>

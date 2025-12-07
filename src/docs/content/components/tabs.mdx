@@ -1,0 +1,295 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { Tabs, TabsList, TabsTrigger, TabsContent, Card, CardContent, Input, Button, FieldRoot, FieldLabel, Stack } from '@radenadri/void-ui'
+
+# Tabs
+
+A set of layered sections of content that display one panel at a time.
+
+## Preview
+
+<ComponentPreview
+  code={`import { Tabs, TabsList, TabsTrigger, TabsContent } from '@radenadri/void-ui'
+
+export default function TabsDemo() {
+  return (
+    <Tabs defaultValue="account">
+      <TabsList>
+        <TabsTrigger value="account">Account</TabsTrigger>
+        <TabsTrigger value="password">Password</TabsTrigger>
+        <TabsTrigger value="settings">Settings</TabsTrigger>
+      </TabsList>
+      <TabsContent value="account">
+        Manage your account settings here.
+      </TabsContent>
+      <TabsContent value="password">
+        Change your password here.
+      </TabsContent>
+      <TabsContent value="settings">
+        Configure your preferences here.
+      </TabsContent>
+    </Tabs>
+  )
+}`}
+>
+  <Tabs defaultValue="account" className="w-full max-w-md">
+    <TabsList>
+      <TabsTrigger value="account">Account</TabsTrigger>
+      <TabsTrigger value="password">Password</TabsTrigger>
+      <TabsTrigger value="settings">Settings</TabsTrigger>
+    </TabsList>
+    <TabsContent value="account">
+      <p className="text-sm text-(--void-muted)">Manage your account settings here.</p>
+    </TabsContent>
+    <TabsContent value="password">
+      <p className="text-sm text-(--void-muted)">Change your password here.</p>
+    </TabsContent>
+    <TabsContent value="settings">
+      <p className="text-sm text-(--void-muted)">Configure your preferences here.</p>
+    </TabsContent>
+  </Tabs>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { Tabs, TabsList, TabsTrigger, TabsContent } from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### With Card Content
+
+<ComponentPreview
+  code={`<Tabs defaultValue="account" className="w-full max-w-md">
+  <TabsList>
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="password">Password</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">
+    <Card>
+      <CardContent className="space-y-4 pt-4">
+        <FieldRoot>
+          <FieldLabel>Name</FieldLabel>
+          <Input placeholder="Enter your name" />
+        </FieldRoot>
+        <FieldRoot>
+          <FieldLabel>Email</FieldLabel>
+          <Input type="email" placeholder="Enter your email" />
+        </FieldRoot>
+        <Button>Save changes</Button>
+      </CardContent>
+    </Card>
+  </TabsContent>
+  <TabsContent value="password">
+    <Card>
+      <CardContent className="space-y-4 pt-4">
+        <FieldRoot>
+          <FieldLabel>Current password</FieldLabel>
+          <Input type="password" />
+        </FieldRoot>
+        <FieldRoot>
+          <FieldLabel>New password</FieldLabel>
+          <Input type="password" />
+        </FieldRoot>
+        <Button>Update password</Button>
+      </CardContent>
+    </Card>
+  </TabsContent>
+</Tabs>`}
+>
+  <Tabs defaultValue="account" className="w-full max-w-md">
+    <TabsList>
+      <TabsTrigger value="account">Account</TabsTrigger>
+      <TabsTrigger value="password">Password</TabsTrigger>
+    </TabsList>
+    <TabsContent value="account">
+      <Card>
+        <CardContent className="space-y-4 pt-4">
+          <FieldRoot>
+            <FieldLabel>Name</FieldLabel>
+            <Input placeholder="Enter your name" />
+          </FieldRoot>
+          <FieldRoot>
+            <FieldLabel>Email</FieldLabel>
+            <Input type="email" placeholder="Enter your email" />
+          </FieldRoot>
+          <Button>Save changes</Button>
+        </CardContent>
+      </Card>
+    </TabsContent>
+    <TabsContent value="password">
+      <Card>
+        <CardContent className="space-y-4 pt-4">
+          <FieldRoot>
+            <FieldLabel>Current password</FieldLabel>
+            <Input type="password" />
+          </FieldRoot>
+          <FieldRoot>
+            <FieldLabel>New password</FieldLabel>
+            <Input type="password" />
+          </FieldRoot>
+          <Button>Update password</Button>
+        </CardContent>
+      </Card>
+    </TabsContent>
+  </Tabs>
+</ComponentPreview>
+
+### Disabled Tab
+
+<ComponentPreview
+  code={`<Tabs defaultValue="active">
+  <TabsList>
+    <TabsTrigger value="active">Active</TabsTrigger>
+    <TabsTrigger value="disabled" disabled>Disabled</TabsTrigger>
+    <TabsTrigger value="other">Other</TabsTrigger>
+  </TabsList>
+  <TabsContent value="active">Active tab content</TabsContent>
+  <TabsContent value="other">Other tab content</TabsContent>
+</Tabs>`}
+>
+  <Tabs defaultValue="active" className="w-full max-w-md">
+    <TabsList>
+      <TabsTrigger value="active">Active</TabsTrigger>
+      <TabsTrigger value="disabled" disabled>Disabled</TabsTrigger>
+      <TabsTrigger value="other">Other</TabsTrigger>
+    </TabsList>
+    <TabsContent value="active">
+      <p className="text-sm text-(--void-muted)">Active tab content</p>
+    </TabsContent>
+    <TabsContent value="other">
+      <p className="text-sm text-(--void-muted)">Other tab content</p>
+    </TabsContent>
+  </Tabs>
+</ComponentPreview>
+
+### Full Width
+
+<ComponentPreview
+  code={`<Tabs defaultValue="overview" className="w-full">
+  <TabsList className="w-full grid grid-cols-3">
+    <TabsTrigger value="overview">Overview</TabsTrigger>
+    <TabsTrigger value="analytics">Analytics</TabsTrigger>
+    <TabsTrigger value="reports">Reports</TabsTrigger>
+  </TabsList>
+  <TabsContent value="overview">Overview content</TabsContent>
+  <TabsContent value="analytics">Analytics content</TabsContent>
+  <TabsContent value="reports">Reports content</TabsContent>
+</Tabs>`}
+>
+  <Tabs defaultValue="overview" className="w-full max-w-md">
+    <TabsList className="w-full grid grid-cols-3">
+      <TabsTrigger value="overview">Overview</TabsTrigger>
+      <TabsTrigger value="analytics">Analytics</TabsTrigger>
+      <TabsTrigger value="reports">Reports</TabsTrigger>
+    </TabsList>
+    <TabsContent value="overview">
+      <p className="text-sm text-(--void-muted)">Overview content</p>
+    </TabsContent>
+    <TabsContent value="analytics">
+      <p className="text-sm text-(--void-muted)">Analytics content</p>
+    </TabsContent>
+    <TabsContent value="reports">
+      <p className="text-sm text-(--void-muted)">Reports content</p>
+    </TabsContent>
+  </Tabs>
+</ComponentPreview>
+
+### Controlled
+
+<CodeBlock
+  code={`import { useState } from 'react'
+
+function ControlledTabs() {
+  const [value, setValue] = useState('tab1')
+
+  return (
+    <Tabs value={value} onValueChange={setValue}>
+      <TabsList>
+        <TabsTrigger value="tab1">Tab 1</TabsTrigger>
+        <TabsTrigger value="tab2">Tab 2</TabsTrigger>
+      </TabsList>
+      <TabsContent value="tab1">Content 1</TabsContent>
+      <TabsContent value="tab2">Content 2</TabsContent>
+    </Tabs>
+  )
+}`}
+  language="tsx"
+/>
+
+## API Reference
+
+### Tabs
+
+<PropsTable
+  props={[
+    {
+      name: 'defaultValue',
+      type: 'string',
+      description: 'Default selected tab (uncontrolled).',
+    },
+    {
+      name: 'value',
+      type: 'string',
+      description: 'Controlled selected tab.',
+    },
+    {
+      name: 'onValueChange',
+      type: '(value: string) => void',
+      description: 'Callback when selected tab changes.',
+    },
+  ]}
+/>
+
+### TabsList
+
+Container for tab triggers. Use `grid grid-cols-N` for full-width tabs.
+
+### TabsTrigger
+
+<PropsTable
+  props={[
+    {
+      name: 'value',
+      type: 'string',
+      required: true,
+      description: 'Unique value for the tab.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      default: 'false',
+      description: 'Disable the tab.',
+    },
+  ]}
+/>
+
+### TabsContent
+
+<PropsTable
+  props={[
+    {
+      name: 'value',
+      type: 'string',
+      required: true,
+      description: 'Value matching the trigger.',
+    },
+  ]}
+/>
+
+## Styling
+
+TabsTrigger includes the following states:
+
+- **Hover** - Background highlight and text color change
+- **Active** - Subtle scale down effect on click
+- **Selected** - Surface background with shadow
+- **Disabled** - Reduced opacity
+
+## Accessibility
+
+- Follows WAI-ARIA Tabs pattern
+- Arrow keys navigate between tabs
+- `Home` / `End` keys jump to first/last tab
+- Tab panels are associated with triggers via `aria-controls`

@@ -1,0 +1,174 @@
+import { CodeBlock } from '@/docs/components'
+
+# Quick Start
+
+Get up and running with Void UI in minutes.
+
+## Installation
+
+<CodeBlock
+  code={`pnpm add @radenadri/void-ui @phosphor-icons/react`}
+  language="bash"
+  filename="Terminal"
+/>
+
+Or with other package managers:
+
+<CodeBlock
+  code={`npm install @radenadri/void-ui @phosphor-icons/react
+yarn add @radenadri/void-ui @phosphor-icons/react
+bun add @radenadri/void-ui @phosphor-icons/react`}
+  language="bash"
+  filename="Terminal"
+/>
+
+### Requirements
+
+- React 18+
+- Tailwind CSS 4+
+
+## Setup
+
+### 1. Import Styles
+
+Add Void UI styles to your CSS file:
+
+<CodeBlock
+  code={`@import "tailwindcss";
+@import "@radenadri/void-ui/styles.css";
+
+@source "../node_modules/@radenadri/void-ui/dist";`}
+  language="css"
+  filename="app.css"
+/>
+
+### 2. Add Dark Class
+
+Void UI is dark-first. Add the `dark` class to your HTML:
+
+<CodeBlock
+  code={`<html class="dark">`}
+  language="html"
+  filename="index.html"
+/>
+
+## Usage
+
+Import and use components:
+
+<CodeBlock
+  code={`import { Button, Card, CardHeader, CardTitle, CardContent } from '@radenadri/void-ui'
+
+export default function App() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Welcome to Void UI</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <p className="text-(--void-muted) mb-4">
+          Build modern web applications with ease.
+        </p>
+        <Button>Get Started</Button>
+      </CardContent>
+    </Card>
+  )
+}`}
+  language="tsx"
+  filename="App.tsx"
+/>
+
+## Icons
+
+Void UI re-exports Phosphor Icons:
+
+<CodeBlock
+  code={`import { Button, Bell, Gear, User } from '@radenadri/void-ui'
+
+function Header() {
+  return (
+    <div className="flex gap-2">
+      <Button variant="ghost" size="icon"><Bell size={20} /></Button>
+      <Button variant="ghost" size="icon"><Gear size={20} /></Button>
+      <Button variant="ghost" size="icon"><User size={20} /></Button>
+    </div>
+  )
+}`}
+  language="tsx"
+  filename="Header.tsx"
+/>
+
+## Providers
+
+Some components require providers:
+
+<CodeBlock
+  code={`import { TooltipProvider, ToastProvider, ToastViewport } from '@radenadri/void-ui'
+
+function App() {
+  return (
+    <TooltipProvider>
+      <ToastProvider>
+        {/* Your app */}
+        <ToastViewport />
+      </ToastProvider>
+    </TooltipProvider>
+  )
+}`}
+  language="tsx"
+  filename="App.tsx"
+/>
+
+## Form Example
+
+<CodeBlock
+  code={`import { 
+  FieldRoot, 
+  FieldLabel, 
+  FieldDescription, 
+  Input, 
+  Select, 
+  SelectTrigger, 
+  SelectContent, 
+  SelectItem,
+  Button 
+} from '@radenadri/void-ui'
+
+function ContactForm() {
+  return (
+    <form className="space-y-4">
+      <FieldRoot>
+        <FieldLabel>Name</FieldLabel>
+        <Input placeholder="Enter your name" />
+      </FieldRoot>
+      
+      <FieldRoot>
+        <FieldLabel>Country</FieldLabel>
+        <Select>
+          <SelectTrigger placeholder="Select country" />
+          <SelectContent>
+            <SelectItem value="us">United States</SelectItem>
+            <SelectItem value="uk">United Kingdom</SelectItem>
+          </SelectContent>
+        </Select>
+      </FieldRoot>
+      
+      <Button type="submit">Submit</Button>
+    </form>
+  )
+}`}
+  language="tsx"
+  filename="ContactForm.tsx"
+/>
+
+## Next Steps
+
+Explore the components:
+
+- [Button](/docs/components/button) - Multiple variants and sizes
+- [Input](/docs/components/input) - Text input with Field integration
+- [Select](/docs/components/select) - Composable dropdown
+- [Dialog](/docs/components/dialog) - Modal dialogs
+- [Toast](/docs/components/toast) - Notifications
+
+Browse all components in the sidebar.

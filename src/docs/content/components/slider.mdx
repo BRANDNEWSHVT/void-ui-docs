@@ -1,0 +1,189 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { Slider, SliderLabel, Stack, FieldRoot, FieldLabel, FieldDescription } from '@radenadri/void-ui'
+
+# Slider
+
+An input for selecting a value from a range by dragging a thumb.
+
+## Preview
+
+<ComponentPreview
+  code={`import { Slider } from '@radenadri/void-ui'
+
+export default function SliderDemo() {
+  return <Slider defaultValue={50} />
+}`}
+>
+  <div className="w-full max-w-md">
+    <Slider defaultValue={50} />
+  </div>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { Slider, SliderLabel } from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### With Value Display
+
+<ComponentPreview
+  code={`<Slider defaultValue={75} showValue />`}
+>
+  <div className="w-full max-w-md">
+    <Slider defaultValue={75} showValue />
+  </div>
+</ComponentPreview>
+
+### With Label
+
+<ComponentPreview
+  code={`<div className="space-y-2 w-full max-w-md">
+  <SliderLabel>Volume</SliderLabel>
+  <Slider defaultValue={50} />
+</div>`}
+>
+  <div className="space-y-2 w-full max-w-md">
+    <SliderLabel>Volume</SliderLabel>
+    <Slider defaultValue={50} />
+  </div>
+</ComponentPreview>
+
+### With Field Components
+
+<ComponentPreview
+  code={`<FieldRoot className="w-full max-w-md">
+  <FieldLabel>Brightness</FieldLabel>
+  <FieldDescription>Adjust screen brightness</FieldDescription>
+  <Slider defaultValue={70} showValue className="mt-2" />
+</FieldRoot>`}
+>
+  <FieldRoot className="w-full max-w-md">
+    <FieldLabel>Brightness</FieldLabel>
+    <FieldDescription>Adjust screen brightness</FieldDescription>
+    <Slider defaultValue={70} showValue className="mt-2" />
+  </FieldRoot>
+</ComponentPreview>
+
+### With Step
+
+<ComponentPreview
+  code={`<div className="space-y-2 w-full max-w-md">
+  <SliderLabel>Quality (steps of 25)</SliderLabel>
+  <Slider defaultValue={50} step={25} showValue />
+</div>`}
+>
+  <div className="space-y-2 w-full max-w-md">
+    <SliderLabel>Quality (steps of 25)</SliderLabel>
+    <Slider defaultValue={50} step={25} showValue />
+  </div>
+</ComponentPreview>
+
+### Custom Range
+
+<ComponentPreview
+  code={`<div className="space-y-2 w-full max-w-md">
+  <SliderLabel>Temperature (10-40)</SliderLabel>
+  <Slider defaultValue={22} min={10} max={40} showValue />
+</div>`}
+>
+  <div className="space-y-2 w-full max-w-md">
+    <SliderLabel>Temperature (10-40)</SliderLabel>
+    <Slider defaultValue={22} min={10} max={40} showValue />
+  </div>
+</ComponentPreview>
+
+### Disabled
+
+<ComponentPreview
+  code={`<Slider defaultValue={50} disabled />`}
+>
+  <div className="w-full max-w-md">
+    <Slider defaultValue={50} disabled />
+  </div>
+</ComponentPreview>
+
+### Controlled
+
+<CodeBlock
+  code={`import { useState } from 'react'
+
+function ControlledSlider() {
+  const [value, setValue] = useState(50)
+
+  return (
+    <div className="space-y-2">
+      <SliderLabel>Value: {value}</SliderLabel>
+      <Slider value={value} onValueChange={setValue} />
+    </div>
+  )
+}`}
+  language="tsx"
+/>
+
+## API Reference
+
+### Slider
+
+<PropsTable
+  props={[
+    {
+      name: 'value',
+      type: 'number',
+      description: 'Controlled value.',
+    },
+    {
+      name: 'defaultValue',
+      type: 'number',
+      description: 'Default value (uncontrolled).',
+    },
+    {
+      name: 'onValueChange',
+      type: '(value: number) => void',
+      description: 'Callback when value changes.',
+    },
+    {
+      name: 'min',
+      type: 'number',
+      default: '0',
+      description: 'Minimum value.',
+    },
+    {
+      name: 'max',
+      type: 'number',
+      default: '100',
+      description: 'Maximum value.',
+    },
+    {
+      name: 'step',
+      type: 'number',
+      default: '1',
+      description: 'Step increment.',
+    },
+    {
+      name: 'showValue',
+      type: 'boolean',
+      default: 'false',
+      description: 'Display current value above the slider.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      default: 'false',
+      description: 'Disable the slider.',
+    },
+  ]}
+/>
+
+### SliderLabel
+
+A label component for the slider.
+
+## Accessibility
+
+- Supports keyboard navigation (arrow keys)
+- Focus ring is visible when focused
+- `aria-valuemin`, `aria-valuemax`, `aria-valuenow` are set automatically

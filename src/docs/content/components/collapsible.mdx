@@ -1,0 +1,231 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { Collapsible, CollapsibleTrigger, CollapsibleContent, Button, Stack, Text } from '@radenadri/void-ui'
+
+# Collapsible
+
+An interactive component that expands/collapses content with smooth animations.
+
+## Preview
+
+<ComponentPreview
+  code={`import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@radenadri/void-ui'
+
+export default function CollapsibleDemo() {
+  return (
+    <Collapsible className="w-full">
+      <CollapsibleTrigger>
+        What is Void UI?
+      </CollapsibleTrigger>
+      <CollapsibleContent>
+        <p className="pt-2 pb-4 text-sm text-(--void-muted)">
+          Void UI is a modern React component library built on Base UI 
+          and styled with Tailwind CSS. It provides accessible, 
+          customizable components for building modern web applications.
+        </p>
+      </CollapsibleContent>
+    </Collapsible>
+  )
+}`}
+>
+  <Collapsible className="w-full max-w-md">
+    <CollapsibleTrigger>
+      What is Void UI?
+    </CollapsibleTrigger>
+    <CollapsibleContent>
+      <p className="pt-2 pb-4 text-sm text-(--void-muted)">
+        Void UI is a modern React component library built on Base UI 
+        and styled with Tailwind CSS. It provides accessible, 
+        customizable components for building modern web applications.
+      </p>
+    </CollapsibleContent>
+  </Collapsible>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### Default Open
+
+<ComponentPreview
+  code={`<Collapsible defaultOpen>
+  <CollapsibleTrigger>
+    Click to collapse
+  </CollapsibleTrigger>
+  <CollapsibleContent>
+    <p className="pt-2 pb-4 text-sm text-(--void-muted)">
+      This content is visible by default and can be collapsed.
+    </p>
+  </CollapsibleContent>
+</Collapsible>`}
+>
+  <Collapsible defaultOpen className="w-full max-w-md">
+    <CollapsibleTrigger>
+      Click to collapse
+    </CollapsibleTrigger>
+    <CollapsibleContent>
+      <p className="pt-2 pb-4 text-sm text-(--void-muted)">
+        This content is visible by default and can be collapsed.
+      </p>
+    </CollapsibleContent>
+  </Collapsible>
+</ComponentPreview>
+
+### With Custom Trigger
+
+Use `showIcon={false}` to hide the default caret icon.
+
+<ComponentPreview
+  code={`<Collapsible>
+  <CollapsibleTrigger showIcon={false}>
+    <Button variant="outline-secondary" size="sm">
+      Toggle Details
+    </Button>
+  </CollapsibleTrigger>
+  <CollapsibleContent>
+    <div className="pt-3 pb-4 text-sm text-(--void-muted)">
+      Additional details that can be shown or hidden.
+    </div>
+  </CollapsibleContent>
+</Collapsible>`}
+>
+  <Collapsible className="w-full max-w-md">
+    <CollapsibleTrigger showIcon={false}>
+      <Button variant="outline-secondary" size="sm">
+        Toggle Details
+      </Button>
+    </CollapsibleTrigger>
+    <CollapsibleContent>
+      <div className="pt-3 pb-4 text-sm text-(--void-muted)">
+        Additional details that can be shown or hidden.
+      </div>
+    </CollapsibleContent>
+  </Collapsible>
+</ComponentPreview>
+
+### FAQ Style
+
+<ComponentPreview
+  code={`<Stack spacing="none" className="divide-y divide-(--void-border)">
+  <Collapsible>
+    <CollapsibleTrigger className="py-4">
+      How do I install Void UI?
+    </CollapsibleTrigger>
+    <CollapsibleContent>
+      <p className="pb-4 text-sm text-(--void-muted)">
+        Run npm install @radenadri/void-ui and import the styles.
+      </p>
+    </CollapsibleContent>
+  </Collapsible>
+  <Collapsible>
+    <CollapsibleTrigger className="py-4">
+      Is Void UI accessible?
+    </CollapsibleTrigger>
+    <CollapsibleContent>
+      <p className="pb-4 text-sm text-(--void-muted)">
+        Yes! All components are built on Base UI with WAI-ARIA compliance.
+      </p>
+    </CollapsibleContent>
+  </Collapsible>
+  <Collapsible>
+    <CollapsibleTrigger className="py-4">
+      Can I customize the theme?
+    </CollapsibleTrigger>
+    <CollapsibleContent>
+      <p className="pb-4 text-sm text-(--void-muted)">
+        Absolutely. Use CSS variables to customize colors, spacing, and more.
+      </p>
+    </CollapsibleContent>
+  </Collapsible>
+</Stack>`}
+>
+  <Stack spacing="none" className="w-full max-w-md divide-y divide-(--void-border)">
+    <Collapsible>
+      <CollapsibleTrigger className="py-4">
+        How do I install Void UI?
+      </CollapsibleTrigger>
+      <CollapsibleContent>
+        <p className="pb-4 text-sm text-(--void-muted)">
+          Run npm install @radenadri/void-ui and import the styles.
+        </p>
+      </CollapsibleContent>
+    </Collapsible>
+    <Collapsible>
+      <CollapsibleTrigger className="py-4">
+        Is Void UI accessible?
+      </CollapsibleTrigger>
+      <CollapsibleContent>
+        <p className="pb-4 text-sm text-(--void-muted)">
+          Yes! All components are built on Base UI with WAI-ARIA compliance.
+        </p>
+      </CollapsibleContent>
+    </Collapsible>
+    <Collapsible>
+      <CollapsibleTrigger className="py-4">
+        Can I customize the theme?
+      </CollapsibleTrigger>
+      <CollapsibleContent>
+        <p className="pb-4 text-sm text-(--void-muted)">
+          Absolutely. Use CSS variables to customize colors, spacing, and more.
+        </p>
+      </CollapsibleContent>
+    </Collapsible>
+  </Stack>
+</ComponentPreview>
+
+## API Reference
+
+### Collapsible
+
+<PropsTable
+  props={[
+    {
+      name: 'open',
+      type: 'boolean',
+      description: 'Controlled open state.',
+    },
+    {
+      name: 'defaultOpen',
+      type: 'boolean',
+      default: 'false',
+      description: 'Default open state (uncontrolled).',
+    },
+    {
+      name: 'onOpenChange',
+      type: '(open: boolean) => void',
+      description: 'Callback when open state changes.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Additional CSS classes.',
+    },
+  ]}
+/>
+
+### CollapsibleTrigger
+
+<PropsTable
+  props={[
+    {
+      name: 'showIcon',
+      type: 'boolean',
+      default: 'true',
+      description: 'Show the caret icon.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Additional CSS classes.',
+    },
+  ]}
+/>
+
+### CollapsibleContent
+
+The animated content panel that expands/collapses.

@@ -1,0 +1,293 @@
+import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
+import { Dropdown, DropdownTrigger, DropdownContent, DropdownItem, DropdownSeparator, DropdownGroup, DropdownGroupLabel, Button } from '@radenadri/void-ui'
+import { User, Gear, SignOut, Copy, Trash, CaretDown, DotsThree, PencilSimple, Link, Archive } from '@phosphor-icons/react'
+
+# Dropdown
+
+A menu that appears on click with a list of actions. Features smooth animations and keyboard navigation.
+
+## Preview
+
+<ComponentPreview
+  code={`import { Dropdown, DropdownTrigger, DropdownContent, DropdownItem, DropdownSeparator, Button, User, Gear, SignOut } from '@radenadri/void-ui'
+
+export default function DropdownDemo() {
+  return (
+    <Dropdown>
+      <DropdownTrigger>
+        <Button variant="outline-secondary">
+          My Account
+          <CaretDown size={14} />
+        </Button>
+      </DropdownTrigger>
+      <DropdownContent>
+        <DropdownItem>
+          <User size={16} />
+          Profile
+        </DropdownItem>
+        <DropdownItem>
+          <Gear size={16} />
+          Settings
+        </DropdownItem>
+        <DropdownSeparator />
+        <DropdownItem>
+          <SignOut size={16} />
+          Log out
+        </DropdownItem>
+      </DropdownContent>
+    </Dropdown>
+  )
+}`}
+>
+  <Dropdown>
+    <DropdownTrigger>
+      <Button variant="outline-secondary">
+        My Account
+        <CaretDown size={14} />
+      </Button>
+    </DropdownTrigger>
+    <DropdownContent>
+      <DropdownItem>
+        <User size={16} />
+        Profile
+      </DropdownItem>
+      <DropdownItem>
+        <Gear size={16} />
+        Settings
+      </DropdownItem>
+      <DropdownSeparator />
+      <DropdownItem>
+        <SignOut size={16} />
+        Log out
+      </DropdownItem>
+    </DropdownContent>
+  </Dropdown>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock
+  code={`import { 
+  Dropdown, 
+  DropdownTrigger, 
+  DropdownContent, 
+  DropdownItem,
+  DropdownSeparator,
+  DropdownGroup,
+  DropdownGroupLabel
+} from '@radenadri/void-ui'`}
+  language="tsx"
+/>
+
+## Usage
+
+### Actions Menu
+
+<ComponentPreview
+  code={`<Dropdown>
+  <DropdownTrigger>
+    <Button variant="ghost" size="icon">
+      <DotsThree size={20} weight="bold" />
+    </Button>
+  </DropdownTrigger>
+  <DropdownContent>
+    <DropdownItem>
+      <PencilSimple size={16} />
+      Edit
+    </DropdownItem>
+    <DropdownItem>
+      <Copy size={16} />
+      Duplicate
+    </DropdownItem>
+    <DropdownItem>
+      <Link size={16} />
+      Copy Link
+    </DropdownItem>
+    <DropdownSeparator />
+    <DropdownItem>
+      <Archive size={16} />
+      Archive
+    </DropdownItem>
+    <DropdownItem className="text-(--void-danger)">
+      <Trash size={16} />
+      Delete
+    </DropdownItem>
+  </DropdownContent>
+</Dropdown>`}
+>
+  <Dropdown>
+    <DropdownTrigger>
+      <Button variant="ghost" size="icon">
+        <DotsThree size={20} weight="bold" />
+      </Button>
+    </DropdownTrigger>
+    <DropdownContent>
+      <DropdownItem>
+        <PencilSimple size={16} />
+        Edit
+      </DropdownItem>
+      <DropdownItem>
+        <Copy size={16} />
+        Duplicate
+      </DropdownItem>
+      <DropdownItem>
+        <Link size={16} />
+        Copy Link
+      </DropdownItem>
+      <DropdownSeparator />
+      <DropdownItem>
+        <Archive size={16} />
+        Archive
+      </DropdownItem>
+      <DropdownItem className="text-(--void-danger)">
+        <Trash size={16} />
+        Delete
+      </DropdownItem>
+    </DropdownContent>
+  </Dropdown>
+</ComponentPreview>
+
+### With Groups
+
+<ComponentPreview
+  code={`<Dropdown>
+  <DropdownTrigger>
+    <Button variant="default">Options</Button>
+  </DropdownTrigger>
+  <DropdownContent className="w-48">
+    <DropdownGroup>
+      <DropdownGroupLabel>Account</DropdownGroupLabel>
+      <DropdownItem>Profile</DropdownItem>
+      <DropdownItem>Billing</DropdownItem>
+    </DropdownGroup>
+    <DropdownSeparator />
+    <DropdownGroup>
+      <DropdownGroupLabel>Team</DropdownGroupLabel>
+      <DropdownItem>Invite Members</DropdownItem>
+      <DropdownItem>Team Settings</DropdownItem>
+    </DropdownGroup>
+  </DropdownContent>
+</Dropdown>`}
+>
+  <Dropdown>
+    <DropdownTrigger>
+      <Button variant="default">Options</Button>
+    </DropdownTrigger>
+    <DropdownContent className="w-48">
+      <DropdownGroup>
+        <DropdownGroupLabel>Account</DropdownGroupLabel>
+        <DropdownItem>Profile</DropdownItem>
+        <DropdownItem>Billing</DropdownItem>
+      </DropdownGroup>
+      <DropdownSeparator />
+      <DropdownGroup>
+        <DropdownGroupLabel>Team</DropdownGroupLabel>
+        <DropdownItem>Invite Members</DropdownItem>
+        <DropdownItem>Team Settings</DropdownItem>
+      </DropdownGroup>
+    </DropdownContent>
+  </Dropdown>
+</ComponentPreview>
+
+### With Disabled Items
+
+<ComponentPreview
+  code={`<Dropdown>
+  <DropdownTrigger>
+    <Button>Actions</Button>
+  </DropdownTrigger>
+  <DropdownContent>
+    <DropdownItem>Edit</DropdownItem>
+    <DropdownItem>Share</DropdownItem>
+    <DropdownItem disabled>Export (Coming Soon)</DropdownItem>
+    <DropdownSeparator />
+    <DropdownItem disabled>Delete (No Permission)</DropdownItem>
+  </DropdownContent>
+</Dropdown>`}
+>
+  <Dropdown>
+    <DropdownTrigger>
+      <Button>Actions</Button>
+    </DropdownTrigger>
+    <DropdownContent>
+      <DropdownItem>Edit</DropdownItem>
+      <DropdownItem>Share</DropdownItem>
+      <DropdownItem disabled>Export (Coming Soon)</DropdownItem>
+      <DropdownSeparator />
+      <DropdownItem disabled>Delete (No Permission)</DropdownItem>
+    </DropdownContent>
+  </Dropdown>
+</ComponentPreview>
+
+## API Reference
+
+### Dropdown
+
+Root component that manages menu state.
+
+### DropdownTrigger
+
+The element that opens the dropdown when clicked.
+
+### DropdownContent
+
+Container for dropdown items with animations.
+
+<PropsTable
+  props={[
+    {
+      name: 'align',
+      type: "'start' | 'center' | 'end'",
+      default: "'start'",
+      description: 'Horizontal alignment relative to trigger.',
+    },
+    {
+      name: 'side',
+      type: "'top' | 'bottom'",
+      default: "'bottom'",
+      description: 'Which side of the trigger to render.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Additional CSS classes (e.g., w-48 for fixed width).',
+    },
+  ]}
+/>
+
+### DropdownItem
+
+<PropsTable
+  props={[
+    {
+      name: 'disabled',
+      type: 'boolean',
+      default: 'false',
+      description: 'Disable the item.',
+    },
+    {
+      name: 'onSelect',
+      type: '() => void',
+      description: 'Callback when item is selected.',
+    },
+    {
+      name: 'className',
+      type: 'string',
+      description: 'Additional CSS classes (e.g., text-(--void-danger) for destructive actions).',
+    },
+  ]}
+/>
+
+### DropdownSeparator
+
+A visual divider between items.
+
+### DropdownGroup & DropdownGroupLabel
+
+Group related items with an optional label.
+
+## Accessibility
+
+- Full keyboard navigation (Arrow keys, Enter, Escape)
+- Focus management and trapping
+- ARIA attributes for screen readers
