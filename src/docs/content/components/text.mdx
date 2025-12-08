@@ -1,9 +1,9 @@
 import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
-import { Text, Stack } from '@radenadri/void-ui'
+import { Text, TextLink, Strong, Code, Stack } from '@radenadri/void-ui'
 
 # Text
 
-Typography component for body text.
+Typography components for body text, links, and inline elements.
 
 ## Preview
 
@@ -20,7 +20,7 @@ export default function TextDemo() {
 ## Installation
 
 <CodeBlock
-  code={`import { Text } from '@radenadri/void-ui'`}
+  code={`import { Text, TextLink, Strong, Code } from '@radenadri/void-ui'`}
   language="tsx"
 />
 
@@ -30,58 +30,143 @@ export default function TextDemo() {
 
 <ComponentPreview
   code={`<Stack spacing="sm">
+  <Text size="xs">Extra small text</Text>
   <Text size="sm">Small text</Text>
-  <Text size="md">Medium text</Text>
+  <Text size="md">Medium text (default)</Text>
   <Text size="lg">Large text</Text>
+  <Text size="xl">Extra large text</Text>
 </Stack>`}
 >
   <Stack spacing="sm">
+    <Text size="xs">Extra small text</Text>
     <Text size="sm">Small text</Text>
-    <Text size="md">Medium text</Text>
+    <Text size="md">Medium text (default)</Text>
     <Text size="lg">Large text</Text>
+    <Text size="xl">Extra large text</Text>
   </Stack>
 </ComponentPreview>
 
-### Muted Text
+### Variants
 
 <ComponentPreview
-  code={`<Text muted>This is muted text for secondary information.</Text>`}
+  code={`<Stack spacing="sm">
+  <Text variant="default">Default text</Text>
+  <Text variant="muted">Muted text for secondary info</Text>
+  <Text variant="primary">Primary colored text</Text>
+  <Text variant="success">Success text</Text>
+  <Text variant="warning">Warning text</Text>
+  <Text variant="danger">Danger text</Text>
+</Stack>`}
 >
-  <Text muted>This is muted text for secondary information.</Text>
+  <Stack spacing="sm">
+    <Text variant="default">Default text</Text>
+    <Text variant="muted">Muted text for secondary info</Text>
+    <Text variant="primary">Primary colored text</Text>
+    <Text variant="success">Success text</Text>
+    <Text variant="warning">Warning text</Text>
+    <Text variant="danger">Danger text</Text>
+  </Stack>
+</ComponentPreview>
+
+### Weights
+
+<ComponentPreview
+  code={`<Stack spacing="sm">
+  <Text weight="normal">Normal weight</Text>
+  <Text weight="medium">Medium weight</Text>
+  <Text weight="semibold">Semibold weight</Text>
+  <Text weight="bold">Bold weight</Text>
+</Stack>`}
+>
+  <Stack spacing="sm">
+    <Text weight="normal">Normal weight</Text>
+    <Text weight="medium">Medium weight</Text>
+    <Text weight="semibold">Semibold weight</Text>
+    <Text weight="bold">Bold weight</Text>
+  </Stack>
+</ComponentPreview>
+
+### As Different Elements
+
+<ComponentPreview
+  code={`<Stack spacing="sm">
+  <Text as="p">Rendered as paragraph</Text>
+  <Text as="span">Rendered as span</Text>
+  <Text as="div">Rendered as div</Text>
+</Stack>`}
+>
+  <Stack spacing="sm">
+    <Text as="p">Rendered as paragraph</Text>
+    <Text as="span">Rendered as span</Text>
+    <Text as="div">Rendered as div</Text>
+  </Stack>
+</ComponentPreview>
+
+### TextLink
+
+<ComponentPreview
+  code={`<Text>
+  Check out the <TextLink href="https://github.com">GitHub repository</TextLink> for more info.
+</Text>`}
+>
+  <Text>
+    Check out the <TextLink href="https://github.com">GitHub repository</TextLink> for more info.
+  </Text>
+</ComponentPreview>
+
+### Strong and Code
+
+<ComponentPreview
+  code={`<Text>
+  Use <Strong>strong text</Strong> for emphasis and <Code>inline code</Code> for technical terms.
+</Text>`}
+>
+  <Text>
+    Use <Strong>strong text</Strong> for emphasis and <Code>inline code</Code> for technical terms.
+  </Text>
 </ComponentPreview>
 
 ## API Reference
+
+### Text
 
 <PropsTable
   props={[
     {
       name: 'size',
-      type: "'sm' | 'md' | 'lg'",
+      type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'",
       default: "'md'",
-      description: 'The size of the text.',
+      description: 'Text size.',
     },
     {
-      name: 'muted',
-      type: 'boolean',
-      default: 'false',
-      description: 'Use muted color.',
+      name: 'variant',
+      type: "'default' | 'muted' | 'primary' | 'success' | 'warning' | 'danger'",
+      default: "'default'",
+      description: 'Text color variant.',
+    },
+    {
+      name: 'weight',
+      type: "'normal' | 'medium' | 'semibold' | 'bold'",
+      default: "'normal'",
+      description: 'Font weight.',
     },
     {
       name: 'as',
       type: "'p' | 'span' | 'div'",
       default: "'p'",
-      description: 'The HTML element to render.',
-    },
-    {
-      name: 'children',
-      type: 'ReactNode',
-      required: true,
-      description: 'The text content.',
-    },
-    {
-      name: 'className',
-      type: 'string',
-      description: 'Additional CSS classes.',
+      description: 'HTML element to render.',
     },
   ]}
 />
+
+### TextLink
+
+Styled anchor element for inline links.
+
+### Strong
+
+Semantic `<strong>` element with semibold weight.
+
+### Code
+
+Inline code element with monospace font and subtle background.

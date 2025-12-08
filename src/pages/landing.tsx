@@ -6,12 +6,19 @@ export function LandingPage() {
     <div className="h-dvh bg-(--void-bg)">
       {/* Hero Section */}
       <header className="relative h-full overflow-hidden border-b border-(--void-border)">
-        <div className="absolute inset-0 bg-gradient-to-br from-(--void-accent)/5 via-transparent to-(--void-accent-alt)/5" />
+        <div className="absolute inset-0 bg-linear-to-br from-(--void-accent)/5 via-transparent to-(--void-accent-alt)/5" />
         <div className="relative h-full grid place-items-center mx-auto max-w-6xl px-6 py-24">
           <Stack spacing="lg" align="center" className="text-center">
-            <Badge variant="primary-subtle" pill>
-              v0.1.0
-            </Badge>
+            <Stack spacing="sm" align="center">
+              <img
+                src="/voidui-logo.svg"
+                alt="Void UI logo"
+                className="h-16 w-16"
+              />
+              <Badge variant="primary-subtle" pill>
+                v0.1.0
+              </Badge>
+            </Stack>
             <Heading size="xl" className="max-w-3xl">
               Void UI
             </Heading>

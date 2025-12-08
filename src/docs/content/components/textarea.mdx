@@ -1,5 +1,5 @@
 import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
-import { Textarea, Stack } from '@radenadri/void-ui'
+import { Textarea, FieldRoot, FieldLabel, FieldDescription, Stack } from '@radenadri/void-ui'
 
 # Textarea
 
@@ -28,14 +28,20 @@ export default function TextareaDemo() {
 
 ## Usage
 
-### Basic
+### Sizes
 
 <ComponentPreview
-  code={`<Textarea placeholder="Enter description..." />`}
+  code={`<Stack spacing="md" className="w-full max-w-md">
+  <Textarea size="sm" placeholder="Small textarea..." />
+  <Textarea size="md" placeholder="Medium textarea (default)..." />
+  <Textarea size="lg" placeholder="Large textarea..." />
+</Stack>`}
 >
-  <div className="w-full max-w-md">
-    <Textarea placeholder="Enter description..." />
-  </div>
+  <Stack spacing="md" className="w-full max-w-md">
+    <Textarea size="sm" placeholder="Small textarea..." />
+    <Textarea size="md" placeholder="Medium textarea (default)..." />
+    <Textarea size="lg" placeholder="Large textarea..." />
+  </Stack>
 </ComponentPreview>
 
 ### With Rows
@@ -48,6 +54,22 @@ export default function TextareaDemo() {
   </div>
 </ComponentPreview>
 
+### With Field
+
+<ComponentPreview
+  code={`<FieldRoot className="w-full max-w-md">
+  <FieldLabel>Message</FieldLabel>
+  <FieldDescription>Enter your message below</FieldDescription>
+  <Textarea placeholder="Type your message..." />
+</FieldRoot>`}
+>
+  <FieldRoot className="w-full max-w-md">
+    <FieldLabel>Message</FieldLabel>
+    <FieldDescription>Enter your message below</FieldDescription>
+    <Textarea placeholder="Type your message..." />
+  </FieldRoot>
+</ComponentPreview>
+
 ### Disabled
 
 <ComponentPreview
@@ -58,10 +80,35 @@ export default function TextareaDemo() {
   </div>
 </ComponentPreview>
 
+### Controlled
+
+<CodeBlock
+  code={`import { useState } from 'react'
+
+function ControlledTextarea() {
+  const [value, setValue] = useState('')
+
+  return (
+    <Textarea 
+      value={value} 
+      onChange={(e) => setValue(e.target.value)}
+      placeholder="Type something..."
+    />
+  )
+}`}
+  language="tsx"
+/>
+
 ## API Reference
 
 <PropsTable
   props={[
+    {
+      name: 'size',
+      type: "'sm' | 'md' | 'lg'",
+      default: "'md'",
+      description: 'Size of the textarea.',
+    },
     {
       name: 'placeholder',
       type: 'string',
@@ -70,7 +117,6 @@ export default function TextareaDemo() {
     {
       name: 'rows',
       type: 'number',
-      default: '3',
       description: 'Number of visible text lines.',
     },
     {
@@ -80,9 +126,14 @@ export default function TextareaDemo() {
       description: 'Disable the textarea.',
     },
     {
-      name: 'className',
+      name: 'value',
       type: 'string',
-      description: 'Additional CSS classes.',
+      description: 'Controlled value.',
+    },
+    {
+      name: 'onChange',
+      type: '(e: ChangeEvent) => void',
+      description: 'Change handler.',
     },
   ]}
 />

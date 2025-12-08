@@ -1,24 +1,31 @@
 import { ComponentPreview, PropsTable, CodeBlock } from '@/docs/components'
-import { Button, Stack } from '@radenadri/void-ui'
+import { Button, ToastProvider, ToastRoot, ToastContent, ToastTitle, ToastDescription, ToastAction, ToastClose, useToastManager, toastManager } from '@radenadri/void-ui'
 
 # Toast
 
-A succinct message that is displayed temporarily.
+A succinct message that is displayed temporarily. Built on Base UI Toast.
 
 ## Preview
 
 <ComponentPreview
-  code={`import { toast } from '@radenadri/void-ui'
+  code={`import { Button, toastManager } from '@radenadri/void-ui'
 
-export default function ToastDemo() {
+function ToastDemo() {
   return (
-    <Button onClick={() => toast('Hello! This is a toast message.')}>
+    <Button
+      onClick={() => {
+        toastManager.add({
+          title: 'Event Created',
+          description: 'Your event has been scheduled.',
+        })
+      }}
+    >
       Show Toast
     </Button>
   )
 }`}
 >
-  <Button onClick={() => alert('Toast would appear here')}>
+  <Button onClick={() => toastManager.add({ title: 'Event Created', description: 'Your event has been scheduled.' })}>
     Show Toast
   </Button>
 </ComponentPreview>
@@ -26,23 +33,32 @@ export default function ToastDemo() {
 ## Installation
 
 <CodeBlock
-  code={`import { toast, Toaster } from '@radenadri/void-ui'`}
+  code={`import {
+  ToastProvider,
+  ToastRoot,
+  ToastContent,
+  ToastTitle,
+  ToastDescription,
+  ToastAction,
+  ToastClose,
+  useToastManager,
+  toastManager,
+} from '@radenadri/void-ui'`}
   language="tsx"
 />
 
 ## Setup
 
-Add the `Toaster` component to your app root:
+Wrap your app with `ToastProvider`:
 
 <CodeBlock
-  code={`import { Toaster } from '@radenadri/void-ui'
+  code={`import { ToastProvider } from '@radenadri/void-ui'
 
 function App() {
   return (
-    <>
+    <ToastProvider>
       {/* Your app content */}
-      <Toaster />
-    </>
+    </ToastProvider>
   )
 }`}
   language="tsx"
@@ -50,91 +66,217 @@ function App() {
 
 ## Usage
 
-### Basic Toast
+### Using useToastManager Hook
+
+Use inside React components:
 
 <CodeBlock
-  code={`toast('This is a toast message')`}
-  language="tsx"
-/>
+  code={`import { useToastManager, Button } from '@radenadri/void-ui'
 
-### Toast Variants
+function MyComponent() {
+  const toastManager = useToastManager()
 
-<CodeBlock
-  code={`// Success
-toast.success('Operation completed!')
-
-// Error
-toast.error('Something went wrong')
-
-// Warning
-toast.warning('Please check your input')
-
-// Info
-toast.info('New update available')`}
-  language="tsx"
-/>
-
-### With Description
-
-<CodeBlock
-  code={`toast('Event Created', {
-  description: 'Your event has been scheduled for tomorrow at 3pm.'
-})`}
-  language="tsx"
-/>
-
-### With Action
-
-<CodeBlock
-  code={`toast('File deleted', {
-  action: {
-    label: 'Undo',
-    onClick: () => console.log('Undo clicked')
+  const showToast = () => {
+    toastManager.add({
+      title: 'Success',
+      description: 'Your changes have been saved.',
+    })
   }
+
+  return <Button onClick={showToast}>Save</Button>
+}`}
+  language="tsx"
+/>
+
+### Using Global toastManager
+
+Use outside React tree (e.g., in utility functions):
+
+<CodeBlock
+  code={`import { toastManager } from '@radenadri/void-ui'
+
+// Can be called from anywhere
+export function showSuccessToast() {
+  toastManager.add({
+    title: 'Success',
+    description: 'Operation completed.',
+    type: 'success',
+  })
+}`}
+  language="tsx"
+/>
+
+### With Action Button
+
+<CodeBlock
+  code={`toastManager.add({
+  title: 'File deleted',
+  description: 'The file has been moved to trash.',
+  actionProps: {
+    children: 'Undo',
+    onClick: () => console.log('Undo clicked'),
+  },
 })`}
+  language="tsx"
+/>
+
+### With Custom Type
+
+<CodeBlock
+  code={`toastManager.add({
+  title: 'Error',
+  description: 'Something went wrong.',
+  type: 'error',
+})
+
+// Then style based on type in your toast renderer
+<ToastRoot className={toast.type === 'error' ? 'border-red-500' : ''}>
+  ...
+</ToastRoot>`}
+  language="tsx"
+/>
+
+### Promise Toast
+
+<CodeBlock
+  code={`const saveData = async () => {
+  await toastManager.promise(
+    fetch('/api/save'),
+    {
+      loading: { title: 'Saving...', description: 'Please wait' },
+      success: { title: 'Saved!', description: 'Your data is safe' },
+      error: { title: 'Error', description: 'Failed to save' },
+    }
+  )
+}`}
+  language="tsx"
+/>
+
+### Custom Toast Renderer
+
+<CodeBlock
+  code={`import {
+  ToastProvider,
+  ToastRoot,
+  ToastContent,
+  ToastTitle,
+  ToastDescription,
+  ToastAction,
+  ToastClose,
+  useToastManager,
+} from '@radenadri/void-ui'
+
+function App() {
+  return (
+    <ToastProvider>
+      <MyApp />
+      <ToastRenderer />
+    </ToastProvider>
+  )
+}
+
+function ToastRenderer() {
+  const { toasts } = useToastManager()
+
+  return toasts.map((toast) => (
+    <ToastRoot key={toast.id} toast={toast}>
+      <ToastContent>
+        <ToastTitle>{toast.title}</ToastTitle>
+        <ToastDescription>{toast.description}</ToastDescription>
+        {toast.actionProps && (
+          <ToastAction {...toast.actionProps} />
+        )}
+      </ToastContent>
+      <ToastClose />
+    </ToastRoot>
+  ))
+}`}
   language="tsx"
 />
 
 ## API Reference
 
-### toast()
+### ToastProvider
+
+Wraps your app and provides toast context.
+
+### useToastManager
+
+Hook to access toast manager inside React components.
 
 <PropsTable
   props={[
     {
-      name: 'message',
-      type: 'string',
-      required: true,
-      description: 'The toast message.',
+      name: 'toasts',
+      type: 'ToastObject[]',
+      description: 'Array of current toasts.',
     },
     {
-      name: 'options.description',
-      type: 'string',
-      description: 'Additional description text.',
+      name: 'add',
+      type: '(options) => string',
+      description: 'Add a toast, returns toast ID.',
     },
     {
-      name: 'options.duration',
+      name: 'close',
+      type: '(id: string) => void',
+      description: 'Close a toast by ID.',
+    },
+    {
+      name: 'update',
+      type: '(id: string, options) => void',
+      description: 'Update a toast.',
+    },
+    {
+      name: 'promise',
+      type: '(promise, options) => Promise',
+      description: 'Create loading/success/error toast.',
+    },
+  ]}
+/>
+
+### add() Options
+
+<PropsTable
+  props={[
+    {
+      name: 'title',
+      type: 'ReactNode',
+      description: 'Toast title.',
+    },
+    {
+      name: 'description',
+      type: 'ReactNode',
+      description: 'Toast description.',
+    },
+    {
+      name: 'type',
+      type: 'string',
+      description: 'Custom type for styling.',
+    },
+    {
+      name: 'timeout',
       type: 'number',
-      default: '4000',
-      description: 'Duration in milliseconds.',
+      description: 'Auto-dismiss duration (ms).',
     },
     {
-      name: 'options.action',
-      type: '{ label: string; onClick: () => void }',
-      description: 'Action button configuration.',
+      name: 'priority',
+      type: "'low' | 'high'",
+      default: "'low'",
+      description: 'Announcement priority.',
+    },
+    {
+      name: 'actionProps',
+      type: 'ButtonProps',
+      description: 'Props for action button.',
     },
   ]}
 />
 
-### Toaster
+### Components
 
-<PropsTable
-  props={[
-    {
-      name: 'position',
-      type: "'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'",
-      default: "'bottom-right'",
-      description: 'Position of the toasts.',
-    },
-  ]}
-/>
+- **ToastRoot** - Container for a single toast
+- **ToastContent** - Wraps title/description (handles overflow)
+- **ToastTitle** - Toast heading
+- **ToastDescription** - Toast body text
+- **ToastAction** - Action button
+- **ToastClose** - Close button
