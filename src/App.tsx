@@ -50,6 +50,11 @@ import {
 } from '@/docs/pages';
 import { LandingPage } from '@/pages/landing';
 import { mdxComponents } from '@/docs/components';
+import {
+  BlocksIndexPage,
+  AuthenticationBlocksPage,
+  DashboardBlocksPage,
+} from '@/blocks';
 
 function App() {
   // Initialize theme from localStorage on mount
@@ -70,6 +75,16 @@ function App() {
           <TooltipProvider>
             <Routes>
               <Route path="/" element={<LandingPage />} />
+              {/* Blocks */}
+              <Route path="/blocks" element={<BlocksIndexPage />} />
+              <Route
+                path="/blocks/authentication"
+                element={<AuthenticationBlocksPage />}
+              />
+              <Route
+                path="/blocks/dashboard"
+                element={<DashboardBlocksPage />}
+              />
               <Route path="/docs" element={<DocsLayout />}>
                 <Route index element={<IntroductionPage />} />
                 <Route path="quick-start" element={<QuickStartPage />} />

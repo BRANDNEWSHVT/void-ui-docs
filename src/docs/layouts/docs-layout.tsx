@@ -78,6 +78,12 @@ export function DocsLayout() {
             >
               Components
             </NavLink>
+            <NavLink
+              to="/blocks"
+              className="hidden text-sm hover:text-(--void-text) transition-colors sm:block"
+            >
+              Blocks
+            </NavLink>
             <a
               href="https://github.com/BRANDNEWSHVT/void-ui"
               target="_blank"

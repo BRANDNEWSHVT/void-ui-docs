@@ -27,7 +27,11 @@ export function LandingPage() {
               CSS. Designed for developers, creatives, and forward-thinking
               interfaces. Supports both light and dark modes.
             </Text>
-            <Stack direction="row" spacing="md" className="mt-4">
+            <Stack
+              direction="row"
+              spacing="md"
+              className="mt-4 flex-wrap justify-center"
+            >
               <Link to="/docs">
                 <Button variant="primary">Get Started</Button>
               </Link>
@@ -36,7 +40,7 @@ export function LandingPage() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button variant="secondary">View on GitHub</Button>
+                <Button variant="outline-secondary">GitHub</Button>
               </a>
             </Stack>
           </Stack>
