@@ -1,3 +1,5 @@
+import { CodeBlock } from '@/docs/components'
+
 # Introduction
 
 Void UI is a personal React component library built on [Base UI](https://base-ui.com) and styled with [Tailwind CSS](https://tailwindcss.com). Dark-first design with a modern aesthetic for web applications.
@@ -17,24 +19,115 @@ I created this documentation mainly to help myself remember how to use these com
 
 ## Design Tokens
 
+Void UI uses CSS custom properties (variables) for theming. Override these in your CSS to customize the look and feel.
+
 ### Semantic Colors
 
-```css
---void-primary      /* Cyan - primary actions */
---void-secondary    /* Neutral - secondary actions */
---void-success      /* Green - success states */
---void-warning      /* Amber - warning states */
---void-danger       /* Red - error/destructive states */
---void-info         /* Blue - informational states */
-```
+<CodeBlock
+  code={`:root {
+  /* Primary Actions */
+  --void-primary: #22d3ee;
+  --void-secondary: #a1a1aa;
 
-### Visual Effects
+  /* Status Colors */
+  --void-success: #22c55e;
+  --void-warning: #f59e0b;
+  --void-danger: #ef4444;
+  --void-info: #3b82f6;
+}`}
+  language="css"
+  filename="app.css"
+/>
 
-```css
---void-surface          /* Card/panel backgrounds */
---void-border           /* Border colors */
---void-shadow-sm/md/lg  /* Layered shadows */
-```
+### Surface & Borders
+
+<CodeBlock
+  code={`:root {
+  /* Backgrounds */
+  --void-bg: #09090b;
+  --void-surface: #18181b;
+  --void-bg-subtle: #27272a;
+  --void-bg-muted: #3f3f46;
+
+  /* Borders */
+  --void-border: #27272a;
+  --void-border-hover: #3f3f46;
+
+  /* Text */
+  --void-text: #fafafa;
+  --void-muted: #a1a1aa;
+}`}
+  language="css"
+  filename="app.css"
+/>
+
+### Shadows
+
+<CodeBlock
+  code={`:root {
+  --void-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --void-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --void-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+}`}
+  language="css"
+  filename="app.css"
+/>
+
+## Customization
+
+### Overriding Colors
+
+Create a custom theme by overriding CSS variables in your global stylesheet:
+
+<CodeBlock
+  code={`/* Custom brand colors */
+:root {
+  --void-primary: #8b5cf6;
+  --void-success: #10b981;
+}
+
+/* Light mode overrides */
+[data-theme="light"] {
+  --void-bg: #ffffff;
+  --void-surface: #f4f4f5;
+  --void-text: #18181b;
+  --void-muted: #71717a;
+  --void-border: #e4e4e7;
+}`}
+  language="css"
+  filename="app.css"
+/>
+
+### Component-Level Customization
+
+All components accept a `className` prop for Tailwind overrides:
+
+<CodeBlock
+  code={`<Button className="bg-purple-500 hover:bg-purple-600">
+  Custom Button
+</Button>
+
+<Card className="border-2 border-dashed">
+  Custom Card
+</Card>`}
+  language="tsx"
+/>
+
+### Extending with Variants
+
+Use the `cn()` utility to conditionally apply classes:
+
+<CodeBlock
+  code={`import { cn } from '@/lib/utils'
+
+<Badge className={cn(
+  isNew && 'animate-pulse',
+  isPriority && 'ring-2 ring-offset-2'
+)}>
+  Label
+</Badge>`}
+  language="tsx"
+/>
 
 ## Components
 
