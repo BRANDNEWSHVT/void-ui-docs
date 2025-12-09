@@ -1,5 +1,6 @@
 import { Heading, Text, Stack } from '@radenadri/void-ui';
 import { BlockPreview } from '../components/block-preview';
+import { BlocksLayout } from '../components/blocks-layout';
 import {
   DashboardBlock01,
   dashboardBlock01Code,
@@ -7,7 +8,7 @@ import {
 
 export function DashboardBlocksPage() {
   return (
-    <div className="min-h-screen bg-(--void-bg)">
+    <BlocksLayout>
       {/* Header */}
       <section className="border-b border-(--void-border)">
         <div className="mx-auto max-w-6xl px-6 py-12">
@@ -31,6 +32,6 @@ export function DashboardBlocksPage() {
           </BlockPreview>
         </Stack>
       </section>
-    </div>
+    </BlocksLayout>
   );
 }

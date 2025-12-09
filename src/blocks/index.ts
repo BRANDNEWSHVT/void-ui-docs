@@ -6,6 +6,7 @@ export { DashboardBlocksPage } from './pages/dashboard';
 // Components
 export { BlockPreview } from './components/block-preview';
 export { BlockCard } from './components/block-card';
+export { BlocksLayout } from './components/blocks-layout';
 
 // Templates
 export { LoginBlock01, loginBlock01Code } from './templates/login-01';

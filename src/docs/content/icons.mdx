@@ -1,0 +1,360 @@
+import { useState } from 'react'
+import { ComponentPreview, CodeBlock } from '@/docs/components'
+import { Input, Stack, Text, Badge, Heading } from '@radenadri/void-ui'
+import * as PhosphorIcons from '@phosphor-icons/react'
+
+export const iconList = [
+  // Arrows & Navigation
+  { name: 'ArrowUp', category: 'Navigation' },
+  { name: 'ArrowDown', category: 'Navigation' },
+  { name: 'ArrowLeft', category: 'Navigation' },
+  { name: 'ArrowRight', category: 'Navigation' },
+  { name: 'CaretUp', category: 'Navigation' },
+  { name: 'CaretDown', category: 'Navigation' },
+  { name: 'CaretLeft', category: 'Navigation' },
+  { name: 'CaretRight', category: 'Navigation' },
+  { name: 'ArrowsOut', category: 'Navigation' },
+  { name: 'ArrowsIn', category: 'Navigation' },
+
+  // Actions
+  { name: 'Plus', category: 'Actions' },
+  { name: 'Minus', category: 'Actions' },
+  { name: 'X', category: 'Actions' },
+  { name: 'Check', category: 'Actions' },
+  { name: 'Copy', category: 'Actions' },
+  { name: 'Trash', category: 'Actions' },
+  { name: 'PencilSimple', category: 'Actions' },
+  { name: 'MagnifyingGlass', category: 'Actions' },
+  { name: 'DotsThree', category: 'Actions' },
+  { name: 'DotsThreeVertical', category: 'Actions' },
+  { name: 'Download', category: 'Actions' },
+  { name: 'Upload', category: 'Actions' },
+  { name: 'Share', category: 'Actions' },
+  { name: 'Link', category: 'Actions' },
+  { name: 'Eye', category: 'Actions' },
+  { name: 'EyeSlash', category: 'Actions' },
+
+  // UI Elements
+  { name: 'House', category: 'UI' },
+  { name: 'Gear', category: 'UI' },
+  { name: 'Bell', category: 'UI' },
+  { name: 'User', category: 'UI' },
+  { name: 'Users', category: 'UI' },
+  { name: 'Heart', category: 'UI' },
+  { name: 'Star', category: 'UI' },
+  { name: 'Bookmark', category: 'UI' },
+  { name: 'Calendar', category: 'UI' },
+  { name: 'Clock', category: 'UI' },
+  { name: 'MapPin', category: 'UI' },
+  { name: 'Phone', category: 'UI' },
+  { name: 'Envelope', category: 'UI' },
+  { name: 'ChatCircle', category: 'UI' },
+  { name: 'Image', category: 'UI' },
+  { name: 'File', category: 'UI' },
+  { name: 'Folder', category: 'UI' },
+  { name: 'Lock', category: 'UI' },
+  { name: 'LockOpen', category: 'UI' },
+  { name: 'Shield', category: 'UI' },
+  { name: 'Warning', category: 'UI' },
+  { name: 'Info', category: 'UI' },
+  { name: 'Question', category: 'UI' },
+  { name: 'CheckCircle', category: 'UI' },
+  { name: 'XCircle', category: 'UI' },
+  { name: 'WarningCircle', category: 'UI' },
+
+  // Media
+  { name: 'Play', category: 'Media' },
+  { name: 'Pause', category: 'Media' },
+  { name: 'Stop', category: 'Media' },
+  { name: 'SkipBack', category: 'Media' },
+  { name: 'SkipForward', category: 'Media' },
+  { name: 'SpeakerHigh', category: 'Media' },
+  { name: 'SpeakerLow', category: 'Media' },
+  { name: 'SpeakerSlash', category: 'Media' },
+  { name: 'Microphone', category: 'Media' },
+  { name: 'Camera', category: 'Media' },
+  { name: 'VideoCamera', category: 'Media' },
+
+  // Devices
+  { name: 'Desktop', category: 'Devices' },
+  { name: 'Laptop', category: 'Devices' },
+  { name: 'DeviceMobile', category: 'Devices' },
+  { name: 'DeviceTabletCamera', category: 'Devices' },
+  { name: 'Printer', category: 'Devices' },
+  { name: 'Keyboard', category: 'Devices' },
+
+  // Data & Charts
+  { name: 'ChartLine', category: 'Data' },
+  { name: 'ChartBar', category: 'Data' },
+  { name: 'ChartPie', category: 'Data' },
+  { name: 'TrendUp', category: 'Data' },
+  { name: 'TrendDown', category: 'Data' },
+  { name: 'Database', category: 'Data' },
+  { name: 'Table', category: 'Data' },
+
+  // Commerce
+  { name: 'ShoppingCart', category: 'Commerce' },
+  { name: 'ShoppingBag', category: 'Commerce' },
+  { name: 'CreditCard', category: 'Commerce' },
+  { name: 'CurrencyDollar', category: 'Commerce' },
+  { name: 'Receipt', category: 'Commerce' },
+  { name: 'Tag', category: 'Commerce' },
+
+  // Social
+  { name: 'GithubLogo', category: 'Social' },
+  { name: 'TwitterLogo', category: 'Social' },
+  { name: 'LinkedinLogo', category: 'Social' },
+  { name: 'InstagramLogo', category: 'Social' },
+  { name: 'YoutubeLogo', category: 'Social' },
+  { name: 'DiscordLogo', category: 'Social' },
+  { name: 'SlackLogo', category: 'Social' },
+  { name: 'FigmaLogo', category: 'Social' },
+
+  // Misc
+  { name: 'Sun', category: 'Misc' },
+  { name: 'Moon', category: 'Misc' },
+  { name: 'Lightning', category: 'Misc' },
+  { name: 'Fire', category: 'Misc' },
+  { name: 'Sparkle', category: 'Misc' },
+  { name: 'Code', category: 'Misc' },
+  { name: 'Terminal', category: 'Misc' },
+  { name: 'Command', category: 'Misc' },
+  { name: 'List', category: 'Misc' },
+  { name: 'ListBullets', category: 'Misc' },
+  { name: 'Rows', category: 'Misc' },
+  { name: 'SquaresFour', category: 'Misc' },
+]
+
+export function IconGrid() {
+  const [search, setSearch] = useState('')
+  const [selectedCategory, setSelectedCategory] = useState('All')
+  const [copiedIcon, setCopiedIcon] = useState(null)
+
+  const categories = ['All', ...new Set(iconList.map(i => i.category))]
+
+  const filteredIcons = iconList.filter(icon => {
+    const matchesSearch = icon.name.toLowerCase().includes(search.toLowerCase())
+    const matchesCategory = selectedCategory === 'All' || icon.category === selectedCategory
+    return matchesSearch && matchesCategory
+  })
+
+  const handleCopy = async (iconName) => {
+    await navigator.clipboard.writeText(`<${iconName} />`)
+    setCopiedIcon(iconName)
+    setTimeout(() => setCopiedIcon(null), 2000)
+  }
+
+  return (
+    <div className="space-y-6">
+      {/* Search and Filter */}
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+        <Input
+          placeholder="Search icons..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="max-w-xs"
+        />
+        <div className="flex flex-wrap gap-2">
+          {categories.map(cat => (
+            <button
+              key={cat}
+              onClick={() => setSelectedCategory(cat)}
+              className={`rounded-full px-3 py-1 text-sm transition-colors ${selectedCategory === cat
+                  ? 'bg-(--void-primary) text-(--void-primary-foreground)'
+                  : 'bg-(--void-bg-subtle) text-(--void-muted) hover:bg-(--void-bg-muted)'
+                }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Icon Count */}
+      <Text variant="muted" className="text-sm">
+        Showing {filteredIcons.length} of {iconList.length} icons
+      </Text>
+
+      {/* Icon Grid */}
+      <div className="grid grid-cols-4 gap-3 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10">
+        {filteredIcons.map(({ name }) => {
+          const IconComponent = PhosphorIcons[name]
+          if (!IconComponent) return null
+
+          return (
+            <button
+              key={name}
+              onClick={() => handleCopy(name)}
+              className="group relative flex flex-col items-center gap-2 rounded-lg border border-(--void-border) bg-(--void-surface) p-3 transition-all hover:border-(--void-primary) hover:shadow-(--void-shadow-md)"
+              title={name}
+            >
+              <IconComponent size={24} className="text-(--void-text)" />
+              <span className="w-full truncate text-center text-xs text-(--void-muted)">
+                {name}
+              </span>
+              {copiedIcon === name && (
+                <span className="absolute -top-2 left-1/2 -translate-x-1/2 rounded bg-(--void-success) px-2 py-0.5 text-xs text-(--void-success-foreground)">
+                  Copied!
+                </span>
+              )}
+            </button>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
+# Icons
+
+Void UI uses [Phosphor Icons](https://phosphoricons.com/) as the default icon library. Phosphor is a flexible icon family with 6 weights and over 7,000 icons.
+
+## Installation
+
+<CodeBlock
+  code={`npm install @phosphor-icons/react`}
+  language="bash"
+/>
+
+## Usage
+
+<CodeBlock
+  code={`import { House, Gear, Bell, User } from '@phosphor-icons/react'
+
+function MyComponent() {
+  return (
+    <div className="flex gap-4">
+      <House size={24} />
+      <Gear size={24} />
+      <Bell size={24} />
+      <User size={24} />
+    </div>
+  )
+}`}
+  language="tsx"
+/>
+
+## Icon Weights
+
+Phosphor icons come in 6 weights. You can specify the weight using the `weight` prop.
+
+<ComponentPreview
+  code={`import { Heart } from '@phosphor-icons/react'
+
+<div className="flex gap-4">
+  <Heart size={32} weight="thin" />
+  <Heart size={32} weight="light" />
+  <Heart size={32} weight="regular" />
+  <Heart size={32} weight="bold" />
+  <Heart size={32} weight="fill" />
+  <Heart size={32} weight="duotone" />
+</div>`}
+>
+  <div className="flex items-center gap-4">
+    <div className="flex flex-col items-center gap-1">
+      <PhosphorIcons.Heart size={32} weight="thin" />
+      <Text variant="muted" className="text-xs">thin</Text>
+    </div>
+    <div className="flex flex-col items-center gap-1">
+      <PhosphorIcons.Heart size={32} weight="light" />
+      <Text variant="muted" className="text-xs">light</Text>
+    </div>
+    <div className="flex flex-col items-center gap-1">
+      <PhosphorIcons.Heart size={32} weight="regular" />
+      <Text variant="muted" className="text-xs">regular</Text>
+    </div>
+    <div className="flex flex-col items-center gap-1">
+      <PhosphorIcons.Heart size={32} weight="bold" />
+      <Text variant="muted" className="text-xs">bold</Text>
+    </div>
+    <div className="flex flex-col items-center gap-1">
+      <PhosphorIcons.Heart size={32} weight="fill" />
+      <Text variant="muted" className="text-xs">fill</Text>
+    </div>
+    <div className="flex flex-col items-center gap-1">
+      <PhosphorIcons.Heart size={32} weight="duotone" />
+      <Text variant="muted" className="text-xs">duotone</Text>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Icon Sizes
+
+Use the `size` prop to change the icon size.
+
+<ComponentPreview
+  code={`import { Star } from '@phosphor-icons/react'
+
+<div className="flex items-end gap-4">
+  <Star size={16} />
+  <Star size={20} />
+  <Star size={24} />
+  <Star size={32} />
+  <Star size={48} />
+</div>`}
+>
+  <div className="flex items-end gap-4">
+    <div className="flex flex-col items-center gap-1">
+      <PhosphorIcons.Star size={16} />
+      <Text variant="muted" className="text-xs">16</Text>
+    </div>
+    <div className="flex flex-col items-center gap-1">
+      <PhosphorIcons.Star size={20} />
+      <Text variant="muted" className="text-xs">20</Text>
+    </div>
+    <div className="flex flex-col items-center gap-1">
+      <PhosphorIcons.Star size={24} />
+      <Text variant="muted" className="text-xs">24</Text>
+    </div>
+    <div className="flex flex-col items-center gap-1">
+      <PhosphorIcons.Star size={32} />
+      <Text variant="muted" className="text-xs">32</Text>
+    </div>
+    <div className="flex flex-col items-center gap-1">
+      <PhosphorIcons.Star size={48} />
+      <Text variant="muted" className="text-xs">48</Text>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Icon Colors
+
+Icons inherit the current text color by default. Use Tailwind classes to change the color.
+
+<ComponentPreview
+  code={`import { Lightning } from '@phosphor-icons/react'
+
+<div className="flex gap-4">
+  <Lightning size={24} className="text-(--void-text)" />
+  <Lightning size={24} className="text-(--void-primary)" />
+  <Lightning size={24} className="text-(--void-success)" />
+  <Lightning size={24} className="text-(--void-warning)" />
+  <Lightning size={24} className="text-(--void-danger)" />
+</div>`}
+>
+  <div className="flex gap-4">
+    <PhosphorIcons.Lightning size={24} className="text-(--void-text)" />
+    <PhosphorIcons.Lightning size={24} className="text-(--void-primary)" />
+    <PhosphorIcons.Lightning size={24} className="text-(--void-success)" />
+    <PhosphorIcons.Lightning size={24} className="text-(--void-warning)" />
+    <PhosphorIcons.Lightning size={24} className="text-(--void-danger)" />
+  </div>
+</ComponentPreview>
+
+## Available Icons
+
+Click on any icon to copy its import. For the full list of 7,000+ icons, visit [phosphoricons.com](https://phosphoricons.com/).
+
+<IconGrid />
+
+## API Reference
+
+### Icon Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `number \| string` | `"1em"` | Icon size in pixels |
+| `weight` | `"thin" \| "light" \| "regular" \| "bold" \| "fill" \| "duotone"` | `"regular"` | Icon weight/style |
+| `color` | `string` | `"currentColor"` | Icon color |
+| `mirrored` | `boolean` | `false` | Mirror the icon horizontally |
+| `alt` | `string` | - | Accessible alt text |

@@ -1,14 +1,26 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { codeToHtml } from 'shiki';
 import { cn } from '@/lib/utils';
 import {
-  Desktop,
-  DeviceTabletCamera,
-  DeviceMobile,
-  ArrowsOut,
-  Code,
-  Eye,
-  X,
+  DesktopIcon,
+  DeviceTabletCameraIcon,
+  DeviceMobileIcon,
+  ArrowsOutIcon,
+  CodeIcon,
+  EyeIcon,
+  XIcon,
+  CheckIcon,
+  CopyIcon,
 } from '@phosphor-icons/react';
+
+function getTheme() {
+  if (typeof document !== 'undefined') {
+    return document.documentElement.getAttribute('data-theme') === 'light'
+      ? 'github-light'
+      : 'github-dark';
+  }
+  return 'github-dark';
+}
 
 type ViewMode = 'desktop' | 'tablet' | 'mobile';
 type TabMode = 'preview' | 'code';
@@ -29,6 +41,9 @@ export function BlockPreview({
   const [tab, setTab] = useState<TabMode>('preview');
   const [viewMode, setViewMode] = useState<ViewMode>('desktop');
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [html, setHtml] = useState('');
+  const [theme, setTheme] = useState(getTheme);
 
   const viewWidths: Record<ViewMode, string> = {
     desktop: '100%',
@@ -36,8 +51,30 @@ export function BlockPreview({
     mobile: '375px',
   };
 
+  // Listen for theme changes
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setTheme(getTheme());
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme'],
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  // Generate syntax highlighted HTML
+  useEffect(() => {
+    codeToHtml(code.trim(), {
+      lang: 'tsx',
+      theme,
+    }).then(setHtml);
+  }, [code, theme]);
+
   const handleCopyCode = async () => {
-    await navigator.clipboard.writeText(code);
+    await navigator.clipboard.writeText(code.trim());
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   if (isFullscreen) {
@@ -50,7 +87,7 @@ export function BlockPreview({
             onClick={() => setIsFullscreen(false)}
             className="rounded-lg p-2 text-(--void-muted) hover:bg-(--void-bg-subtle) hover:text-(--void-text) transition-colors"
           >
-            <X size={20} />
+            <XIcon size={20} />
           </button>
         </div>
         {/* Fullscreen Content */}
@@ -69,7 +106,7 @@ export function BlockPreview({
       )}
     >
       {/* Header */}
-      <div className="flex items-center justify-between border-b border-(--void-border) px-4 py-3">
+      <div className="flex flex-col gap-3 border-b border-(--void-border) px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
         <h3 className="font-medium text-(--void-text)">{title}</h3>
 
         <div className="flex items-center gap-2">
@@ -84,7 +121,7 @@ export function BlockPreview({
                   : 'text-(--void-muted) hover:text-(--void-text)'
               )}
             >
-              <Eye size={16} />
+              <EyeIcon size={16} />
               Preview
             </button>
             <button
@@ -96,7 +133,7 @@ export function BlockPreview({
                   : 'text-(--void-muted) hover:text-(--void-text)'
               )}
             >
-              <Code size={16} />
+              <CodeIcon size={16} />
               Code
             </button>
           </div>
@@ -116,7 +153,7 @@ export function BlockPreview({
               )}
               title="Desktop view"
             >
-              <Desktop size={18} />
+              <DesktopIcon size={18} />
             </button>
             <button
               onClick={() => setViewMode('tablet')}
@@ -128,7 +165,7 @@ export function BlockPreview({
               )}
               title="Tablet view"
             >
-              <DeviceTabletCamera size={18} />
+              <DeviceTabletCameraIcon size={18} />
             </button>
             <button
               onClick={() => setViewMode('mobile')}
@@ -140,14 +177,14 @@ export function BlockPreview({
               )}
               title="Mobile view"
             >
-              <DeviceMobile size={18} />
+              <DeviceMobileIcon size={18} />
             </button>
             <button
               onClick={() => setIsFullscreen(true)}
               className="rounded-lg p-2 text-(--void-muted) hover:bg-(--void-bg-subtle) hover:text-(--void-text) transition-colors"
               title="Fullscreen"
             >
-              <ArrowsOut size={18} />
+              <ArrowsOutIcon size={18} />
             </button>
           </div>
         </div>
@@ -156,25 +193,38 @@ export function BlockPreview({
       {/* Content */}
       <div className="relative">
         {tab === 'preview' ? (
-          <div className="flex justify-center bg-(--void-bg-subtle) p-4">
+          <div className="flex justify-center bg-(--void-bg-subtle) p-4 overflow-x-auto">
             <div
-              className="w-full overflow-hidden rounded-lg border border-(--void-border) bg-(--void-bg) transition-all duration-300"
-              style={{ maxWidth: viewWidths[viewMode] }}
+              className="overflow-hidden rounded-lg border border-(--void-border) bg-(--void-bg) transition-all duration-300 shrink-0"
+              style={{ width: viewWidths[viewMode] }}
             >
               <div className="min-h-[400px]">{children}</div>
             </div>
           </div>
         ) : (
           <div className="relative">
-            <button
-              onClick={handleCopyCode}
-              className="absolute right-4 top-4 rounded-lg bg-(--void-bg-muted) px-3 py-1.5 text-sm text-(--void-muted) hover:bg-(--void-border) hover:text-(--void-text) transition-colors"
-            >
-              Copy
-            </button>
-            <pre className="max-h-[500px] overflow-auto bg-(--void-bg) p-4 text-sm">
-              <code className="text-(--void-text)">{code}</code>
-            </pre>
+            <div className="absolute right-4 top-4 z-10">
+              <button
+                onClick={handleCopyCode}
+                className="flex items-center gap-1.5 rounded-lg bg-(--void-bg-muted) px-3 py-1.5 text-sm text-(--void-muted) hover:bg-(--void-border) hover:text-(--void-text) transition-colors"
+              >
+                {copied ? (
+                  <>
+                    <CheckIcon size={14} />
+                    Copied
+                  </>
+                ) : (
+                  <>
+                    <CopyIcon size={14} />
+                    Copy
+                  </>
+                )}
+              </button>
+            </div>
+            <div
+              className="max-h-[500px] overflow-auto [&_pre]:p-4 [&_pre]:m-0 [&_pre]:bg-(--void-surface)! [&_code]:text-sm [&_code]:font-mono"
+              dangerouslySetInnerHTML={{ __html: html }}
+            />
           </div>
         )}
       </div>

@@ -1,11 +1,12 @@
 import { Heading, Text, Stack } from '@radenadri/void-ui';
 import { BlockPreview } from '../components/block-preview';
+import { BlocksLayout } from '../components/blocks-layout';
 import { LoginBlock01, loginBlock01Code } from '../templates/login-01';
 import { LoginBlock02, loginBlock02Code } from '../templates/login-02';
 
 export function AuthenticationBlocksPage() {
   return (
-    <div className="min-h-screen bg-(--void-bg)">
+    <BlocksLayout>
       {/* Header */}
       <section className="border-b border-(--void-border)">
         <div className="mx-auto max-w-6xl px-6 py-12">
@@ -39,6 +40,6 @@ export function AuthenticationBlocksPage() {
           </BlockPreview>
         </Stack>
       </section>
-    </div>
+    </BlocksLayout>
   );
 }

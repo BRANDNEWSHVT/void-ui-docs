@@ -6,6 +6,7 @@ import '@radenadri/void-ui/styles.css';
 
 import { DocsLayout } from '@/docs/layouts/docs-layout';
 import { DocumentTitleManager } from '@/components/document-title-manager';
+import { ScrollToTop } from '@/components/scroll-to-top';
 import {
   IntroductionPage,
   QuickStartPage,
@@ -47,6 +48,7 @@ import {
   FieldPage,
   FieldsetPage,
   IconBoxPage,
+  IconsPage,
 } from '@/docs/pages';
 import { LandingPage } from '@/pages/landing';
 import { mdxComponents } from '@/docs/components';
@@ -69,6 +71,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <DocumentTitleManager />
       <ToastProvider>
         <MDXProvider components={mdxComponents}>
@@ -140,6 +143,7 @@ function App() {
                 <Route path="components/text" element={<TextPage />} />
                 <Route path="components/textarea" element={<TextareaPage />} />
                 <Route path="components/toast" element={<ToastPage />} />
+                <Route path="icons" element={<IconsPage />} />
                 {/* 404 for unknown routes */}
                 <Route path="*" element={<NotFoundPage />} />
               </Route>
