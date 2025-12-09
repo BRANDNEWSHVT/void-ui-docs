@@ -2,7 +2,7 @@ import { CodeBlock } from '@/docs/components'
 
 # Introduction
 
-Void UI is a personal React component library built on [Base UI](https://base-ui.com) and styled with [Tailwind CSS](https://tailwindcss.com). Dark-first design with a modern aesthetic for web applications.
+Void UI is a personal React component library built on [Base UI](https://base-ui.com) and styled with [Tailwind CSS](https://tailwindcss.com). Design with a modern aesthetic for web applications.
 
 > **Experimental**: This library is still in active development and primarily built for my personal projects. APIs may change without notice. Feel free to use it, but be aware of potential breaking changes.
 
@@ -44,18 +44,18 @@ Void UI uses CSS custom properties (variables) for theming. Override these in yo
 <CodeBlock
   code={`:root {
   /* Backgrounds */
-  --void-bg: #09090b;
-  --void-surface: #18181b;
-  --void-bg-subtle: #27272a;
-  --void-bg-muted: #3f3f46;
+  --void-bg: #fafafa;
+  --void-surface: #ffffff;
+  --void-bg-subtle: rgba(0, 0, 0, 0.02);
+  --void-bg-muted: rgba(0, 0, 0, 0.04);
 
   /* Borders */
-  --void-border: #27272a;
-  --void-border-hover: #3f3f46;
+  --void-border: rgba(0, 0, 0, 0.08);
+  --void-border-hover: rgba(0, 0, 0, 0.15);
 
   /* Text */
-  --void-text: #fafafa;
-  --void-muted: #a1a1aa;
+  --void-text: #09090b;
+  --void-muted: #71717a;
 }`}
   language="css"
   filename="app.css"
@@ -65,9 +65,9 @@ Void UI uses CSS custom properties (variables) for theming. Override these in yo
 
 <CodeBlock
   code={`:root {
-  --void-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --void-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
-  --void-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+  --void-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --void-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.08);
+  --void-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
 }`}
   language="css"
   filename="app.css"
@@ -86,13 +86,13 @@ Create a custom theme by overriding CSS variables in your global stylesheet:
   --void-success: #10b981;
 }
 
-/* Light mode overrides */
-[data-theme="light"] {
-  --void-bg: #ffffff;
-  --void-surface: #f4f4f5;
-  --void-text: #18181b;
-  --void-muted: #71717a;
-  --void-border: #e4e4e7;
+/* Dark mode overrides */
+[data-theme="dark"], .dark {
+  --void-bg: #09090b;
+  --void-surface: #18181b;
+  --void-text: #fafafa;
+  --void-muted: #a1a1aa;
+  --void-border: rgba(255, 255, 255, 0.08);
 }`}
   language="css"
   filename="app.css"

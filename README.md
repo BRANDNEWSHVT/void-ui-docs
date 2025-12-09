@@ -1,6 +1,6 @@
 # Void UI
 
-A dark-first, composable React component library built on [Base UI](https://base-ui.com) and [Tailwind CSS v4](https://tailwindcss.com).
+Another composable React component library built on [Base UI](https://base-ui.com) and [Tailwind CSS v4](https://tailwindcss.com).
 
 > **Note:** This is an experimental personal project for learning and exploration. APIs may change without notice.
 
