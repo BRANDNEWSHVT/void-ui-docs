@@ -26,12 +26,14 @@ export default function MenuDemo() {
       </MenuContent>
     </Menu>
   )
-}`}
->
+}`}>
   <Menu>
     <MenuTrigger>
       <Button variant="secondary">
-        Options <CaretDown size={14} />
+        <div className="flex items-center gap-2">
+          Options
+          <CaretDown size={14} />
+        </div>
       </Button>
     </MenuTrigger>
     <MenuContent>

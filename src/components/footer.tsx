@@ -76,7 +76,15 @@ export function Footer() {
             &copy; {new Date().getFullYear()} Void UI. All rights reserved.
           </Text>
           <Text variant="muted" className="text-sm">
-            Built with Base UI + Tailwind CSS
+            Built with Base UI + Tailwind CSS by{' '}
+            <a
+              href="https://radenadri.xyz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-(--void-primary) underline transition-colors"
+            >
+              Adriana Eka Prayudha
+            </a>
           </Text>
         </div>
       </div>

@@ -147,7 +147,7 @@ export function IconGrid() {
   return (
     <div className="space-y-6">
       {/* Search and Filter */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+      <div className="flex flex-col gap-4">
         <Input
           placeholder="Search icons..."
           value={search}
@@ -160,8 +160,8 @@ export function IconGrid() {
               key={cat}
               onClick={() => setSelectedCategory(cat)}
               className={`rounded-full px-3 py-1 text-sm transition-colors ${selectedCategory === cat
-                  ? 'bg-(--void-primary) text-(--void-primary-foreground)'
-                  : 'bg-(--void-bg-subtle) text-(--void-muted) hover:bg-(--void-bg-muted)'
+                ? 'bg-(--void-primary) text-(--void-primary-foreground)'
+                : 'bg-(--void-bg-subtle) text-(--void-muted) hover:bg-(--void-bg-muted)'
                 }`}
             >
               {cat}

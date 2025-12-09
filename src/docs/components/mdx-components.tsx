@@ -45,7 +45,7 @@ export const mdxComponents = {
     />
   ),
   p: ({ className, ...props }: ComponentPropsWithoutRef<'p'>) => (
-    <p className={cn('leading-7', className)} {...props} />
+    <p className={cn('leading-7 my-3', className)} {...props} />
   ),
   a: ({ className, ...props }: ComponentPropsWithoutRef<'a'>) => (
     <a

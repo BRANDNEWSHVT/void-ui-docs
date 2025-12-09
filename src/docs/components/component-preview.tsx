@@ -2,6 +2,34 @@ import { useState, type ReactNode } from 'react';
 import { CodeBlock } from './code-block';
 import { cn } from '@/lib/utils';
 
+function dedent(str: string): string {
+  const lines = str.split('\n');
+
+  // Remove empty first line if exists
+  if (lines[0].trim() === '') {
+    lines.shift();
+  }
+
+  // Find minimum indentation (ignoring empty lines)
+  const minIndent = lines
+    .filter((line) => line.trim().length > 0)
+    .reduce((min, line) => {
+      const match = line.match(/^(\s*)/);
+      const indent = match ? match[1].length : 0;
+      return Math.min(min, indent);
+    }, Infinity);
+
+  // Remove the common indentation
+  if (minIndent > 0 && minIndent !== Infinity) {
+    return lines
+      .map((line) => line.slice(minIndent))
+      .join('\n')
+      .trim();
+  }
+
+  return str.trim();
+}
+
 interface ComponentPreviewProps {
   children: ReactNode;
   code: string;
@@ -14,6 +42,7 @@ export function ComponentPreview({
   className,
 }: ComponentPreviewProps) {
   const [showCode, setShowCode] = useState(true);
+  const formattedCode = dedent(code);
 
   return (
     <div
@@ -49,7 +78,7 @@ export function ComponentPreview({
 
         {showCode && (
           <CodeBlock
-            code={code}
+            code={formattedCode}
             language="tsx"
             className="border-0 rounded-none"
           />

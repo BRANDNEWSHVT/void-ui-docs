@@ -8,10 +8,6 @@ A dark-first, composable React component library built on [Base UI](https://base
 
 ```
 voidui/
-├── packages/
-│   └── voidui/          # Component library (npm package)
-│       ├── src/         # Component source files
-│       └── dist/        # Built output
 ├── src/
 │   └── docs/            # Documentation site
 │       ├── content/     # MDX documentation
@@ -29,9 +25,6 @@ pnpm install
 # Start dev server (docs site)
 pnpm dev
 
-# Build the component library
-pnpm build:lib
-
 # Build everything
 pnpm build
 ```
@@ -46,13 +39,8 @@ pnpm build
 - **Phosphor Icons** - Icon library
 - **Class Variance Authority** - Variant management
 
-## Package
-
-The component library is published as `@radenadri/void-ui`. See [packages/voidui/README.md](./packages/voidui/README.md) for usage instructions.
-
 ## Features
 
-- Dark-first design
 - Composable component architecture
 - Full keyboard navigation
 - Accessible by default (WAI-ARIA)
