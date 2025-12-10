@@ -21,8 +21,8 @@ importers:
         specifier: ^2.1.10
         version: 2.1.10(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@radenadri/void-ui':
-        specifier: ^0.2.1
-        version: 0.2.1(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+        specifier: ^0.2.2
+        version: 0.2.2(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@tailwindcss/vite':
         specifier: ^4.1.17
         version: 4.1.17(vite@7.2.6(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2))
@@ -668,8 +668,8 @@ packages:
       react: '>= 16.8'
       react-dom: '>= 16.8'
 
-  '@radenadri/void-ui@0.2.1':
-    resolution: {integrity: sha512-GLq5H/2mIC1nfKTdRh1FDzsVHGwbe+Wc7ADMH5JXqLuJVOb+btM6pQpZomhmBMF4BDngZq2qcBNAgpBctw1dEQ==}
+  '@radenadri/void-ui@0.2.2':
+    resolution: {integrity: sha512-TuKjkz+FEf+JhFl/7WjoNTmBY8qjcYsjIU6hsOvzzz5MJSWDSy5dPaT6LLxLQTkpeMrBeFHS/WQQV9SIRMRHqg==}
     peerDependencies:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
@@ -2665,7 +2665,7 @@ snapshots:
       react: 19.2.1
       react-dom: 19.2.1(react@19.2.1)
 
-  '@radenadri/void-ui@0.2.1(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)':
+  '@radenadri/void-ui@0.2.2(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)':
     dependencies:
       '@base-ui-components/react': 1.0.0-rc.0(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@phosphor-icons/react': 2.1.10(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
