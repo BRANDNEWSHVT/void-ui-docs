@@ -16,7 +16,7 @@ export function LandingPage() {
                 className="h-16 w-16"
               />
               <Badge variant="primary-subtle" pill>
-                v0.2.2
+                v0.2.3
               </Badge>
             </Stack>
             <Heading size="xl" className="max-w-3xl">
